@@ -31,7 +31,7 @@ namespace Game
 		#endregion
 		#region Methods Static
 
-		public static StatemachineState getState(Gamestate state)
+		public static StatemachineState getSubStatemachine(Gamestate state)
 		{
 			StatemachineState instance = null;
 
@@ -40,8 +40,12 @@ namespace Game
 			case Gamestate.MainMenu:
 				instance = new StatemachineStateMainMenu();
 				break;
+			case Gamestate.Ingame:
+				instance = new StatemachineStateIngame();
+				break;
 			// TODO: add instance creation for further states. (primarily ingame)
 			default:
+				Debug.LogError("StateMachineState: Error! Unknown game state: " + state.ToString());
 				break;
 			}
 

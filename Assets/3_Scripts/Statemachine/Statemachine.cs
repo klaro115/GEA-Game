@@ -9,9 +9,10 @@ namespace Game
 	{
 		#region Fields
 
-		private static readonly Gamestate startGameState = Gamestate.Startup;
+		private static readonly Gamestate startGameState = Gamestate.Ingame;
 		private static Gamestate gameState = Gamestate.None;
 		private static StatemachineState currentState = null;
+		private static bool isIngame = false;
 
 		#endregion
 		#region Properties
@@ -23,6 +24,11 @@ namespace Game
 		public static StatemachineState CurrentState
 		{
 			get { return currentState; }
+		}
+		public static bool IsIngame
+		{
+			set { isIngame = value; }
+			get { return isIngame; }
 		}
 
 		#endregion
@@ -74,20 +80,17 @@ namespace Game
 						"' is not accessible from current state '" + gameState.ToString() + "'!");
 					return false;
 				}
+
+				// Shutdown and drop previous state instance:
+				currentState.shutdown();
+				currentState = null;
 			}
 
 			// Apply new gameState:
 			gameState = newState;
 
-			// Shutdown and drop previous state instance:
-			if(currentState != null)
-			{
-				currentState.shutdown();
-				currentState = null;
-			}
-
 			// Instantiate and initialize new statemachien state instance:
-			currentState = StatemachineState.getState(gameState);
+			currentState = StatemachineState.getSubStatemachine(gameState);
 			if(currentState != null)
 			{
 				currentState.initialize();
@@ -103,10 +106,8 @@ namespace Game
 		/// </summary>
 		public static void update()
 		{
-			if(currentState != null)
-			{
-				currentState.update();
-			}
+			if(currentState == null) return;
+			currentState.update();
 		}
 
 		#endregion
