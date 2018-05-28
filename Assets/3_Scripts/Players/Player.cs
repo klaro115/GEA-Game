@@ -1,33 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
-
 using Game.Weapons;
 
 namespace Game
 {
 	// TODO: Implement parent class including damage handlers for player and enemy!
-	public class Player : MonoBehaviour
+	public class Player : Character
 	{
 		#region Fields
-
-		public float speed = 2.0f;
-		public Vector2 screenSpace = new Vector2(10, 10);
-		public float radius = 0.5f;
-
-		public Weapon mainWeapon = null;
-		public Weapon secWeapon = null;
-
+		public Vector2 screenSpace;
 		#endregion
 		#region Methods
 
-		void Start ()
+		protected override void Start ()
 		{
+			//mainWeapon = null;
+			//secWeapon = null;
+			hitpoints = 100;
+			baseSpeed = 10.0f;
+			radius = 0.5f;
+
+			// Define Screenspace
 			float orthoSize = Camera.main.orthographicSize;
 			screenSpace.y = orthoSize - radius;
 			screenSpace.x = orthoSize * Camera.main.aspect - radius;
 		}
-		
-		void Update ()
+
+		protected override void Update ()
 		{
 			if(!Statemachine.IsIngame) return;
 
@@ -36,7 +35,7 @@ namespace Game
 			float y = Input.GetAxisRaw("Vertical");
 
 			// Move the ship:
-			transform.Translate(new Vector3(x, y, 0) * speed * Time.deltaTime);
+			transform.Translate(new Vector3(x, y, 0) * baseSpeed * Time.deltaTime);
 
 			// Limit position to screen space:
 			Vector3 pos = transform.position;

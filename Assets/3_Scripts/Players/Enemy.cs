@@ -3,19 +3,19 @@ using System.Collections;
 
 namespace Game
 {
-	public class Enemy : MonoBehaviour
+	public class Enemy : Character
 	{
 		#region Fields
 
 		#endregion
 		#region Methods
 
-		void Start ()
+		protected override void Start ()
 		{
 
 		}
 
-		void Update ()
+		protected override void Update ()
 		{
 			if(!Statemachine.IsIngame) return;
 
