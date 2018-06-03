@@ -22,7 +22,7 @@ namespace Game
       if(!Statemachine.IsIngame) return;
 
       Vector2 flightDirection = (flightBehaviour[1] - (Vector2)transform.position).normalized;
-      transform.position += baseSpeed * (Vector3)flightDirection;
+	  transform.position += baseSpeed * (Vector3)flightDirection * Time.deltaTime;
     }
 
     #endregion

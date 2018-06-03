@@ -24,7 +24,7 @@ namespace Game
 		private State state = State.None;
 
 		private Player player = null;
-		//private List<Enemy> enemies = new List<Enemy>();
+		private List<Enemy> enemies = new List<Enemy>();
 
 		#endregion
 		#region Properties
@@ -33,12 +33,10 @@ namespace Game
 		{
 			get { return player; }
 		}
-		/*
 		public List<Enemy> Enemies
 		{
 			get { return enemies; }
 		}
-		*/
 
 		#endregion
 		#region Methods
@@ -47,12 +45,10 @@ namespace Game
 		{
 			// Find existing player and enemy instances in scene:
 			player = GameObject.FindObjectOfType<Player>();
-			/*
 			if(enemies == null) enemies = new List<Enemy>();
 			Enemy[] newEnemies = GameObject.FindObjectsOfType<Enemy>();
 			if(newEnemies != null)
 				enemies.AddRange(newEnemies);
-			*/
 
 			// TODO:
 			// Spawn player if not present already.
@@ -68,14 +64,12 @@ namespace Game
 			GameObject.Destroy(player.gameObject);
 			player = null;
 
-			/*
 			// Destroy remaining enemy ships:
 			foreach(Enemy enemy in enemies.ToArray())
 			{
 				GameObject.Destroy(enemy.gameObject);
 			}
 			enemies.Clear();
-			*/
 
 			// Get rid of any unused assets:
 			Resources.UnloadUnusedAssets();

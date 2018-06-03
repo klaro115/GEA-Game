@@ -9,8 +9,11 @@ namespace Game
 	{
 		#region Fields
 
-		//public Enemy[] enemies;		// Enemy prefabs of the wave, in chronological order.
+		public Enemy[] enemies;		// Enemy prefabs of the wave, in chronological order.
 		public float spawnInterval;	// Time delay between spawning enemy instances in scene.
+
+		[System.NonSerialized]
+		public int currentSpawnIndex;
 
 		#endregion
 	}
