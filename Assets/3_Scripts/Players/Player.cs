@@ -8,7 +8,6 @@ namespace Game
 	public class Player : Character
 	{
 		#region Fields
-		public Vector2 screenSpace;
 
 		private Rigidbody2D rig;
 
