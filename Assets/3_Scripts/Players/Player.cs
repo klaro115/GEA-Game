@@ -4,11 +4,14 @@ using Game.Weapons;
 
 namespace Game
 {
-	// TODO: Implement parent class including damage handlers for player and enemy!
+	[RequireComponent(typeof(Rigidbody2D))]
 	public class Player : Character
 	{
 		#region Fields
 		public Vector2 screenSpace;
+
+		private Rigidbody2D rig;
+
 		#endregion
 		#region Methods
 
@@ -37,7 +40,8 @@ namespace Game
 			float y = Input.GetAxisRaw("Vertical");
 
 			// Move the ship:
-			transform.Translate(new Vector3(x, y, 0) * baseSpeed * Time.deltaTime);
+			//transform.Translate(new Vector3(x, y, 0) * baseSpeed * Time.deltaTime);
+			rig.velocity = new Vector3(x, y, 0) * baseSpeed;
 
 			// Limit position to screen space:
 			Vector3 pos = transform.position;
