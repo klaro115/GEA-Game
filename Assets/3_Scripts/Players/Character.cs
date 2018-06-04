@@ -15,6 +15,8 @@ namespace Game
     public float baseSpeed;
     public float radius;
 
+	protected Rigidbody2D rig;
+
     #endregion
     #region Methods
 

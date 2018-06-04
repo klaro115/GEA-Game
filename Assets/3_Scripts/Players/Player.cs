@@ -14,6 +14,8 @@ namespace Game
 
 		protected override void Start ()
 		{
+			rig = GetComponent<Rigidbody2D>();
+
 			//mainWeapon = null;
 			//secWeapon = null;
 			hitpoints = 100;
