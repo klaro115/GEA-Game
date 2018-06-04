@@ -31,6 +31,10 @@ namespace Game
 		protected override void Update ()
 		{
 			if(!Statemachine.IsIngame) return;
+
+			if (checkpointReached()) checkpointIndex++;
+			if(isDead()) Destroy(this.gameObject);
+			else move();
 		}
 
 		/**
