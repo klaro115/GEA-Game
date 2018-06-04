@@ -182,8 +182,9 @@ namespace Game
 
 		private static void startWave(Wave newWave)
 		{
-			Debug.Log("TEST: Current wave changed to: " + newWave.name);
+			Debug.Log("TEST: Starting wave " + currentWaveIndex + " (" + newWave.name + ")");
 
+			currentWave = newWave;
 			currentWaveIndex++;
 
 			//...
