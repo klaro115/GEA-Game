@@ -9,8 +9,10 @@ namespace Game
 		public Vector2[] flightBehaviour = new Vector2[2] { new Vector2(-1,1), new Vector2(1,-1) };
 		public int points = 100;
 		public float dropPercentage = 0.05f;
-
+		public int checkpointIndex = 0;
 		#endregion
+
+
 		#region Methods
 
 		protected override void Start ()
@@ -31,8 +33,8 @@ namespace Game
 		{
 			// Translate Flightbehaviour params to screenspace
 			for(int i = 0; i < flightBehaviour.Length; ++i) {
-			  flightBehaviour[i].x *= screenSpace.x;
-			  flightBehaviour[i].y *= screenSpace.y;
+			  flightBehaviour[i].x = flightBehaviour[i].x * screenSpace.x;
+			  flightBehaviour[i].y = flightBehaviour[i].y * screenSpace.y;
 			}
 		}
 

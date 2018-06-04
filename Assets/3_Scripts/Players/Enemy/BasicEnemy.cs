@@ -12,10 +12,6 @@ namespace Game
 
     protected override void Start ()
     {
-      hitpoints = 100;
-      baseSpeed = 5.0f;
-      radius = 0.5f;
-
       calcScreenspace(radius * 2);
       translateFlightCoords();
       transform.position = flightBehaviour[0];
@@ -24,9 +20,15 @@ namespace Game
     protected override void Update ()
     {
       if(!Statemachine.IsIngame) return;
-
-      Vector2 flightDirection = (flightBehaviour[1] - (Vector2)transform.position).normalized;
-      transform.position += baseSpeed * (Vector3)flightDirection * Time.deltaTime;
+      float distanceOffset = radius;
+      float distanceToNextCheckpoint = ((Vector2)transform.position - flightBehaviour[checkpointIndex + 1]).magnitude;
+      int lastCheckpointIndex = flightBehaviour.Length - 1;
+      if(distanceToNextCheckpoint < distanceOffset) checkpointIndex++;
+      if(checkpointIndex >= lastCheckpointIndex) Destroy(this.gameObject);
+      else {
+        Vector2 flightDirection = (flightBehaviour[checkpointIndex + 1] - flightBehaviour[checkpointIndex]).normalized;
+        transform.position += baseSpeed * (Vector3)flightDirection * Time.deltaTime;
+      }
     }
 
     #endregion
