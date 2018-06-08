@@ -150,7 +150,17 @@ Prefab:
     - target: {fileID: 114927961241515018, guid: eb47db7145d874fde9789374a5ef6b54,
         type: 2}
       propertyPath: fireInterval
-      value: 0.1
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114927961241515018, guid: eb47db7145d874fde9789374a5ef6b54,
+        type: 2}
+      propertyPath: modifier.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114927961241515018, guid: eb47db7145d874fde9789374a5ef6b54,
+        type: 2}
+      propertyPath: modifier.level
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb47db7145d874fde9789374a5ef6b54, type: 2}

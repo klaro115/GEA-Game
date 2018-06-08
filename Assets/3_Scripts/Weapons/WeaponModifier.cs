@@ -7,6 +7,9 @@ namespace Game.Weapons
 	{
 		Default,
 
+		ScatterShot,		// Shoot multiple projectiles shotgun-style in a fan pattern.
+		CrossShot,			// Shoot multiple projectiles in 4 different directions simultanously.
+
 		// TODO: Add more modifiers later... (scatter, laser, etc.)
 	}
 
