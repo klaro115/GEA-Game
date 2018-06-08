@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+//using System.Linq;
 using UnityEngine;
 
 namespace Game.Weapons
@@ -13,6 +14,7 @@ namespace Game.Weapons
 
 		private static Projectile[] projectiles = null;
 		private static RaycastHit2D[] results = null;
+		private static List<Rocket> rockets = null;
 
 		private static Transform projectileParent = null;
 
@@ -49,6 +51,7 @@ namespace Game.Weapons
 			// Initialize and allocate arrays:
 			projectiles = new Projectile[maxProjectileCount];
 			results = new RaycastHit2D[1];
+			rockets = new List<Rocket>();
 
 			// Prepare scene elements and make sure there's a parent GO in scene for housing all physical bodies:
 			GameObject projectileParentGO = GameObject.Find(projectileParentName);
@@ -102,9 +105,19 @@ namespace Game.Weapons
 					}
 				}
 			}
+			// Remove all active rocket instances from scene:
+			if(rockets != null)
+			{
+				foreach(Rocket r in rockets)
+				{
+					if(r != null) MonoBehaviour.Destroy(r.gameObject);
+				}
+				rockets.Clear();
+			}
 			// Reset all member fields:
 			projectiles = null;
 			results = null;
+			rockets = null;
 		}
 
 		/// <summary>
@@ -156,6 +169,35 @@ namespace Game.Weapons
 			}
 		}
 
+		public static void spawnRocket(Vector3 startPosition, Vector3 direction, Rocket prefab, bool fromPlayer)
+		{
+			if(prefab == null)
+			{
+				Debug.LogError("ProjectileHandler: Error! Rocket prefab may not be null!");
+				return;
+			}
+
+			// Spawn a new instance of prefab in scene:
+			GameObject instanceGO = MonoBehaviour.Instantiate(prefab.gameObject, projectileParent) as GameObject;
+
+			// Initialize rocket projectile:
+			Rocket instance = instanceGO.GetComponent<Rocket>();
+			instance.initialize(startPosition, direction, fromPlayer);
+
+			// Add instance to rockets list:
+			rockets.Add(instance);
+		}
+
+		public static void unregisterRocket(Rocket instance)
+		{
+			if(instance == null)
+			{
+				Debug.LogError("ProjectileHandler: Error! Unable to unregister/delete null rocket instance!");
+				return;
+			}
+			rockets.Remove(instance);
+		}
+
 		/// <summary>
 		/// Update the projectile simulation, must be called every frame unless the game is paused.
 		/// </summary>
@@ -205,6 +247,20 @@ namespace Game.Weapons
 				// Write changed struct values back to array:
 				projectiles[i] = p;
 			}
+
+			// Update rockets:
+			foreach(Rocket rocket in rockets)
+			{
+				rocket.update();
+
+				// Destroy rocket after it exits the screen area:
+				if(!screenAreaRect.Contains(rocket.transform.position))
+				{
+					rocket.destroyed = true;
+				}
+			}
+			// Remove any destroyed rockets from list:
+			rockets.RemoveAll(o => o.destroyed == true);
 		}
 
 		private static void executeProjectileHit(Projectile projectile, RaycastHit2D rayHit)

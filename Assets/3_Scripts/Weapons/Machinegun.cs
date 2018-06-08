@@ -24,7 +24,7 @@ namespace Game.Weapons
 
 			lastShotTime = Time.time;
 
-			// TODO: Wrap this into a switch-case, calling different behaviours depending on modifier type.
+			// Call different firing behaviours depending on modifier type.
 			switch (modifier.type)
 			{
 			case WeaponModifierType.Default:
