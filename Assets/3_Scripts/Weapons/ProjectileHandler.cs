@@ -161,6 +161,12 @@ namespace Game.Weapons
 		/// </summary>
 		public static void update()
 		{
+			// Calculate camera area rectangle in world space: (used to kill expired projectiles)
+			Camera cam = Camera.main;
+			float camOrthoSize = cam.orthographicSize + 1.0f;
+			Vector2 screenSize = new Vector2(camOrthoSize * cam.aspect, camOrthoSize);
+			Rect screenAreaRect = new Rect(-screenSize, 2.0f * screenSize);
+
 			// Iterate through projectiles array:
 			for(int i = 0; i < projectiles.Length; ++i)
 			{
@@ -188,14 +194,12 @@ namespace Game.Weapons
 					p.position = nextPosition;
 					if(p.physicalBody != null) p.physicalBody.position = nextPosition;
 
-					// TODO: Check if the projectile has left the screen, disable if if that's the case!
-					/*
-					if(...)
+					// Check if the projectile has left the screen:
+					if(!screenAreaRect.Contains(p.position))
 					{
 						// Disable the projectile:
 						disableProjectile(ref p);
 					}
-					*/
 				}
 
 				// Write changed struct values back to array:
