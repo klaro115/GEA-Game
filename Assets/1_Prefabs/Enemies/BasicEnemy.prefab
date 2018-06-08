@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4656896504653350}
   - component: {fileID: 114859824808221568}
   - component: {fileID: 58863303718158712}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BasicEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4565177438222552}
   - component: {fileID: 212999907436167760}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

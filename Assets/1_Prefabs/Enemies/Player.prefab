@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4984624623504280}
   - component: {fileID: 212080502118326818}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4775549524693742}
   - component: {fileID: 212836588186217974}
   - component: {fileID: 114927961241515018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,9 +55,9 @@ GameObject:
   - component: {fileID: 58872444373505720}
   - component: {fileID: 114085333598826306}
   - component: {fileID: 50896553228331864}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,6 +172,7 @@ MonoBehaviour:
     level: 1
   damage: 1
   projectileSpeed: 13
+  playerControlled: 1
 --- !u!212 &212080502118326818
 SpriteRenderer:
   m_ObjectHideFlags: 1

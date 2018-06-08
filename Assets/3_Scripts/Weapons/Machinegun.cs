@@ -12,6 +12,8 @@ namespace Game.Weapons
 		public int damage = 1;
 		public float projectileSpeed = 10.0f;
 
+		public bool playerControlled = false;
+
 		#endregion
 		#region Methods
 
@@ -76,7 +78,7 @@ namespace Game.Weapons
 			Vector3 velocity = direction * projectileSpeed;
 
 			// Tell the projectile handler to spawn a single shot:
-			ProjectileHandler.spawnProjectile(position, velocity, damage);
+			ProjectileHandler.spawnProjectile(position, velocity, damage, playerControlled);
 		}
 
 		#endregion

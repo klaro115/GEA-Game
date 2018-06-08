@@ -8,6 +8,7 @@ namespace Game.Weapons
 		#region Fields
 
 		public bool isAlive;
+		public bool fromPlayer;
 		public Vector3 position;
 		public Vector3 velocity;
 		public int damage;
@@ -24,6 +25,7 @@ namespace Game.Weapons
 				Projectile p = new Projectile();
 
 				p.isAlive = false;
+				p.fromPlayer = false;
 				p.position = Vector3.zero;
 				p.velocity = Vector3.up;
 				p.damage = 1;

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Game.Weapons
 {
+	/// <summary>
+	/// Static class for spawning, managing and simulating cannon and machinegun shots.
+	/// </summary>
 	public static class ProjectileHandler
 	{
 		#region Fields
@@ -13,6 +16,20 @@ namespace Game.Weapons
 
 		private static Transform projectileParent = null;
 
+		private static ContactFilter2D contactFilterPlayer;
+		private static ContactFilter2D contactFilterEnemy;
+
+		// Layer masks used in projectile collision detection:
+		private static LayerMask layerMaskPlayer;
+		private static LayerMask layerMaskEnemy;
+
+		// Names of layers used in collision layer masks:
+		private static readonly string[] layersPlayer = new string[]
+		{ "Default", "TransparentFX", "Water", "Enemy" };
+		private static readonly string[] layersEnemy = new string[]
+		{ "Default", "TransparentFX", "Water", "Player" };
+
+		// Resource and scene instance names:
 		private static readonly string projectileParentName = "Projectiles";
 		private static readonly string projectilePhysBodyPrefabName = "ProjectilePhysicalBody";
 
@@ -61,6 +78,15 @@ namespace Game.Weapons
 
 				projectiles[i] = p;
 			}
+
+			// Generate collision filters for player and enemy:
+			contactFilterPlayer = new ContactFilter2D();
+			contactFilterPlayer.useLayerMask = true;
+			contactFilterPlayer.layerMask = LayerMask.GetMask(layersPlayer);
+
+			contactFilterEnemy = new ContactFilter2D();
+			contactFilterEnemy.useLayerMask = true;
+			contactFilterEnemy.layerMask = LayerMask.GetMask(layersEnemy);
 		}
 
 		public static void shutdown()
@@ -81,6 +107,9 @@ namespace Game.Weapons
 			results = null;
 		}
 
+		/// <summary>
+		/// Gizmos drawing method, for debugging.
+		/// </summary>
 		public static void drawGizmos()
 		{
 			Gizmos.color = Color.red;
@@ -101,7 +130,7 @@ namespace Game.Weapons
 		/// <param name="velocity">Velocity of the projectile.</param>
 		/// <param name="damage">Damage dealt to anything hit by the projectile.</param>
 		/// <param name="isPlayer">Wether this was fired by the player or the enemy.</param>
-		public static void spawnProjectile(Vector3 startPosition, Vector3 velocity, int damage)//, bool isPlayer)
+		public static void spawnProjectile(Vector3 startPosition, Vector3 velocity, int damage, bool fromPlayer)
 		{
 			for(int i = 0; i < projectiles.Length; ++i)
 			{
@@ -111,6 +140,7 @@ namespace Game.Weapons
 				if(!p.isAlive)
 				{
 					p.isAlive = true;
+					p.fromPlayer = fromPlayer;
 					p.position = startPosition;
 					p.velocity = velocity;
 					p.damage = damage;
@@ -126,10 +156,11 @@ namespace Game.Weapons
 			}
 		}
 
+		/// <summary>
+		/// Update the projectile simulation, must be called every frame unless the game is paused.
+		/// </summary>
 		public static void update()
 		{
-			ContactFilter2D filter = new ContactFilter2D();
-
 			// Iterate through projectiles array:
 			for(int i = 0; i < projectiles.Length; ++i)
 			{
@@ -141,6 +172,7 @@ namespace Game.Weapons
 				// Calculate position of the projectile:
 				Vector2 nextPosition = p.position + p.velocity * Time.deltaTime;
 				// Cast a ray from previous projectile position to updated position:
+				ContactFilter2D filter = p.fromPlayer ? contactFilterPlayer : contactFilterEnemy;
 				if(Physics2D.Linecast(p.position, nextPosition, filter, results) > 0)
 				{
 					// Tell the body that was hit to receive an amount of damage:
