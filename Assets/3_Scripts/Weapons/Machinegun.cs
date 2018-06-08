@@ -34,7 +34,7 @@ namespace Game.Weapons
 				fireScatterShot();
 				break;
 			case WeaponModifierType.CrossShot:
-				Debug.LogError("[NOT IMPLEMENTED]");
+				fireCrossShot();
 				break;
 			default:
 				Debug.LogError("Machinegun: Error! Unknown weapon modifier type: " + modifier.type.ToString());
@@ -69,6 +69,27 @@ namespace Game.Weapons
 				// Fire two individual shots:
 				fireSingleShot(muzzlePosition, shotDirectionL);
 				fireSingleShot(muzzlePosition, shotDirectionR);
+			}
+		}
+
+		private void fireCrossShot()
+		{
+			Vector3 muzzlePosition = transform.position;
+
+			// Fire one shot in every cardinal direction:
+			fireSingleShot(muzzlePosition, transform.up);
+			fireSingleShot(muzzlePosition, -transform.up);
+			fireSingleShot(muzzlePosition, transform.right);
+			fireSingleShot(muzzlePosition, -transform.right);
+
+			// Fire an additional 4 shots on higher levels:
+			if(modifier.level > 1)
+			{
+				fireSingleShot(muzzlePosition, new Vector3(-0.707f,0.707f,0));
+				fireSingleShot(muzzlePosition, new Vector3(-0.707f,-0.707f,0));
+				fireSingleShot(muzzlePosition, new Vector3(0.707f,0.707f,0));
+				fireSingleShot(muzzlePosition, new Vector3(0.707f,-0.707f,0));
+				// TODO: Revisit/Change behaviour on higher levels?
 			}
 		}
 
