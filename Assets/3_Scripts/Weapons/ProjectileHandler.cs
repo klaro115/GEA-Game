@@ -81,6 +81,19 @@ namespace Game.Weapons
 			results = null;
 		}
 
+		public static void drawGizmos()
+		{
+			Gizmos.color = Color.red;
+			Vector3 size = Vector3.one * 0.05f;
+			if(projectiles != null)
+			{
+				foreach(Projectile p in projectiles)
+				{
+					if(p.isAlive) Gizmos.DrawWireCube(p.position, size);
+				}
+			}
+		}
+
 		/// <summary>
 		/// Spawn a new projectile at a given position and moving in a direction.
 		/// </summary>
@@ -126,7 +139,7 @@ namespace Game.Weapons
 				if(!p.isAlive) continue;
 
 				// Calculate position of the projectile:
-				Vector2 nextPosition = p.velocity * Time.deltaTime;
+				Vector2 nextPosition = p.position + p.velocity * Time.deltaTime;
 				// Cast a ray from previous projectile position to updated position:
 				if(Physics2D.Linecast(p.position, nextPosition, filter, results) > 0)
 				{
@@ -163,6 +176,8 @@ namespace Game.Weapons
 			// Determine target GO and the amount of damage to be dealt:
 			GameObject target = rayHit.transform.gameObject;
 			int damage = projectile.damage;
+
+			Debug.Log("TEST: Target was hit: " + target.name);
 
 			// Send a message to target, calling a method named 'applyDamage', if present:
 			target.SendMessage("applyDamage", damage, SendMessageOptions.DontRequireReceiver);

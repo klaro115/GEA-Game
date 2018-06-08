@@ -11,7 +11,12 @@ namespace Game.Weapons
 		{
 			ProjectileHandler.initialize();
 		}
-		
+
+		void OnDrawGizmosSelected()
+		{
+			ProjectileHandler.drawGizmos();
+		}
+
 		void Update ()
 		{
 			ProjectileHandler.update();

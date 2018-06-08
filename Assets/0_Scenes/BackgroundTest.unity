@@ -149,9 +149,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114927961241515018, guid: eb47db7145d874fde9789374a5ef6b54,
         type: 2}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 1278851393}
+      propertyPath: fireInterval
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb47db7145d874fde9789374a5ef6b54, type: 2}
   m_IsPrefabParent: 0
@@ -363,11 +363,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1278851393 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4546523086700092, guid: 5d1406e56a3ee4baf9f34c700b6c80b0,
-    type: 2}
-  m_PrefabInternal: {fileID: 1971336439}
 --- !u!1 &1284206486
 GameObject:
   m_ObjectHideFlags: 0
