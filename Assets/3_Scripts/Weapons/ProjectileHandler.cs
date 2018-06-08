@@ -13,18 +13,38 @@ namespace Game.Weapons
 
 		private static Transform projectileParent = null;
 
+		private static readonly string projectileParentName = "Projectiles";
+		private static readonly string projectilePhysBodyPrefabName = "ProjectilePhysicalBody";
+
 		#endregion
 		#region Methods
 
-		public static void initialize()
+		public static void initialize(int maxProjectileCount = 200)
 		{
+			// Make sure at least 1 projectile can be simulated at any time:
+			if(maxProjectileCount < 1)
+			{
+				Debug.LogError("ProjectileHandler: Error! Invalid projectile count value: " +
+					maxProjectileCount + ". Setting paramter to fallback value instead.");
+				maxProjectileCount = 10;
+			}
+
 			// Initialize and allocate arrays:
-			projectiles = new Projectile[100];
+			projectiles = new Projectile[maxProjectileCount];
 			results = new RaycastHit2D[1];
 
-			// Prepare scene elements and load resources for visualizing projectiles in scene:
-			projectileParent = new GameObject("Projectiles").transform;
-			GameObject physBodyPrefab = Resources.Load<GameObject>("ProjectilePhysicalBody");
+			// Prepare scene elements and make sure there's a parent GO in scene for housing all physical bodies:
+			GameObject projectileParentGO = GameObject.Find(projectileParentName);
+			if(projectileParentGO == null)
+			{
+				projectileParent = new GameObject(projectileParentName).transform;
+			}
+			else
+			{
+				projectileParent = projectileParentGO.transform;
+			}
+			// Load resources for visualizing projectiles in scene:
+			GameObject physBodyPrefab = Resources.Load<GameObject>(projectilePhysBodyPrefabName);
 
 			// Initialize all projectiles:
 			for(int i = 0; i < projectiles.Length; ++i)
@@ -43,7 +63,23 @@ namespace Game.Weapons
 			}
 		}
 
-		// TODO: Add a shutdown or destroy method, clearing all projectile instances and stuff.
+		public static void shutdown()
+		{
+			// Remove all projectiles' physical representations from scene:
+			if(projectiles != null)
+			{
+				foreach(Projectile p in projectiles)
+				{
+					if(p.physicalBody != null)
+					{
+						MonoBehaviour.Destroy(p.physicalBody.gameObject);
+					}
+				}
+			}
+			// Reset all member fields:
+			projectiles = null;
+			results = null;
+		}
 
 		/// <summary>
 		/// Spawn a new projectile at a given position and moving in a direction.
@@ -81,30 +117,66 @@ namespace Game.Weapons
 		{
 			ContactFilter2D filter = new ContactFilter2D();
 
+			// Iterate through projectiles array:
 			for(int i = 0; i < projectiles.Length; ++i)
 			{
 				Projectile p = projectiles[i];
 
+				// Skip any projectile slots that are not in a live state:
 				if(!p.isAlive) continue;
 
+				// Calculate position of the projectile:
 				Vector2 nextPosition = p.velocity * Time.deltaTime;
+				// Cast a ray from previous projectile position to updated position:
 				if(Physics2D.Linecast(p.position, nextPosition, filter, results) > 0)
 				{
 					// Tell the body that was hit to receive an amount of damage:
 					RaycastHit2D hit = results[0];
-					hit.transform.gameObject.SendMessage("ApplyDamage", p.damage, SendMessageOptions.DontRequireReceiver);
+					executeProjectileHit(p, hit);
 
 					// Disable the projectile:
-					p.isAlive = false;
-					if(p.physicalBody != null) p.physicalBody.gameObject.SetActive(false);
+					disableProjectile(ref p);
 				}
+				// If nothing was hit, update projectile position and move physical representation as well:
 				else
 				{
 					p.position = nextPosition;
 					if(p.physicalBody != null) p.physicalBody.position = nextPosition;
+
+					// TODO: Check if the projectile has left the screen, disable if if that's the case!
+					/*
+					if(...)
+					{
+						// Disable the projectile:
+						disableProjectile(ref p);
+					}
+					*/
 				}
 
+				// Write changed struct values back to array:
 				projectiles[i] = p;
+			}
+		}
+
+		private static void executeProjectileHit(Projectile projectile, RaycastHit2D rayHit)
+		{
+			// Determine target GO and the amount of damage to be dealt:
+			GameObject target = rayHit.transform.gameObject;
+			int damage = projectile.damage;
+
+			// Send a message to target, calling a method named 'applyDamage', if present:
+			target.SendMessage("applyDamage", damage, SendMessageOptions.DontRequireReceiver);
+		}
+
+		private static void disableProjectile(ref Projectile projectile)
+		{
+			// Reset the projectile's 'alive' status flag:
+			projectile.isAlive = false;
+
+			// Deactivate the physical representation, if present:
+			if(projectile.physicalBody != null)
+			{
+				projectile.physicalBody.gameObject.SetActive(false);
 			}
 		}
 

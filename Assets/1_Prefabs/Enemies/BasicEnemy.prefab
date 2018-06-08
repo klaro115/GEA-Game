@@ -108,10 +108,9 @@ MonoBehaviour:
   - {x: 1, y: -1}
   - {x: 0, y: 0}
   - {x: -0.5, y: 0.5}
-  - {x: 0.74, y: 0.235}
+  - {x: 1, y: 0.235}
   points: 10
-  dropPercentage: 0.05
-  checkpointIndex: 0
+  dropRate: 0.05
 --- !u!212 &212999907436167760
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -121,11 +120,9 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -138,7 +135,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

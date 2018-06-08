@@ -15,4 +15,4 @@ MonoBehaviour:
   - {fileID: 114859824808221568, guid: 75312ea400e5744a7ac8bf85c182d175, type: 2}
   - {fileID: 114859824808221568, guid: 75312ea400e5744a7ac8bf85c182d175, type: 2}
   - {fileID: 114859824808221568, guid: 75312ea400e5744a7ac8bf85c182d175, type: 2}
-  spawnInterval: 0.3
+  spawnInterval: 0.4
