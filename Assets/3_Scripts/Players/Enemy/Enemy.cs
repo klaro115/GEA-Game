@@ -33,15 +33,26 @@ namespace Game
 			if(!Statemachine.IsIngame) return;
 
 			if (checkpointReached()) checkpointIndex++;
-			if(isDead()) Destroy(this.gameObject);
-			else move();
+            if (isDead()) {
+                Destroy(this.gameObject);
+            }
+            if (isFinished()) {
+                Destroy(this.gameObject);
+            }
+            else move();
 		}
 
-		/**
+        private void OnDestroy()
+        {
+            Debug.Log("Enemy Destroyed");
+        }
+
+
+        /**
 			*	Translates Coordinates of flightBehaviour ([-1,1] [-1,1]) into screenspace.
 			*
 			*/
-		protected void translateFlightCoords()
+        protected void translateFlightCoords()
 		{
 			// Translate Flightbehaviour params to screenspace
 			for(int i = 0; i < flightBehaviour.Length; ++i) {
@@ -61,9 +72,14 @@ namespace Game
 			transform.position += baseSpeed * (Vector3)flightDirection * Time.deltaTime;
 		}
 
-		protected bool isDead()
+        protected bool isFinished()
+        {
+            return (checkpointIndex >= lastCheckpointIndex);
+        }
+
+        protected bool isDead()
 		{
-			return (checkpointIndex >= lastCheckpointIndex);
+            return this.hitpoints <= 0;
 		}
 
 		#endregion

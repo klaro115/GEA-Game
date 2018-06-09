@@ -28,6 +28,13 @@ namespace Game
       screenSpace.x = orthoSize * Camera.main.aspect - radius + offset*2;
       return screenSpace;
     }
+    
+    // When Projectile.cs hits a Character, the given damage is applied
+    void applyDamage(int dmg)
+    {
+		  this.hitpoints -= dmg;
+      Debug.Log(dmg + "Damage applied. " + this.hitpoints + "left");
+    }
 
     #endregion
   }
