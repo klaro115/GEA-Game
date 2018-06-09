@@ -117,7 +117,7 @@ namespace Game
             return this.hitpoints <= 0;
 		}
 
-    void applyDamage(int dmg)
+    public override void applyDamage(int dmg)
     {
       this.hitpoints -= dmg;
       // Debug.Log(dmg + "Damage applied. " + this.hitpoints + "left");

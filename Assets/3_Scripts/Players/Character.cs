@@ -6,7 +6,7 @@ using Game.Weapons;
 namespace Game
 {
   // TODO: Implement parent class including damage handlers for player and enemy!
-  public abstract class Character : MonoBehaviour
+  public abstract class Character : MonoBehaviour, IDamageReceiver
   {
     #region Fields
     public Weapon mainWeapon;
@@ -30,6 +30,11 @@ namespace Game
       screenSpace.x = orthoSize * Camera.main.aspect - radius + offset*2;
       return screenSpace;
     }
+	
+	public virtual void applyDamage(int dmg)
+	{
+		this.hitpoints -= dmg;
+	}
     #endregion
   }
 }

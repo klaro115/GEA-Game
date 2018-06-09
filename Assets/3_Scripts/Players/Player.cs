@@ -11,6 +11,9 @@ namespace Game
 
 		private Rigidbody2D rig;
 
+		public float damageCooldown = 0.1f;	// Minimum time span where damage is ignored after taking a hit.
+		private float lastDamageReceivedTime = 0.0f;	// Time when the player last took damage.
+
 		#endregion
 		#region Methods
 
@@ -34,7 +37,7 @@ namespace Game
 
       // Check if dead
       // TODO: Show GameOver Screen and stop game
-      if (isDead()) Destroy(this.gameObject);
+      //if (isDead()) Destroy(this.gameObject);  // NOTE: commented this out, for testing purposes.
 
 			// Fetch input signals:
 			float x = Input.GetAxisRaw("Horizontal");
@@ -60,11 +63,16 @@ namespace Game
     {
       return this.hitpoints <= 0;
     }
-
-    protected void applyDamage(int dmg)
+	
+	public override void applyDamage(int dmg)
     {
-      Debug.Log("Player Hit! " + this.hitpoints + " left.");
-      this.hitpoints -= dmg;
+      // Only allow player to repeatedly take damage after a cooldown period has passed:
+      if(Time.time > damageCooldown + lastDamageReceivedTime)
+      {
+        lastDamageReceivedTime = Time.time;
+        Debug.Log("Player Hit! " + this.hitpoints + " left.");
+        this.hitpoints -= dmg;
+      }
     }
 
 		#endregion

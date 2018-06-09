@@ -134,7 +134,7 @@ MonoBehaviour:
     level: 1
   damage: 1
   projectileSpeed: 10
-  playerControlled: 1
+  playerControlled: 0
 --- !u!114 &114606963528246054
 MonoBehaviour:
   m_ObjectHideFlags: 1
