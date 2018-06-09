@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114582010875667614}
   - component: {fileID: 58863303718158712}
   m_Layer: 9
-  m_Name: TankyEnemy - Top-Right to Bottom-Left
+  m_Name: TankyEnemy - Top-Left to Bottom-Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

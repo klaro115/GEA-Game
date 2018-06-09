@@ -32,6 +32,10 @@ namespace Game
 		{
 			if(!Statemachine.IsIngame) return;
 
+      // Check if dead
+      // TODO: Show GameOver Screen and stop game
+      if (isDead()) Destroy(this.gameObject);
+
 			// Fetch input signals:
 			float x = Input.GetAxisRaw("Horizontal");
 			float y = Input.GetAxisRaw("Vertical");
@@ -51,6 +55,17 @@ namespace Game
 				mainWeapon.fire();
 			}
 		}
+
+    protected bool isDead()
+    {
+      return this.hitpoints <= 0;
+    }
+
+    protected void applyDamage(int dmg)
+    {
+      Debug.Log("Player Hit! " + this.hitpoints + " left.");
+      this.hitpoints -= dmg;
+    }
 
 		#endregion
 	}

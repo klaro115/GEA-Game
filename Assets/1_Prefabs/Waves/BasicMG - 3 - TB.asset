@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb7ad56ffece04a76abe68edfdd7c05a, type: 3}
-  m_Name: Tanky - 3 - TR BL
+  m_Name: BasicMG - 3 - TB
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 114582010875667614, guid: 3e8b72ada609d0642baac7420e9c046f, type: 2}
-  - {fileID: 114582010875667614, guid: 3e8b72ada609d0642baac7420e9c046f, type: 2}
-  - {fileID: 114582010875667614, guid: 3e8b72ada609d0642baac7420e9c046f, type: 2}
-  spawnInterval: 0.5
+  - {fileID: 114606963528246054, guid: d1f2ddfe887d79649bcc345f45012c7d, type: 2}
+  - {fileID: 114606963528246054, guid: d1f2ddfe887d79649bcc345f45012c7d, type: 2}
+  - {fileID: 114606963528246054, guid: d1f2ddfe887d79649bcc345f45012c7d, type: 2}
+  spawnInterval: 1

@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Name: Level Test
   m_EditorClassIdentifier: 
   waves:
-  - {fileID: 11400000, guid: 595fa83d7e1526b46886176ca3b915bb, type: 2}
+  - {fileID: 11400000, guid: 50dc69b937d805c409742ee7f8c59700, type: 2}
   - {fileID: 11400000, guid: 1ff01d34799de1943affdc60a1f216f3, type: 2}
   - {fileID: 11400000, guid: db7e993e4e1db2c4b8c7123b3f4be296, type: 2}
   - {fileID: 11400000, guid: 8d52afffdf144fa4c9c4f35b37a42b4f, type: 2}
   - {fileID: 11400000, guid: 072a8d0975275b54fa164b9f77601f1e, type: 2}
+  - {fileID: 11400000, guid: 17feff75385fee94eaf10e508f2430bf, type: 2}
+  - {fileID: 11400000, guid: 37f988438ba97864b974032c168db83f, type: 2}
+  - {fileID: 11400000, guid: 33d497f054fc96a4da1d1af434234591, type: 2}
+  - {fileID: 11400000, guid: 33d497f054fc96a4da1d1af434234591, type: 2}
   waveInterval: 3
   completionBonus: 20

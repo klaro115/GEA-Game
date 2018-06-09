@@ -18,13 +18,19 @@ namespace Game
 		protected int lastCheckpointIndex;
 		// The min. distance to a checkpoint to mark it as reached
 		protected float checkpointReachedDistance = 0.5f;
-		#endregion
+    protected Vector2 flightDirection;
+    // TODO: Remove if Rotating the whole GameObject isnt necessary anymore
+    protected GameObject player;
+    #endregion
 
 
-		#region Methods
+    #region Methods
 
-		protected override void Start ()
+    protected override void Start ()
 		{
+      // TODO: Remove if Rotating the whole GameObject isnt necessary anymore
+      player = GameObject.Find("Player");
+
       calcScreenspace(radius * 2);
       // Apply scale based on radius
       Vector3 size = new Vector3(radius * 2, radius * 2, radius * 2);
@@ -45,23 +51,27 @@ namespace Game
       {
         Destroy(this.gameObject);
       }
-      if (isDead()) {
+      else if (isDead()) {
         // Drop items
         Destroy(this.gameObject);
       }
-      else move();
+      else
+      {
+        move();
+        if (this.mainWeapon != null) this.mainWeapon.fire();
+      }
 		}
 
-        private void OnDestroy()
-        {
-            Debug.Log("Enemy Destroyed");
-        }
+    private void OnDestroy()
+    {
+        //Debug.Log("Enemy Destroyed");
+    }
 
 
-        /**
-			*	Translates Coordinates of flightBehaviour ([-1,1] [-1,1]) into screenspace.
-			*
-			*/
+    /**
+		 *	Translates Coordinates of flightBehaviour ([-1,1] [-1,1]) into screenspace.
+		 *
+		 */
         protected void translateFlightCoords()
 		{
 			// Translate Flightbehaviour params to screenspace
@@ -71,6 +81,7 @@ namespace Game
 			}
 		}
 
+    // Checks whether a checkpoint is reached
 		protected bool checkpointReached()
 		{
 			return (((Vector2)transform.position - flightBehaviour[checkpointIndex + 1]).magnitude < checkpointReachedDistance);
@@ -78,20 +89,39 @@ namespace Game
 
 		protected void move()
 		{
-			Vector2 flightDirection = (flightBehaviour[checkpointIndex + 1] - flightBehaviour[checkpointIndex]).normalized;
-			transform.position += baseSpeed * (Vector3)flightDirection * Time.deltaTime;
-		}
 
-        protected bool hasReachedLastCheckpoint()
-        {
-            return (checkpointIndex >= lastCheckpointIndex);
-        }
+			flightDirection = (flightBehaviour[checkpointIndex + 1] - flightBehaviour[checkpointIndex]).normalized;
 
-        protected bool isDead()
+      transform.position += baseSpeed * (Vector3)flightDirection * Time.deltaTime;
+
+      // Rotate towards player
+      // TODO:  Weapon should rotate towards players position
+      //        TODO: Remove if Rotating the whole GameObject isnt necessary anymore
+      Vector3 target = player.transform.position;
+      target.z = 0f;
+      target.x = target.x - transform.position.x;
+      target.y = target.y - transform.position.y;
+      float angleToTarget = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
+      angleToTarget -= 90f;
+      transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleToTarget));
+    }
+        
+    
+    protected bool hasReachedLastCheckpoint()
+    {
+        return (checkpointIndex >= lastCheckpointIndex);
+    }
+
+    protected bool isDead()
 		{
             return this.hitpoints <= 0;
 		}
 
-		#endregion
-	}
+    void applyDamage(int dmg)
+    {
+      this.hitpoints -= dmg;
+      // Debug.Log(dmg + "Damage applied. " + this.hitpoints + "left");
+    }
+    #endregion
+  }
 }

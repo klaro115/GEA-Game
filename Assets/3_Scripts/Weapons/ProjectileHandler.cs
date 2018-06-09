@@ -223,9 +223,12 @@ namespace Game.Weapons
 				ContactFilter2D filter = p.fromPlayer ? contactFilterPlayer : contactFilterEnemy;
 				if(Physics2D.Linecast(p.position, nextPosition, filter, results) > 0)
 				{
-					// Tell the body that was hit to receive an amount of damage:
-					RaycastHit2D hit = results[0];
-					executeProjectileHit(p, hit);
+          RaycastHit2D hit = results[0];
+
+          // TODO: We need to check source and target so enemys dont shoot themselves
+
+          // Tell the body that was hit to receive an amount of damage:
+          executeProjectileHit(p, hit);
 
 					// Disable the projectile:
 					disableProjectile(ref p);
@@ -269,7 +272,7 @@ namespace Game.Weapons
 			GameObject target = rayHit.transform.gameObject;
 			int damage = projectile.damage;
 
-			Debug.Log("TEST: Target was hit: " + target.name);
+			// Debug.Log("TEST: Target was hit: " + target.name);
 
 			// Send a message to target, calling a method named 'applyDamage', if present:
 			target.SendMessage("applyDamage", damage, SendMessageOptions.DontRequireReceiver);
