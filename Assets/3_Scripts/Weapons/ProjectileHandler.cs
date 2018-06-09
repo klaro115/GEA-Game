@@ -82,7 +82,7 @@ namespace Game.Weapons
 				projectiles[i] = p;
 			}
 
-			// Generate collision filters for player and enemy:
+			// Generate collision filters for player and enemy, so they can't accidentally hit their allies:
 			contactFilterPlayer = new ContactFilter2D();
 			contactFilterPlayer.useLayerMask = true;
 			contactFilterPlayer.layerMask = LayerMask.GetMask(layersPlayer);
@@ -219,16 +219,21 @@ namespace Game.Weapons
 
 				// Calculate position of the projectile:
 				Vector2 nextPosition = p.position + p.velocity * Time.deltaTime;
-				// Cast a ray from previous projectile position to updated position:
+				// Determine which collision filter to use based on who fired the projectile:
 				ContactFilter2D filter = p.fromPlayer ? contactFilterPlayer : contactFilterEnemy;
+
+				// Cast a ray from previous projectile position to updated position:
 				if(Physics2D.Linecast(p.position, nextPosition, filter, results) > 0)
 				{
-          RaycastHit2D hit = results[0];
+					RaycastHit2D hit = results[0];
 
-          // TODO: We need to check source and target so enemys dont shoot themselves
+					// (TODO): We need to check source and target so enemys dont shoot themselves
+					// => we don't, actually. The enemy prefabs need to be moved to the 'Enemy' layer however.
+					// If their guns have the 'isPlayer' flag set to false, they won't hit each other.
+					// Similarly, the player will not be able to hit other 'Player' layer objects.
 
-          // Tell the body that was hit to receive an amount of damage:
-          executeProjectileHit(p, hit);
+					// Tell the body that was hit to receive an amount of damage:
+					executeProjectileHit(p, hit);
 
 					// Disable the projectile:
 					disableProjectile(ref p);
