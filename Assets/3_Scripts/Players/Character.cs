@@ -19,8 +19,10 @@ namespace Game
     #endregion
     #region Methods
 
-    protected abstract void Start();
     protected abstract void Update();
+
+    protected abstract void Start();
+
     protected Vector2 calcScreenspace(float offset)
     {
       float orthoSize = Camera.main.orthographicSize;

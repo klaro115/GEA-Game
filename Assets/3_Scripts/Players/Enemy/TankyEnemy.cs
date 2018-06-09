@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Game
 {
-  public class BasicEnemy : Enemy
+  public class TankyEnemy : Enemy
   {
     #region Fields
 
@@ -17,7 +17,6 @@ namespace Game
 
     protected override void Update ()
     {
-      // Use Update() Method of superclass
       base.Update();
     }
 

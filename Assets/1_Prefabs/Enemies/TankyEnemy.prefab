@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4656896504653350}
-  - component: {fileID: 114859824808221568}
+  - component: {fileID: 114582010875667614}
   - component: {fileID: 58863303718158712}
   m_Layer: 9
-  m_Name: BasicEnemy
+  m_Name: TankyEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,8 +85,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.4
---- !u!114 &114859824808221568
+  m_Radius: 0.6
+--- !u!114 &114582010875667614
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -94,23 +94,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1174512184925856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a374050bb61bb48e7b2cea5982e80317, type: 3}
+  m_Script: {fileID: 11500000, guid: d1960cffbdc6f2745a1270ae04880c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainWeapon: {fileID: 0}
   secWeapon: {fileID: 0}
-  hitpoints: 1
-  baseSpeed: 5
-  radius: 0.4
+  hitpoints: 5
+  baseSpeed: 3
+  radius: 0.6
   screenSpace: {x: 0, y: 0}
   flightBehaviour:
   - {x: -1, y: 1}
   - {x: 1, y: -1}
-  - {x: 0, y: 0}
-  - {x: -0.5, y: 0.5}
-  - {x: 1, y: 0.235}
-  points: 10
-  dropRate: 0.05
+  points: 100
+  dropRate: 0.1
 --- !u!212 &212999907436167760
 SpriteRenderer:
   m_ObjectHideFlags: 1

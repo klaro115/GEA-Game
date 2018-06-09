@@ -16,19 +16,17 @@ namespace Game
 
 		protected override void Start ()
 		{
-			rig = GetComponent<Rigidbody2D>();
+      rig = GetComponent<Rigidbody2D>();
+
+      
+      // Apply scale based on radius
+      Vector3 size = new Vector3(radius * 2, radius * 2, radius * 2);
+      this.transform.localScale = size;
 
 			//mainWeapon = null;
 			//secWeapon = null;
-			hitpoints = 100;
-			baseSpeed = 10.0f;
-			radius = 0.5f;
-
-			// Define Screenspace
-			float orthoSize = Camera.main.orthographicSize;
-			screenSpace.y = orthoSize - radius;
-			screenSpace.x = orthoSize * Camera.main.aspect - radius;
-		}
+      calcScreenspace(radius * 2);
+    }
 
 		protected override void Update ()
 		{

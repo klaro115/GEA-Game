@@ -25,21 +25,31 @@ namespace Game
 
 		protected override void Start ()
 		{
+      calcScreenspace(radius * 2);
+      // Apply scale based on radius
+      Vector3 size = new Vector3(radius * 2, radius * 2, radius * 2);
+      this.transform.localScale = size;
 
-		}
+      // Calculate routes 
+      translateFlightCoords();
+      lastCheckpointIndex = flightBehaviour.Length - 1;
+      transform.position = flightBehaviour[0];
+    }
 
 		protected override void Update ()
 		{
 			if(!Statemachine.IsIngame) return;
 
 			if (checkpointReached()) checkpointIndex++;
-            if (isDead()) {
-                Destroy(this.gameObject);
-            }
-            if (isFinished()) {
-                Destroy(this.gameObject);
-            }
-            else move();
+      if (hasReachedLastCheckpoint())
+      {
+        Destroy(this.gameObject);
+      }
+      if (isDead()) {
+        // Drop items
+        Destroy(this.gameObject);
+      }
+      else move();
 		}
 
         private void OnDestroy()
@@ -72,7 +82,7 @@ namespace Game
 			transform.position += baseSpeed * (Vector3)flightDirection * Time.deltaTime;
 		}
 
-        protected bool isFinished()
+        protected bool hasReachedLastCheckpoint()
         {
             return (checkpointIndex >= lastCheckpointIndex);
         }
