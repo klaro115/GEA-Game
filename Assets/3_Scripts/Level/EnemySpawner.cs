@@ -128,7 +128,7 @@ namespace Game
 			// Instantiate level from prefab:
 			Level newLevel = MonoBehaviour.Instantiate(levelPrefab);
 
-			Debug.Log("TEST: Current level set to: " + newLevel.name);
+			//Debug.Log("TEST: Current level set to: " + newLevel.name);
 
 			// Set level active and activate first wave:
 			currentLevel = newLevel;
@@ -191,7 +191,7 @@ namespace Game
 
 		private static void startWave(Wave newWave)
 		{
-			Debug.Log("TEST: Starting wave " + currentWaveIndex + " (" + newWave.name + ")");
+			//Debug.Log("TEST: Starting wave " + currentWaveIndex + " (" + newWave.name + ")");
 
 			currentWave = newWave;
 			currentWaveIndex++;
