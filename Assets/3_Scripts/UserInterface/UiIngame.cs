@@ -73,6 +73,11 @@ namespace Game.UI
 			groupHUD.score.text = ingameState.Score.ToString();
 		}
 
+		private void restartGame()
+		{
+			// TODO
+		}
+
 		#endregion
 		#region Methods UI Menu
 
@@ -87,6 +92,22 @@ namespace Game.UI
 				StatemachineStateIngame ingameState = StatemachineStateIngame.getStatemachine();
 				ingameState.setState(IngameState.Ingame);
 			}
+		}
+		public void uiButtonMenuRestart()
+		{
+			restartGame();
+		}
+
+		#endregion
+		#region Methods UI GameOver
+
+		public void uiButtonGameOverQuit()
+		{
+			Statemachine.setState(Gamestate.MainMenu);
+		}
+		public void uiButtonGameOverRestart()
+		{
+			restartGame();
 		}
 
 		#endregion
