@@ -6,31 +6,35 @@ namespace Game
 	[System.Serializable]
 	public class StatemachineStateMainMenu : StatemachineState
 	{
-		#region Types
-
-		public enum State
-		{
-			MainMenu,
-			Credits,
-			Settings
-		}
-
-		#endregion
 		#region Fields
 
-		private State state = State.MainMenu;
+		private MainMenuState state = MainMenuState.None;
 
 		//private UiMainMenuScreen uiMainMenu = null;
+	
+		//private static readonly string uiMainMenuPrefabName = "UiMainMenuScreen";
 
 		#endregion
 		#region Methods
 
 		public override bool initialize()
 		{
-			//uiMainMenu = GameObject.FindObjectOfType<UiMainMenuScreen>();
-			//uiMainMenu.initialize();
+			// Find/Spawn and initialize main menu UI group:
+			/*
+			uiMainMenu = GameObject.FindObjectOfType<UiMainMenuScreen>();
+			if(uiMainMenu == null)
+			{
+				UiMainMenuScreen uiMainPrefab = Resources.Load<UiMainMenuScreen>(uiMainMenuPrefabName);
+				GameObject uiMainGO = Instantiate(uiMainPrefab.gameObject, uiCanvas) as GameObject;
+				uiMainMenu = uiMainGO.GetComponent<UiMainMenuScreen>();
+			}
+			uiMainMenu.initialize();
+			*/
 
 			//...
+
+			// Switch to main menu state right away:
+			setState(MainMenuState.MainMenu);
 
 			return true;
 		}
@@ -44,7 +48,7 @@ namespace Game
 			return allowedStatesMainMenu;
 		}
 
-		public bool setState(State newState)
+		public bool setState(MainMenuState newState)
 		{
 			if(newState == state)
 			{
@@ -55,6 +59,14 @@ namespace Game
 			//...
 
 			state = newState;
+
+			// Update state in UI group as well:
+			/*
+			if(uiMainMenu != null)
+			{
+				uiMainMenu.setState(state);
+			}
+			*/
 
 			return true;
 		}
