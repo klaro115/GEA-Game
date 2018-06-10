@@ -37,6 +37,10 @@ namespace Game
 		{
 			get { return enemies; }
 		}
+		public int Score
+		{
+			get { return currentScore; }
+		}
 
 		#endregion
 		#region Methods
@@ -138,6 +142,11 @@ namespace Game
 			uiIngame.setState(state);
 
 			return true;
+		}
+
+		public void addScore(int points)
+		{
+			currentScore += points;
 		}
 
 		private void destroyAllEnemies()

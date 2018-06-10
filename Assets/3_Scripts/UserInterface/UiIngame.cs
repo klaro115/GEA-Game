@@ -23,6 +23,8 @@ namespace Game.UI
 		#endregion
 		#region Fields
 
+		private IngameState state = IngameState.None;
+
 		public HUD groupHUD = new HUD() { parent=null, lives=null, score=null, wave=null };
 		public RectTransform groupMenu = null;
 		public RectTransform groupGameOver = null;
@@ -44,7 +46,7 @@ namespace Game.UI
 
 		void Update()
 		{
-			if(groupHUD.parent.gameObject.activeSelf)
+			if(state == IngameState.Ingame)
 			{
 				updateIngameHUD();
 			}
@@ -52,11 +54,13 @@ namespace Game.UI
 
 		public void setState(IngameState newState)
 		{
+			state = newState;
+
 			// Activate the UI groups according to the current ingame state:
-			groupHUD.parent.gameObject.SetActive(newState == IngameState.Ingame);
-			groupMenu.gameObject.SetActive(newState == IngameState.Paused);
-			groupGameOver.gameObject.SetActive(newState == IngameState.GameOver);
-			groupNextLevel.gameObject.SetActive(newState == IngameState.NextLevel);
+			groupHUD.parent.gameObject.SetActive(state == IngameState.Ingame);
+			groupMenu.gameObject.SetActive(state == IngameState.Paused);
+			groupGameOver.gameObject.SetActive(state == IngameState.GameOver);
+			groupNextLevel.gameObject.SetActive(state == IngameState.NextLevel);
 		}
 		
 		private void updateIngameHUD()
@@ -66,7 +70,7 @@ namespace Game.UI
 
 			groupHUD.wave.text = EnemySpawner.CurrentWave.ToString();
 			groupHUD.lives.text = player.hitpoints.ToString();
-			groupHUD.score.text = "0";	// TODO: record player score somewhere, then read and output it here.
+			groupHUD.score.text = ingameState.Score.ToString();
 		}
 
 		#endregion
