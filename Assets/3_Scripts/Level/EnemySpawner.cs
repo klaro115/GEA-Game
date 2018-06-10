@@ -57,6 +57,17 @@ namespace Game
 			eventTimeline.Clear();
 		}
 
+		public static void shutdown()
+		{
+			currentLevel = null;
+			currentWave = null;
+
+			if(eventTimeline != null)
+			{
+				eventTimeline.Clear();
+			}
+		}
+
 		public static void update()
 		{
 			if(eventTimeline.Count == 0) return;

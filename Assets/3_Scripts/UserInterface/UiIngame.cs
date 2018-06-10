@@ -73,6 +73,45 @@ namespace Game.UI
 			groupHUD.score.text = ingameState.Score.ToString();
 		}
 
+		private void restartGame()
+		{
+			// Tell the ingame statemachine to reset the game:
+			StatemachineStateIngame ingameState = StatemachineStateIngame.getStatemachine();
+			ingameState.restartGame();
+		}
+
+		#endregion
+		#region Methods UI Menu
+
+		public void uiButtonMenuQuit()
+		{
+			Statemachine.setState(Gamestate.MainMenu);
+		}
+		public void uiButtonMenuResume()
+		{
+			if(state == IngameState.Paused)
+			{
+				StatemachineStateIngame ingameState = StatemachineStateIngame.getStatemachine();
+				ingameState.setState(IngameState.Ingame);
+			}
+		}
+		public void uiButtonMenuRestart()
+		{
+			restartGame();
+		}
+
+		#endregion
+		#region Methods UI GameOver
+
+		public void uiButtonGameOverQuit()
+		{
+			Statemachine.setState(Gamestate.MainMenu);
+		}
+		public void uiButtonGameOverRestart()
+		{
+			restartGame();
+		}
+
 		#endregion
 	}
 }

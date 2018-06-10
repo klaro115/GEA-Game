@@ -100,7 +100,7 @@ namespace Game
 		void OnCollisionEnter2D(Collision2D collision)
 		{
 			// Define some constants for dealing collision damage:
-			const int targetCollisionDamage = 999;
+			const int targetCollisionDamage = 10;
 			const int playerCollisionDamage = 1;
 
 			// Get the other party we collided with:

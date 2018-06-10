@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using Game.Weapons;
 using Game.UI;
 
 namespace Game
@@ -21,6 +22,7 @@ namespace Game
 
 		private static readonly string playerPrefabName = "Player";
 		private static readonly string uiIngamePrefabName = "UiIngame";
+		private static readonly string firstLevelAssetName = "Level Test";
 
 		#endregion
 		#region Properties
@@ -47,6 +49,8 @@ namespace Game
 		
 		public override bool initialize()
 		{
+			state = IngameState.None;
+
 			// Find existing enemy instances in scene:
 			if(enemies == null) enemies = new List<Enemy>();
 			Enemy[] newEnemies = GameObject.FindObjectsOfType<Enemy>();
@@ -77,6 +81,12 @@ namespace Game
 			// Initialize ingame UI:
 			uiIngame.initialize();
 
+			// Initialize projectile handler:
+			ProjectileHandler.initialize();
+
+			// Start up enemy spawner and load first level:
+			EnemySpawner.initialize();
+			EnemySpawner.loadLevel(firstLevelAssetName);
 
 			setState(IngameState.Ingame);
 
@@ -84,6 +94,12 @@ namespace Game
 		}
 		public override void shutdown ()
 		{
+			// Terminate enemy spawner:
+			EnemySpawner.shutdown();
+
+			// Terminate projecile handler:
+			ProjectileHandler.shutdown();
+
 			// Destroy player ship:
 			GameObject.Destroy(player.gameObject);
 			player = null;
@@ -103,6 +119,13 @@ namespace Game
 
 			// Get rid of any unused assets:
 			Resources.UnloadUnusedAssets();
+		}
+
+		public void restartGame()
+		{
+			// Shutdown and terminate all ingame states, then restart everything from scratch:
+			shutdown();
+			initialize();
 		}
 		
 		public override Gamestate[] getAllowedStates ()
@@ -154,10 +177,16 @@ namespace Game
 			// Destroy remaining enemy characters in scene:
 			foreach(Enemy enemy in enemies.ToArray())
 			{
-				GameObject.Destroy(enemy.gameObject);
+				if(enemy != null) GameObject.Destroy(enemy.gameObject);
 			}
 			// Clear enemies list:
 			enemies.Clear();
+		}
+
+		public override void update ()
+		{
+			ProjectileHandler.update();
+			EnemySpawner.update();
 		}
 		
 		#endregion
