@@ -226,7 +226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1960cffbdc6f2745a1270ae04880c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainWeapon: {fileID: 114850858984845944}
+  mainWeapons:
+  - {fileID: 114850858984845944}
+  - {fileID: 114589498095704242}
+  - {fileID: 114548961163262542}
   secWeapon: {fileID: 0}
   hitpoints: 20
   baseSpeed: 3
