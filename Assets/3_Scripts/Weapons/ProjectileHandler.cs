@@ -203,6 +203,8 @@ namespace Game.Weapons
 		/// </summary>
 		public static void update()
 		{
+			if(!Statemachine.IsIngame) return;
+
 			// Calculate camera area rectangle in world space: (used to kill expired projectiles)
 			Camera cam = Camera.main;
 			float camOrthoSize = cam.orthographicSize + 1.0f;
@@ -226,11 +228,6 @@ namespace Game.Weapons
 				if(Physics2D.Linecast(p.position, nextPosition, filter, results) > 0)
 				{
 					RaycastHit2D hit = results[0];
-
-					// (TODO): We need to check source and target so enemys dont shoot themselves
-					// => we don't, actually. The enemy prefabs need to be moved to the 'Enemy' layer however.
-					// If their guns have the 'isPlayer' flag set to false, they won't hit each other.
-					// Similarly, the player will not be able to hit other 'Player' layer objects.
 
 					// Tell the body that was hit to receive an amount of damage:
 					executeProjectileHit(p, hit);

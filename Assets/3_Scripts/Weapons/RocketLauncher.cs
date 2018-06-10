@@ -25,7 +25,7 @@ namespace Game.Weapons
 			lastShotTime = Time.time;
 
 			// Request projectile handler to spawn and simulate a new rocket instance:
-			ProjectileHandler.spawnRocket(transform.position, transform.forward, rocketPrefab, playerControlled);
+			ProjectileHandler.spawnRocket(transform.position, transform.up, rocketPrefab, playerControlled);
 		}
 
 		#endregion

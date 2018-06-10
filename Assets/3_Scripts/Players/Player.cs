@@ -33,7 +33,16 @@ namespace Game
 
 		protected override void Update ()
 		{
-			if(!Statemachine.IsIngame) return;
+			// Process input events for statemachine and game state logic:
+			updateStateMachineInput();
+
+			// Don't update game logic while game is paused or interrupted:
+			if(!Statemachine.IsIngame)
+			{
+				// Cancel out velocity (so the player doesn't go flying off):
+				rig.velocity = Vector2.zero;
+				return;
+			}
 
       // Check if dead
       // TODO: Show GameOver Screen and stop game
@@ -56,6 +65,24 @@ namespace Game
 			if(Input.GetKey(KeyCode.Space))
 			{
 				fireMainWeapons();
+			}
+			if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftApple) || Input.GetKeyDown(KeyCode.Return))
+			{
+				fireSecondaryWeapons();
+			}
+		}
+
+		private void updateStateMachineInput ()
+		{
+			StatemachineStateIngame ingameState = StatemachineStateIngame.getStatemachine();
+
+			// Press 'escape' to pause or unpause the game:
+			if(Input.GetKeyDown(KeyCode.Escape))
+			{
+				if(ingameState.IngameState == IngameState.Ingame)
+					ingameState.setState(IngameState.Paused);
+				else if(ingameState.IngameState == IngameState.Paused)
+					ingameState.setState(IngameState.Ingame);
 			}
 		}
 	
