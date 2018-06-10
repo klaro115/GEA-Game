@@ -47,6 +47,8 @@ namespace Game
 		
 		public override bool initialize()
 		{
+			state = IngameState.None;
+
 			// Find existing enemy instances in scene:
 			if(enemies == null) enemies = new List<Enemy>();
 			Enemy[] newEnemies = GameObject.FindObjectsOfType<Enemy>();
@@ -103,6 +105,13 @@ namespace Game
 
 			// Get rid of any unused assets:
 			Resources.UnloadUnusedAssets();
+		}
+
+		public void restartGame()
+		{
+			// Shutdown and terminate all ingame states, then restart everything from scratch:
+			shutdown();
+			initialize();
 		}
 		
 		public override Gamestate[] getAllowedStates ()
