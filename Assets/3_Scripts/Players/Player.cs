@@ -53,9 +53,9 @@ namespace Game
 			pos.y = Mathf.Clamp(pos.y, -screenSpace.y, screenSpace.y);
 			transform.position = pos;
 
-			if(mainWeapon != null && Input.GetKey(KeyCode.Space))
+			if(Input.GetKey(KeyCode.Space))
 			{
-				mainWeapon.fire();
+				fireMainWeapons();
 			}
 		}
 	

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Game.Weapons;
 
 namespace Game
 {
@@ -59,7 +60,7 @@ namespace Game
       else
       {
         move();
-        if (this.mainWeapon != null) this.mainWeapon.fire();
+        fireMainWeapons();
       }
 		}
 

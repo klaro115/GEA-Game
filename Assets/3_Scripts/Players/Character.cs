@@ -9,7 +9,7 @@ namespace Game
   public abstract class Character : MonoBehaviour, IDamageReceiver
   {
     #region Fields
-    public Weapon mainWeapon;
+    public Weapon[] mainWeapons;
     public Weapon secWeapon;
     public int hitpoints;
     public float baseSpeed;
@@ -41,7 +41,15 @@ namespace Game
       return Quaternion.Euler(new Vector3(0, 0, angleToTarget));
     }
 
-	  public virtual void applyDamage(int dmg)
+    protected void fireMainWeapons()
+    {
+      foreach (Weapon weapon in this.mainWeapons)
+      {
+        if (this.mainWeapons != null) weapon.fire();
+      }
+    }
+
+  public virtual void applyDamage(int dmg)
 	  {
 		  this.hitpoints -= dmg;
 	  }

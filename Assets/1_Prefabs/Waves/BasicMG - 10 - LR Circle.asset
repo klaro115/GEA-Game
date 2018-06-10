@@ -15,20 +15,20 @@ MonoBehaviour:
   - enemy: {fileID: 114606963528246054, guid: 167acc71768fa7e499587c447e62eb11, type: 2}
     spawnInterval: 0
   - enemy: {fileID: 114606963528246054, guid: f2d52643f20026f4ba83a9e12eafeada, type: 2}
-    spawnInterval: 0.5
-  - enemy: {fileID: 114606963528246054, guid: 167acc71768fa7e499587c447e62eb11, type: 2}
     spawnInterval: 0
-  - enemy: {fileID: 114606963528246054, guid: f2d52643f20026f4ba83a9e12eafeada, type: 2}
-    spawnInterval: 0.5
   - enemy: {fileID: 114606963528246054, guid: 167acc71768fa7e499587c447e62eb11, type: 2}
-    spawnInterval: 0
-  - enemy: {fileID: 114606963528246054, guid: f2d52643f20026f4ba83a9e12eafeada, type: 2}
     spawnInterval: 0.5
+  - enemy: {fileID: 114606963528246054, guid: f2d52643f20026f4ba83a9e12eafeada, type: 2}
+    spawnInterval: 0
   - enemy: {fileID: 114606963528246054, guid: 167acc71768fa7e499587c447e62eb11, type: 2}
-    spawnInterval: 0
-  - enemy: {fileID: 114606963528246054, guid: f2d52643f20026f4ba83a9e12eafeada, type: 2}
     spawnInterval: 0.5
+  - enemy: {fileID: 114606963528246054, guid: f2d52643f20026f4ba83a9e12eafeada, type: 2}
+    spawnInterval: 0
   - enemy: {fileID: 114606963528246054, guid: 167acc71768fa7e499587c447e62eb11, type: 2}
-    spawnInterval: 0
-  - enemy: {fileID: 114606963528246054, guid: f2d52643f20026f4ba83a9e12eafeada, type: 2}
     spawnInterval: 0.5
+  - enemy: {fileID: 114606963528246054, guid: f2d52643f20026f4ba83a9e12eafeada, type: 2}
+    spawnInterval: 0
+  - enemy: {fileID: 114606963528246054, guid: 167acc71768fa7e499587c447e62eb11, type: 2}
+    spawnInterval: 0.5
+  - enemy: {fileID: 114606963528246054, guid: f2d52643f20026f4ba83a9e12eafeada, type: 2}
+    spawnInterval: 0
