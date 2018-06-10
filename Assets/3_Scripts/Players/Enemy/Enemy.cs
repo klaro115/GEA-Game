@@ -60,6 +60,7 @@ namespace Game
       {
         move();
         fireMainWeapons();
+        fireSecondaryWeapons();
       }
 		}
 
