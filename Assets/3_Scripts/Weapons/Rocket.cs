@@ -48,13 +48,13 @@ namespace Game.Weapons
 			destroyed = false;
 
 			// Find a new homing target:
+			StatemachineStateIngame state = StatemachineStateIngame.getStatemachine();
 			if(fromPlayer)
 			{
 				float smallestAngle = 180.0f;
 				Enemy smallestAngleEnemy = null;
 
 				// Find an enemy that is directly in the rocket's path:
-				StatemachineStateIngame state = Statemachine.CurrentState as StatemachineStateIngame;
 				foreach(Enemy enemy in state.Enemies.ToArray())	// TODO: Need to unregister enemies on death!!!
 				{
 					if(enemy == null) continue;
@@ -71,7 +71,8 @@ namespace Game.Weapons
 			}
 			else
 			{
-				// TODO: Get player reference from somewhere and set it as target.
+				// Use player character as target:
+				target = state.Player;
 			}
 		}
 
