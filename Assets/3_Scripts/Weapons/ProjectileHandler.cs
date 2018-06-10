@@ -86,10 +86,12 @@ namespace Game.Weapons
 			contactFilterPlayer = new ContactFilter2D();
 			contactFilterPlayer.useLayerMask = true;
 			contactFilterPlayer.layerMask = LayerMask.GetMask(layersPlayer);
+			contactFilterPlayer.useTriggers = true;
 
 			contactFilterEnemy = new ContactFilter2D();
 			contactFilterEnemy.useLayerMask = true;
 			contactFilterEnemy.layerMask = LayerMask.GetMask(layersEnemy);
+			contactFilterEnemy.useTriggers = true;
 		}
 
 		public static void shutdown()
