@@ -33,6 +33,14 @@ namespace Game
 		private static List<SpawnEvent> eventTimeline = new List<SpawnEvent>();
 
 		#endregion
+		#region Properties
+
+		public static int CurrentWave
+		{
+			get { return currentWaveIndex; }
+		}
+
+		#endregion
 		#region Methods
 
 		public static void initialize()

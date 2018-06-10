@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using Game.UI;
+
 namespace Game
 {
 	public class StatemachineStateIngame : StatemachineState
@@ -13,10 +15,9 @@ namespace Game
 		private Player player = null;					// Reference to the player character in scene.
 		private List<Enemy> enemies = new List<Enemy>();// List of all enemies currently in scene.
 
-		// TODO: implement UI elements 
-		//private UiIngame uiIngame = null;
+		private UiIngame uiIngame = null;
 
-		//private static readonly string uiIngamePrefabName = "UiIngame";
+		private static readonly string uiIngamePrefabName = "UiIngame";
 
 		#endregion
 		#region Properties
@@ -50,19 +51,17 @@ namespace Game
 			// - Spawn player if not present already.
 			// - Find and/or spawn UI elements if not present already.
 
-			// TODO:
-			// - Spawn ingame UI group if not present already.
-			// - Initialize ingame UI:
-			/*
+			// Spawn ingame UI group if not present already:
 			uiIngame = GameObject.FindObjectOfType<UiIngame>();
 			if(uiIngame == null)
 			{
-				UiIngame uiIngamePrefab = Resources.Load<UiIngame>("uiIngamePrefabName");
-				GameObject uiIngameGO = Instantiate(uiIngamePrefab.gameObject, uiCanvas) as GameObject;
+				RectTransform uiCanvas = GameObject.FindObjectOfType<Canvas>().transform as RectTransform;
+				UiIngame uiIngamePrefab = Resources.Load<UiIngame>(uiIngamePrefabName);
+				GameObject uiIngameGO = MonoBehaviour.Instantiate(uiIngamePrefab.gameObject, uiCanvas) as GameObject;
 				uiIngame = uiIngameGO.GetComponent<UiIngame>();
 			}
+			// Initialize ingame UI:
 			uiIngame.initialize();
-			*/
 
 			setState(IngameState.Ingame);
 
@@ -76,16 +75,13 @@ namespace Game
 
 			destroyAllEnemies();
 
-			// TODO:
-			// - Shut down ingame UI.
-			// - Destroy ingame UI gameObject.
-			/*
 			if(uiIngame != null)
 			{
+				// Shut down ingame UI:
 				uiIngame.shutdown();
+				// Destroy ingame UI gameObject:
 				MonoBehaviour.Destroy(uiIngame.gameObject);
 			}
-			*/
 
 			// Reset ingame flag in main statemachine:
 			Statemachine.IsIngame = false;
@@ -128,7 +124,7 @@ namespace Game
 			}
 
 			//TODO: Tell ingame UI to switch to switch to the appropriate mode as well.
-			//uiIngame.setState(state);
+			uiIngame.setState(state);
 
 			return true;
 		}
