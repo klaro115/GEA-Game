@@ -51,7 +51,8 @@ namespace Game
       {
         Destroy(this.gameObject);
       }
-      else if (isDead()) {
+      else if (isDead())
+      {
         // Drop items
         Destroy(this.gameObject);
       }
@@ -111,11 +112,6 @@ namespace Game
     {
         return (checkpointIndex >= lastCheckpointIndex);
     }
-
-    protected bool isDead()
-		{
-            return this.hitpoints <= 0;
-		}
 
     public override void applyDamage(int dmg)
     {

@@ -31,10 +31,15 @@ namespace Game
       return screenSpace;
     }
 	
-	public virtual void applyDamage(int dmg)
-	{
-		this.hitpoints -= dmg;
-	}
+	  public virtual void applyDamage(int dmg)
+	  {
+		  this.hitpoints -= dmg;
+	  }
+
+    protected bool isDead()
+    {
+      return this.hitpoints <= 0;
+    }
     #endregion
   }
 }

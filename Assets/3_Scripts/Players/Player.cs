@@ -37,7 +37,7 @@ namespace Game
 
       // Check if dead
       // TODO: Show GameOver Screen and stop game
-      //if (isDead()) Destroy(this.gameObject);  // NOTE: commented this out, for testing purposes.
+      // if (isDead()) Destroy(this.gameObject);  // NOTE: commented this out, for testing purposes.
 
 			// Fetch input signals:
 			float x = Input.GetAxisRaw("Horizontal");
@@ -58,13 +58,8 @@ namespace Game
 				mainWeapon.fire();
 			}
 		}
-
-    protected bool isDead()
-    {
-      return this.hitpoints <= 0;
-    }
 	
-	public override void applyDamage(int dmg)
+	  public override void applyDamage(int dmg)
     {
       // Only allow player to repeatedly take damage after a cooldown period has passed:
       if(Time.time > damageCooldown + lastDamageReceivedTime)
