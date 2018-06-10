@@ -10,7 +10,7 @@ namespace Game
   {
     #region Fields
     public Weapon[] mainWeapons;
-    public Weapon secWeapon;
+    public Weapon[] secWeapons;
     public int hitpoints;
     public float baseSpeed;
     public float radius;
@@ -43,13 +43,28 @@ namespace Game
 
     protected void fireMainWeapons()
     {
-      foreach (Weapon weapon in this.mainWeapons)
+      if (this.mainWeapons != null && this.mainWeapons.Length > 0)
       {
-        if (this.mainWeapons != null) weapon.fire();
+        foreach (Weapon weapon in this.mainWeapons)
+        {
+          weapon.fire();
+        }
+      }
+
+    }
+
+    protected void fireSecondaryWeapons()
+    {
+      if (this.secWeapons != null && this.secWeapons.Length > 0)
+      {
+        foreach (Weapon weapon in this.secWeapons)
+        {
+          weapon.fire();
+        }
       }
     }
 
-  public virtual void applyDamage(int dmg)
+    public virtual void applyDamage(int dmg)
 	  {
 		  this.hitpoints -= dmg;
 	  }

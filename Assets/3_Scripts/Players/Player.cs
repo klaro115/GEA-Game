@@ -57,6 +57,10 @@ namespace Game
 			{
 				fireMainWeapons();
 			}
+      if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftApple) || Input.GetKeyDown(KeyCode.Return))
+      {
+        fireSecondaryWeapons();
+      }
 		}
 	
 	  public override void applyDamage(int dmg)

@@ -190,10 +190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b727d7926c164b09ac4b8626f8648d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireInterval: 2.5
+  fireInterval: 1
   modifier:
     type: 1
-    level: 15
+    level: 2
   damage: 1
   projectileSpeed: 6
   playerControlled: 0
@@ -208,10 +208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b727d7926c164b09ac4b8626f8648d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireInterval: 2.5
+  fireInterval: 1
   modifier:
     type: 1
-    level: 15
+    level: 2
   damage: 1
   projectileSpeed: 6
   playerControlled: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b727d7926c164b09ac4b8626f8648d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireInterval: 2.5
+  fireInterval: 3
   modifier:
     type: 1
     level: 15
