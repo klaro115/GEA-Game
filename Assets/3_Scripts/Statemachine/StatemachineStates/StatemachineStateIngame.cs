@@ -193,7 +193,7 @@ namespace Game
 
 		public override void update ()
 		{
-			if(Statemachine.IsIngame) gameTime += Time.time;
+			if(Statemachine.IsIngame) gameTime += Time.deltaTime;
 
 			ProjectileHandler.update();
 			EnemySpawner.update();

@@ -19,10 +19,12 @@ namespace Game.Weapons
 
 		public override void fire ()
 		{
-			// Allow firing again after a minimum time interval between shots has passed:
-			if(Time.time < lastShotTime + fireInterval) return;
+			float gameTime = StatemachineStateIngame.getStatemachine().GameTime;
 
-			lastShotTime = Time.time;
+			// Allow firing again after a minimum time interval between shots has passed:
+			if(gameTime < lastShotTime + fireInterval) return;
+
+			lastShotTime = gameTime;
 
 			// Request projectile handler to spawn and simulate a new rocket instance:
 			ProjectileHandler.spawnRocket(transform.position, transform.up, rocketPrefab, playerControlled);
