@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Game.Weapons;
+using Game.Items;
 
 namespace Game
 {
@@ -53,8 +54,7 @@ namespace Game
       }
       else if (isDead())
       {
-        // Drop items
-        Destroy(this.gameObject);
+        this.spawnPoints(this.points);
       }
       else
       {
@@ -114,6 +114,14 @@ namespace Game
     {
       this.hitpoints -= dmg;
       // Debug.Log(dmg + "Damage applied. " + this.hitpoints + "left");
+    }
+
+    private void spawnPoints(int value)
+    {
+      Item itemPointsPrefab = Resources.Load<Item>("Points");
+      Item itemPoints = Instantiate(itemPointsPrefab, transform.position, Quaternion.identity);
+      itemPoints.value = this.points;
+      Destroy(this.gameObject);
     }
     #endregion
   }

@@ -28,7 +28,7 @@ namespace Game
 
 			//mainWeapon = null;
 			//secWeapon = null;
-      calcScreenspace(radius * 2);
+      calcScreenspace(0f);
     }
 
 		protected override void Update ()

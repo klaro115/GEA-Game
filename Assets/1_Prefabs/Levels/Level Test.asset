@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Level Test
   m_EditorClassIdentifier: 
   waves:
-  - {fileID: 11400000, guid: e641cc6d411ef3245a2e5afadc0081c6, type: 2}
+  - {fileID: 11400000, guid: 595fa83d7e1526b46886176ca3b915bb, type: 2}
   - {fileID: 11400000, guid: 1ff01d34799de1943affdc60a1f216f3, type: 2}
   - {fileID: 11400000, guid: db7e993e4e1db2c4b8c7123b3f4be296, type: 2}
   - {fileID: 11400000, guid: 8d52afffdf144fa4c9c4f35b37a42b4f, type: 2}
@@ -23,9 +23,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 33d497f054fc96a4da1d1af434234591, type: 2}
   - {fileID: 11400000, guid: 50dc69b937d805c409742ee7f8c59700, type: 2}
   - {fileID: 11400000, guid: c7d378491b08b9d4cafec3bf3bdb6435, type: 2}
-  - {fileID: 11400000, guid: 2bc2a17f64391174497e040cad0b622c, type: 2}
   - {fileID: 11400000, guid: 46dd08a47b6285d44a6374be627e0762, type: 2}
-  - {fileID: 11400000, guid: 33d497f054fc96a4da1d1af434234591, type: 2}
+  - {fileID: 11400000, guid: 2bc2a17f64391174497e040cad0b622c, type: 2}
+  - {fileID: 11400000, guid: 5bb0d04c9f48fbe4e8c8b45831ee7ef5, type: 2}
   - {fileID: 11400000, guid: e641cc6d411ef3245a2e5afadc0081c6, type: 2}
   waveInterval: 3
   completionBonus: 1000
