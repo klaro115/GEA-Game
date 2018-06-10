@@ -95,16 +95,12 @@ namespace Game
 
       transform.position += baseSpeed * (Vector3)flightDirection * Time.deltaTime;
 
-      // Rotate towards player
+
+      // Rotate towards vec3
       // TODO:  Weapon should rotate towards players position
       //        TODO: Remove if Rotating the whole GameObject isnt necessary anymore
       Vector3 target = player.transform.position;
-      target.z = 0f;
-      target.x = target.x - transform.position.x;
-      target.y = target.y - transform.position.y;
-      float angleToTarget = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
-      angleToTarget -= 90f;
-      transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleToTarget));
+      alignToTarget(transform.position, target);
     }
         
     

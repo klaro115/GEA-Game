@@ -30,7 +30,17 @@ namespace Game
       screenSpace.x = orthoSize * Camera.main.aspect - radius + offset*2;
       return screenSpace;
     }
-	
+	  
+    protected Quaternion alignToTarget(Vector3 myPos, Vector3 targetPos)
+    {
+      targetPos.z = 0f;
+      targetPos.x -= myPos.x;
+      targetPos.y -= myPos.y;
+      float angleToTarget = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
+      angleToTarget -= 90f;
+      return Quaternion.Euler(new Vector3(0, 0, angleToTarget));
+    }
+
 	  public virtual void applyDamage(int dmg)
 	  {
 		  this.hitpoints -= dmg;
