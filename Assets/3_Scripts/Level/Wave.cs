@@ -3,14 +3,20 @@ using UnityEngine;
 
 namespace Game
 {
+	[System.Serializable]
+	public struct WaveSpawnEvent
+	{
+		public Enemy enemy;			// Enemy prefab to spawn during this event in scene.
+		public float spawnInterval;	// Time delay between spawning enemy instances in scene.
+	}
+
 	[CreateAssetMenu(menuName="Create Wave prefab", fileName="new Wave")]
 	[System.Serializable]
 	public class Wave : ScriptableObject
 	{
 		#region Fields
 
-		public Enemy[] enemies;		// Enemy prefabs of the wave, in chronological order.
-    public float spawnInterval;	// Time delay between spawning enemy instances in scene.
+		public WaveSpawnEvent[] enemies;	// Spawn events of the wave, in chronological order.
 
 		#endregion
 	}

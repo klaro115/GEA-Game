@@ -145,5 +145,24 @@ namespace Game
 		}
 		
 		#endregion
+		#region Methods Static
+
+		/// <summary>
+		/// Get the current ingame substatemachine:
+		/// </summary>
+		/// <returns>The ingame statemachine instance.</returns>
+		public static StatemachineStateIngame getStatemachine()
+		{
+			if(Statemachine.GameState == Gamestate.Ingame)
+			{
+				return Statemachine.CurrentState as StatemachineStateIngame;
+			}
+			else
+			{
+				return null;
+			}
+		}
+
+		#endregion
 	}
 }

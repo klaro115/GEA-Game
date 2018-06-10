@@ -142,9 +142,10 @@ namespace Game
 				eventTimeline.Add(waveEvent);
 
 				// Next, add the wave's spawn events to timeline:
-				foreach(Enemy enemy in wave.enemies)
+				foreach(WaveSpawnEvent wse in wave.enemies)
 				{
-					timestamp += wave.spawnInterval;
+					Enemy enemy = wse.enemy;
+					timestamp += wse.spawnInterval;
 
 					SpawnEvent spawnEvent = new SpawnEvent();
 					spawnEvent.type = SpawnEventType.SpawnEnemy;
