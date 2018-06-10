@@ -29,8 +29,7 @@ namespace Game
 
     protected override void Start ()
 		{
-      // TODO: Remove if Rotating the whole GameObject isnt necessary anymore
-      player = GameObject.Find("Player");
+      player = StatemachineStateIngame.getStatemachine().Player.gameObject;
 
       calcScreenspace(radius * 2);
       // Apply scale based on radius
