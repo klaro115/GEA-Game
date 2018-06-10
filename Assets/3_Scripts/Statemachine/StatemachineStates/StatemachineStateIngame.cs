@@ -154,7 +154,7 @@ namespace Game
 			// Destroy remaining enemy characters in scene:
 			foreach(Enemy enemy in enemies.ToArray())
 			{
-				GameObject.Destroy(enemy.gameObject);
+				if(enemy != null) GameObject.Destroy(enemy.gameObject);
 			}
 			// Clear enemies list:
 			enemies.Clear();

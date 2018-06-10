@@ -205,14 +205,24 @@ namespace Game.Weapons
 		/// </summary>
 		public static void update()
 		{
-			if(!Statemachine.IsIngame) return;
-
 			// Calculate camera area rectangle in world space: (used to kill expired projectiles)
 			Camera cam = Camera.main;
 			float camOrthoSize = cam.orthographicSize + 1.0f;
 			Vector2 screenSize = new Vector2(camOrthoSize * cam.aspect, camOrthoSize);
 			Rect screenAreaRect = new Rect(-screenSize, 2.0f * screenSize);
 
+			if(Statemachine.IsIngame)
+			{
+				// Update normal dumb-fire bullets:
+				updateProjectiles(screenAreaRect);
+			}
+
+			// Update homing rockets:
+			updateRockets(screenAreaRect);
+		}
+
+		private static void updateProjectiles(Rect screenAreaRect)
+		{
 			// Iterate through projectiles array:
 			for(int i = 0; i < projectiles.Length; ++i)
 			{
@@ -254,7 +264,9 @@ namespace Game.Weapons
 				// Write changed struct values back to array:
 				projectiles[i] = p;
 			}
-
+		}
+		private static void updateRockets(Rect screenAreaRect)
+		{
 			// Update rockets:
 			foreach(Rocket rocket in rockets)
 			{
@@ -266,6 +278,7 @@ namespace Game.Weapons
 					rocket.destroyed = true;
 				}
 			}
+
 			// Remove any destroyed rockets from list:
 			rockets.RemoveAll(o => o.destroyed == true);
 		}

@@ -78,6 +78,11 @@ namespace Game.Weapons
 
 		public void update()
 		{
+			if(!Statemachine.IsIngame)
+			{
+				rig.velocity = Vector2.zero;
+				return;
+			}
 			if(destroyed)
 			{
 				selfDestruct();

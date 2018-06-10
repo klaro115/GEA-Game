@@ -74,5 +74,21 @@ namespace Game.UI
 		}
 
 		#endregion
+		#region Methods UI Menu
+
+		public void uiButtonMenuQuit()
+		{
+			Statemachine.setState(Gamestate.MainMenu);
+		}
+		public void uiButtonMenuResume()
+		{
+			if(state == IngameState.Paused)
+			{
+				StatemachineStateIngame ingameState = StatemachineStateIngame.getStatemachine();
+				ingameState.setState(IngameState.Ingame);
+			}
+		}
+
+		#endregion
 	}
 }
