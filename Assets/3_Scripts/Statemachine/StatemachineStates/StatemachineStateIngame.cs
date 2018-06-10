@@ -15,8 +15,11 @@ namespace Game
 		private Player player = null;					// Reference to the player character in scene.
 		private List<Enemy> enemies = new List<Enemy>();// List of all enemies currently in scene.
 
+		private int currentScore = 0;
+
 		private UiIngame uiIngame = null;
 
+		private static readonly string playerPrefabName = "Player";
 		private static readonly string uiIngamePrefabName = "UiIngame";
 
 		#endregion
@@ -40,16 +43,23 @@ namespace Game
 		
 		public override bool initialize()
 		{
-			// Find existing player and enemy instances in scene:
-			player = GameObject.FindObjectOfType<Player>();
+			// Find existing enemy instances in scene:
 			if(enemies == null) enemies = new List<Enemy>();
 			Enemy[] newEnemies = GameObject.FindObjectsOfType<Enemy>();
 			if(newEnemies != null)
 				enemies.AddRange(newEnemies);
 
-			// TODO:
-			// - Spawn player if not present already.
-			// - Find and/or spawn UI elements if not present already.
+			// Find or spawn player character in scene:
+			player = GameObject.FindObjectOfType<Player>();
+			if(player == null)
+			{
+				Player playerPrefab = Resources.Load<Player>(playerPrefabName);
+				GameObject playerGO = MonoBehaviour.Instantiate(playerPrefab.gameObject) as GameObject;
+				player = playerGO.GetComponent<Player>();
+			}
+			
+			// Reset score to 0 points:
+			currentScore = 0;
 
 			// Spawn ingame UI group if not present already:
 			uiIngame = GameObject.FindObjectOfType<UiIngame>();
@@ -62,6 +72,7 @@ namespace Game
 			}
 			// Initialize ingame UI:
 			uiIngame.initialize();
+
 
 			setState(IngameState.Ingame);
 
