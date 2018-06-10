@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using Game.Weapons;
 using Game.UI;
 
 namespace Game
@@ -21,6 +22,7 @@ namespace Game
 
 		private static readonly string playerPrefabName = "Player";
 		private static readonly string uiIngamePrefabName = "UiIngame";
+		private static readonly string firstLevelAssetName = "Level Test";
 
 		#endregion
 		#region Properties
@@ -79,6 +81,12 @@ namespace Game
 			// Initialize ingame UI:
 			uiIngame.initialize();
 
+			// Initialize projectile handler:
+			ProjectileHandler.initialize();
+
+			// Start up enemy spawner and load first level:
+			EnemySpawner.initialize();
+			EnemySpawner.loadLevel(firstLevelAssetName);
 
 			setState(IngameState.Ingame);
 
@@ -86,6 +94,12 @@ namespace Game
 		}
 		public override void shutdown ()
 		{
+			// Terminate enemy spawner:
+			EnemySpawner.shutdown();
+
+			// Terminate projecile handler:
+			ProjectileHandler.shutdown();
+
 			// Destroy player ship:
 			GameObject.Destroy(player.gameObject);
 			player = null;
@@ -167,6 +181,12 @@ namespace Game
 			}
 			// Clear enemies list:
 			enemies.Clear();
+		}
+
+		public override void update ()
+		{
+			ProjectileHandler.update();
+			EnemySpawner.update();
 		}
 		
 		#endregion

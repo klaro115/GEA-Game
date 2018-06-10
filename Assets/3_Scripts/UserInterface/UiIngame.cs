@@ -75,7 +75,9 @@ namespace Game.UI
 
 		private void restartGame()
 		{
-			// TODO
+			// Tell the ingame statemachine to reset the game:
+			StatemachineStateIngame ingameState = StatemachineStateIngame.getStatemachine();
+			ingameState.restartGame();
 		}
 
 		#endregion
