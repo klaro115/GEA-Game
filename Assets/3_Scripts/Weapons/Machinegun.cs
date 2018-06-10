@@ -85,10 +85,15 @@ namespace Game.Weapons
 			// Fire an additional 4 shots on higher levels:
 			if(modifier.level > 1)
 			{
-				fireSingleShot(muzzlePosition, new Vector3(-0.707f,0.707f,0));
-				fireSingleShot(muzzlePosition, new Vector3(-0.707f,-0.707f,0));
-				fireSingleShot(muzzlePosition, new Vector3(0.707f,0.707f,0));
-				fireSingleShot(muzzlePosition, new Vector3(0.707f,-0.707f,0));
+				Vector3 dir0 = transform.TransformDirection(new Vector3(-0.707f,0.707f,0));
+				Vector3 dir1 = transform.TransformDirection(new Vector3(-0.707f,-0.707f,0));
+				Vector3 dir2 = transform.TransformDirection(new Vector3(0.707f,0.707f,0));
+				Vector3 dir3 = transform.TransformDirection(new Vector3(0.707f,-0.707f,0));
+
+				fireSingleShot(muzzlePosition, dir0);
+				fireSingleShot(muzzlePosition, dir1);
+				fireSingleShot(muzzlePosition, dir2);
+				fireSingleShot(muzzlePosition, dir3);
 				// TODO: Revisit/Change behaviour on higher levels?
 			}
 		}
