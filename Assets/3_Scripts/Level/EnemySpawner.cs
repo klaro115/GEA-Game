@@ -72,8 +72,11 @@ namespace Game
 		{
 			if(eventTimeline.Count == 0) return;
 
+			StatemachineStateIngame ingameState = StatemachineStateIngame.getStatemachine();
+			float gameTime = ingameState.GameTime;
+
 			// If the time has come for the next timeline event:
-			if(Time.time > eventTimeline[0].timestamp)
+			if(gameTime > eventTimeline[0].timestamp)
 			{
 				// Depending on event type, either spawn an enemy, start next wave or start next level:
 				SpawnEvent timelineEvent = eventTimeline[0];
@@ -147,7 +150,8 @@ namespace Game
 			currentWaveIndex = 0;
 
 			// Iterate through the level's waves:
-			float timestamp = Time.time;
+			StatemachineStateIngame ingameState = StatemachineStateIngame.getStatemachine();
+			float timestamp = ingameState.GameTime;
 			foreach(Wave wave in currentLevel.waves)
 			{
 				timestamp += currentLevel.waveInterval;

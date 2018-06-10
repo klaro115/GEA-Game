@@ -18,6 +18,8 @@ namespace Game
 
 		private int currentScore = 0;
 
+		private float gameTime = 0.0f;
+
 		private UiIngame uiIngame = null;
 
 		private static readonly string playerPrefabName = "Player";
@@ -42,6 +44,10 @@ namespace Game
 		public int Score
 		{
 			get { return currentScore; }
+		}
+		public float GameTime
+		{
+			get { return gameTime; }
 		}
 
 		#endregion
@@ -68,6 +74,8 @@ namespace Game
 			
 			// Reset score to 0 points:
 			currentScore = 0;
+
+			gameTime = 0.0f;
 
 			// Spawn ingame UI group if not present already:
 			uiIngame = GameObject.FindObjectOfType<UiIngame>();
@@ -101,7 +109,7 @@ namespace Game
 			ProjectileHandler.shutdown();
 
 			// Destroy player ship:
-			GameObject.Destroy(player.gameObject);
+			GameObject.DestroyImmediate(player.gameObject);
 			player = null;
 
 			destroyAllEnemies();
@@ -111,7 +119,7 @@ namespace Game
 				// Shut down ingame UI:
 				uiIngame.shutdown();
 				// Destroy ingame UI gameObject:
-				MonoBehaviour.Destroy(uiIngame.gameObject);
+				MonoBehaviour.DestroyImmediate(uiIngame.gameObject);
 			}
 
 			// Reset ingame flag in main statemachine:
@@ -185,6 +193,8 @@ namespace Game
 
 		public override void update ()
 		{
+			if(Statemachine.IsIngame) gameTime += Time.time;
+
 			ProjectileHandler.update();
 			EnemySpawner.update();
 		}
