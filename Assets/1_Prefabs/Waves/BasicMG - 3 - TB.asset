@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Name: BasicMG - 3 - TB
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 114606963528246054, guid: d1f2ddfe887d79649bcc345f45012c7d, type: 2}
-  - {fileID: 114606963528246054, guid: d1f2ddfe887d79649bcc345f45012c7d, type: 2}
-  - {fileID: 114606963528246054, guid: d1f2ddfe887d79649bcc345f45012c7d, type: 2}
-  spawnInterval: 1
+  - enemy: {fileID: 114606963528246054, guid: d1f2ddfe887d79649bcc345f45012c7d, type: 2}
+    spawnInterval: 0.5
+  - enemy: {fileID: 114606963528246054, guid: d1f2ddfe887d79649bcc345f45012c7d, type: 2}
+    spawnInterval: 0.5
+  - enemy: {fileID: 114606963528246054, guid: d1f2ddfe887d79649bcc345f45012c7d, type: 2}
+    spawnInterval: 0.5

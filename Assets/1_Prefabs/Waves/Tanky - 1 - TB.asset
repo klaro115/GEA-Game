@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Tanky - 1 - TB
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 114582010875667614, guid: 50352229cffbc5f49ab86ad63c92260e, type: 2}
-  spawnInterval: 0.3
+  - enemy: {fileID: 114582010875667614, guid: 50352229cffbc5f49ab86ad63c92260e, type: 2}
+    spawnInterval: 0.5

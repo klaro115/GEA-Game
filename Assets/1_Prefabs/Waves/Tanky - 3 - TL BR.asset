@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Name: Tanky - 3 - TL BR
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 114582010875667614, guid: 55a6c6dd7e7c6784680e607df82aefd8, type: 2}
-  - {fileID: 114582010875667614, guid: 55a6c6dd7e7c6784680e607df82aefd8, type: 2}
-  - {fileID: 114582010875667614, guid: 55a6c6dd7e7c6784680e607df82aefd8, type: 2}
-  spawnInterval: 0.5
+  - enemy: {fileID: 114582010875667614, guid: 55a6c6dd7e7c6784680e607df82aefd8, type: 2}
+    spawnInterval: 0.5
+  - enemy: {fileID: 114582010875667614, guid: 55a6c6dd7e7c6784680e607df82aefd8, type: 2}
+    spawnInterval: 0.5
+  - enemy: {fileID: 114582010875667614, guid: 55a6c6dd7e7c6784680e607df82aefd8, type: 2}
+    spawnInterval: 0.5

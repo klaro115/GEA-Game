@@ -12,13 +12,21 @@ MonoBehaviour:
   m_Name: Basic - 3 - LR RL TB
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 114859824808221568, guid: 6e46da5cbc1bdae4abe6e88cc50f8468, type: 2}
-  - {fileID: 114859824808221568, guid: 6e46da5cbc1bdae4abe6e88cc50f8468, type: 2}
-  - {fileID: 114859824808221568, guid: 6e46da5cbc1bdae4abe6e88cc50f8468, type: 2}
-  - {fileID: 114859824808221568, guid: 86417a700d36aa947b67c9f0475cdc8b, type: 2}
-  - {fileID: 114859824808221568, guid: 86417a700d36aa947b67c9f0475cdc8b, type: 2}
-  - {fileID: 114859824808221568, guid: 86417a700d36aa947b67c9f0475cdc8b, type: 2}
-  - {fileID: 114859824808221568, guid: ae722133653c8cf40be362ef99fb4ff5, type: 2}
-  - {fileID: 114859824808221568, guid: ae722133653c8cf40be362ef99fb4ff5, type: 2}
-  - {fileID: 114859824808221568, guid: ae722133653c8cf40be362ef99fb4ff5, type: 2}
-  spawnInterval: 0.3
+  - enemy: {fileID: 114859824808221568, guid: 6e46da5cbc1bdae4abe6e88cc50f8468, type: 2}
+    spawnInterval: 0
+  - enemy: {fileID: 114859824808221568, guid: 86417a700d36aa947b67c9f0475cdc8b, type: 2}
+    spawnInterval: 0
+  - enemy: {fileID: 114859824808221568, guid: ae722133653c8cf40be362ef99fb4ff5, type: 2}
+    spawnInterval: 0.5
+  - enemy: {fileID: 114859824808221568, guid: 6e46da5cbc1bdae4abe6e88cc50f8468, type: 2}
+    spawnInterval: 0
+  - enemy: {fileID: 114859824808221568, guid: 86417a700d36aa947b67c9f0475cdc8b, type: 2}
+    spawnInterval: 0
+  - enemy: {fileID: 114859824808221568, guid: ae722133653c8cf40be362ef99fb4ff5, type: 2}
+    spawnInterval: 0.5
+  - enemy: {fileID: 114859824808221568, guid: 6e46da5cbc1bdae4abe6e88cc50f8468, type: 2}
+    spawnInterval: 0
+  - enemy: {fileID: 114859824808221568, guid: 86417a700d36aa947b67c9f0475cdc8b, type: 2}
+    spawnInterval: 0
+  - enemy: {fileID: 114859824808221568, guid: ae722133653c8cf40be362ef99fb4ff5, type: 2}
+    spawnInterval: 0.5

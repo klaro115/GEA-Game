@@ -100,7 +100,7 @@ namespace Game
       // TODO:  Weapon should rotate towards players position
       //        TODO: Remove if Rotating the whole GameObject isnt necessary anymore
       Vector3 target = player.transform.position;
-      alignToTarget(transform.position, target);
+      transform.rotation = alignToTarget(transform.position, target);
     }
         
     
