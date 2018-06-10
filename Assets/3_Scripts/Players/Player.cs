@@ -47,6 +47,14 @@ namespace Game
       // Check if dead
       // TODO: Show GameOver Screen and stop game
       // if (isDead()) Destroy(this.gameObject);  // NOTE: commented this out, for testing purposes.
+			if(isDead())
+			{
+				// Switch ingame state to game over:
+				StatemachineStateIngame.getStatemachine().setState(IngameState.GameOver);
+				// Deactivate the player: (don't destroy as that may lead to null reference exceptions)
+				gameObject.SetActive(false);
+				return;
+			}
 
 			// Fetch input signals:
 			float x = Input.GetAxisRaw("Horizontal");
