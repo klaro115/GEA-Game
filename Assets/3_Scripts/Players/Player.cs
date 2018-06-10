@@ -92,7 +92,7 @@ namespace Game
       if(Time.time > damageCooldown + lastDamageReceivedTime)
       {
         lastDamageReceivedTime = Time.time;
-        Debug.Log("Player Hit! " + this.hitpoints + " left.");
+        // Debug.Log("Player Hit! " + this.hitpoints + " left.");
         this.hitpoints -= dmg;
       }
     }

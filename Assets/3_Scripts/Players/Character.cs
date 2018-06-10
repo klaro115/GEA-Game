@@ -43,7 +43,7 @@ namespace Game
 
     protected void fireMainWeapons()
     {
-      if (this.mainWeapons != null && this.mainWeapons.Length > 0)
+      if (this.mainWeapons != null)
       {
         foreach (Weapon weapon in this.mainWeapons)
         {
@@ -55,7 +55,7 @@ namespace Game
 
     protected void fireSecondaryWeapons()
     {
-      if (this.secWeapons != null && this.secWeapons.Length > 0)
+      if (this.secWeapons != null)
       {
         foreach (Weapon weapon in this.secWeapons)
         {

@@ -181,7 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainWeapons:
   - {fileID: 114927961241515018}
-  secWeapon: {fileID: 114304829468895266}
+  secWeapons:
+  - {fileID: 114304829468895266}
   hitpoints: 3
   baseSpeed: 10
   radius: 0.4
