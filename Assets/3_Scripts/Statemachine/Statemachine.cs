@@ -9,7 +9,6 @@ namespace Game
 	{
 		#region Fields
 
-		private static readonly Gamestate startGameState = Gamestate.Ingame;
 		private static Gamestate gameState = Gamestate.None;
 		private static StatemachineState currentState = null;
 		private static bool isIngame = false;
@@ -37,7 +36,7 @@ namespace Game
 		/// <summary>
 		/// Initialize the statemachine, load settings, etc. Done exactly once on program start.
 		/// </summary>
-		public static bool initialize()
+		public static bool initialize(Gamestate startGameState = Gamestate.Ingame)
 		{
 			gameState = Gamestate.None;
 
@@ -94,6 +93,16 @@ namespace Game
 			if(currentState != null)
 			{
 				currentState.initialize();
+			}
+
+			switch (gameState)
+			{
+			case Gamestate.Quit:
+				// End game upon receiving the Quit state:
+				Application.Quit();
+				break;
+			default:
+				break;
 			}
 
 			// Return success:

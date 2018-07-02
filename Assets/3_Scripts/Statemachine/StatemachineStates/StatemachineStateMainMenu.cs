@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using Game.UI;
+
 namespace Game
 {
 	[System.Serializable]
@@ -8,11 +10,9 @@ namespace Game
 	{
 		#region Fields
 
-		private MainMenuState state = MainMenuState.None;
-
-		//private UiMainMenuScreen uiMainMenu = null;
+		private UiMainMenuScreen uiMainMenu = null;
 	
-		//private static readonly string uiMainMenuPrefabName = "UiMainMenuScreen";
+		private static readonly string uiMainMenuPrefabName = "UiMainMenuScreen";
 
 		#endregion
 		#region Methods
@@ -20,55 +20,33 @@ namespace Game
 		public override bool initialize()
 		{
 			// Find/Spawn and initialize main menu UI group:
-			/*
+			RectTransform uiCanvas = GameObject.FindObjectOfType<Canvas>().transform as RectTransform;
 			uiMainMenu = GameObject.FindObjectOfType<UiMainMenuScreen>();
 			if(uiMainMenu == null)
 			{
 				UiMainMenuScreen uiMainPrefab = Resources.Load<UiMainMenuScreen>(uiMainMenuPrefabName);
-				GameObject uiMainGO = Instantiate(uiMainPrefab.gameObject, uiCanvas) as GameObject;
+				Debug.Log(uiMainPrefab.name);
+				GameObject uiMainGO = MonoBehaviour.Instantiate(uiMainPrefab.gameObject, uiCanvas) as GameObject;
 				uiMainMenu = uiMainGO.GetComponent<UiMainMenuScreen>();
 			}
 			uiMainMenu.initialize();
-			*/
 
 			//...
-
-			// Switch to main menu state right away:
-			setState(MainMenuState.MainMenu);
 
 			return true;
 		}
 		public override void shutdown ()
 		{
-			//...
+			if(uiMainMenu != null)
+			{
+				MonoBehaviour.Destroy(uiMainMenu.gameObject);
+				uiMainMenu = null;
+			}
 		}
 
 		public override Gamestate[] getAllowedStates ()
 		{
 			return allowedStatesMainMenu;
-		}
-
-		public bool setState(MainMenuState newState)
-		{
-			if(newState == state)
-			{
-				Debug.LogError("StateMachineMainMenu: Error! State '" + newState.ToString() + "' already active!");
-				return false;
-			}
-
-			//...
-
-			state = newState;
-
-			// Update state in UI group as well:
-			/*
-			if(uiMainMenu != null)
-			{
-				uiMainMenu.setState(state);
-			}
-			*/
-
-			return true;
 		}
 
 		#endregion

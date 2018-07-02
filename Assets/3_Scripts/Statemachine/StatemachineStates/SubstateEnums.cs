@@ -15,16 +15,4 @@ namespace Game
 		NextLevel,		// Passage between levels, upgrades, score, etc.
 		GameOver,		// Player has lost the game.
 	}
-
-	/// <summary>
-	/// Main menu statemachine states.
-	/// </summary>
-	public enum MainMenuState
-	{
-		None,
-
-		MainMenu,		// Main menu screen, allowing navigation to all other states.
-		Credits,		// Credits screen.
-		Settings		// Settings and options menu.
-	}
 }

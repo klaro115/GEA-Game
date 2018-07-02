@@ -43,6 +43,8 @@ namespace Game
 			case Gamestate.Ingame:
 				instance = new StatemachineStateIngame();
 				break;
+			case Gamestate.Quit:
+				return null;
 			// TODO: add instance creation for further states. (primarily ingame)
 			default:
 				Debug.LogError("StateMachineState: Error! Unknown game state: " + state.ToString());
