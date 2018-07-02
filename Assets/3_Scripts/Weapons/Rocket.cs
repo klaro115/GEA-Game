@@ -19,9 +19,6 @@ namespace Game.Weapons
 
 		// TODO: Add explosion effect prefab.
 
-		[System.NonSerialized]
-		public bool destroyed = false;
-
 		#endregion
 		#region Fields Static
 
@@ -44,8 +41,6 @@ namespace Game.Weapons
 
 			// Set the rocket's layer to match its 'owner': (used in collision detection)
 			gameObject.layer = LayerMask.NameToLayer(fromPlayer ? layerNamePlayer : layerNameEnemy);
-
-			destroyed = false;
 
 			// Find a new homing target:
 			StatemachineStateIngame state = StatemachineStateIngame.getStatemachine();
@@ -81,11 +76,6 @@ namespace Game.Weapons
 			if(!Statemachine.IsIngame)
 			{
 				rig.velocity = Vector2.zero;
-				return;
-			}
-			if(destroyed)
-			{
-				selfDestruct();
 				return;
 			}
 
@@ -134,15 +124,10 @@ namespace Game.Weapons
 
 		private void selfDestruct()
 		{
-			destroyed = true;
-
-			// Tell projectile handler to get rid of any references to this instance:
-			ProjectileHandler.unregisterRocket(this);
-
 			// TODO: Spawn an explosion in the rocket's current position.
 
-			// Self destruct immediately on a hit:
-			Destroy(gameObject);
+			// Fake a destruct on a hit, by simply deactivating this gameObject:
+			gameObject.SetActive(false);
 		}
 
 		#endregion

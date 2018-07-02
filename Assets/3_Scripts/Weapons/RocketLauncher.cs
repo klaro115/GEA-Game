@@ -9,8 +9,6 @@ namespace Game.Weapons
 
 		private float lastShotTime = -1.0f;
 
-		public Rocket rocketPrefab = null;
-
 		public bool playerControlled = false;
 
 
@@ -27,7 +25,7 @@ namespace Game.Weapons
 			lastShotTime = gameTime;
 
 			// Request projectile handler to spawn and simulate a new rocket instance:
-			ProjectileHandler.spawnRocket(transform.position, transform.up, rocketPrefab, playerControlled);
+			ProjectileHandler.spawnRocket(transform.position, transform.up, playerControlled);
 		}
 
 		#endregion
