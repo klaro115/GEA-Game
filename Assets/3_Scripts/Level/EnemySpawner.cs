@@ -19,6 +19,7 @@ namespace Game
 			public SpawnEventType type;	// The type of event this represents.
 			public Enemy enemyPrefab;	// Which enemy to spawn if this is a spawn event.
 			public Wave nextWave;		// Which wave to start if this is a wave event.
+			public FlightBehaviour flightBehav;	// Which flight behaviour to assign to a spawned enemy.
 			public float timestamp;
 		}
 
@@ -83,7 +84,7 @@ namespace Game
 				switch (timelineEvent.type)
 				{
 				case SpawnEventType.SpawnEnemy:
-					spawnEnemy(timelineEvent.enemyPrefab);
+					spawnEnemy(timelineEvent.enemyPrefab, timelineEvent.flightBehav);
 					break;
 				case SpawnEventType.NextWave:
 					startWave(timelineEvent.nextWave);
@@ -173,6 +174,7 @@ namespace Game
 					SpawnEvent spawnEvent = new SpawnEvent();
 					spawnEvent.type = SpawnEventType.SpawnEnemy;
 					spawnEvent.enemyPrefab = enemy;
+					spawnEvent.flightBehav = wse.flightBehaviour;
 					spawnEvent.timestamp = timestamp;
 
 					eventTimeline.Add(spawnEvent);
@@ -182,7 +184,7 @@ namespace Game
 			return true;
 		}
 		
-		private static void spawnEnemy(Enemy enemyPrefab)
+		private static void spawnEnemy(Enemy enemyPrefab, FlightBehaviour flightBehav)
 		{
 			if(enemyPrefab == null)
 			{
@@ -194,7 +196,13 @@ namespace Game
 			GameObject enemyGO = MonoBehaviour.Instantiate(enemyPrefab.gameObject) as GameObject;
 			Enemy enemy = enemyGO.GetComponent<Enemy>();
 
-			//Debug.Log("TEST: Spawned enemy: " + enemy.name);
+			// If no flight behaviour was given, create a new instance, to prevent null exceptions:
+			if(flightBehav == null)
+			{
+				flightBehav = ScriptableObject.CreateInstance<FlightBehaviour>();
+				flightBehav.waypoints = new Vector2[2] { new Vector2(-1,1), new Vector2(1,-1) };
+			}
+//			enemy.flightBehaviour = flightBehav;	//TODO: uncomment once behaviours adapted in enemy.
 
 			// Register newly spawned enemy with the ingame submachine:
 			StatemachineStateIngame ingameState = Statemachine.CurrentState as StatemachineStateIngame;
