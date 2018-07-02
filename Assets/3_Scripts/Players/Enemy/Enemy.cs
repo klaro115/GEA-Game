@@ -21,6 +21,7 @@ namespace Game
 		// The min. distance to a checkpoint to mark it as reached
 		protected float checkpointReachedDistance = 0.5f;
     protected Vector2 flightDirection;
+    protected string[] itemPool = new string[] {"HITPOINTS_PLUS", "MOD_CROSS_PLUS", "MOD_SPLIT_PLUS", "TYPE_MG", "TYPE_LASER"};
     // TODO: Remove if Rotating the whole GameObject isnt necessary anymore
     protected GameObject player;
     #endregion
@@ -37,7 +38,7 @@ namespace Game
       Vector3 size = new Vector3(radius * 2, radius * 2, radius * 2);
       this.transform.localScale = size;
 
-      // Calculate routes 
+      // Calculate routes
       translateFlightCoords();
       lastCheckpointIndex = flightBehaviour.Length - 1;
       transform.position = flightBehaviour[0];
@@ -54,7 +55,10 @@ namespace Game
       }
       else if (isDead())
       {
+        // Spawn points item (coins)
         this.spawnPoints(this.points);
+        // Check if an item will drop, an spawn a random item if true
+        this.itemRoll(this.dropRate);
       }
       else
       {
@@ -103,8 +107,8 @@ namespace Game
       Vector3 target = player.transform.position;
       transform.rotation = alignToTarget(transform.position, target);
     }
-        
-    
+
+
     protected bool hasReachedLastCheckpoint()
     {
         return (checkpointIndex >= lastCheckpointIndex);
@@ -122,6 +126,26 @@ namespace Game
       Item itemPoints = Instantiate(itemPointsPrefab, transform.position, Quaternion.identity);
       itemPoints.value = this.points;
       Destroy(this.gameObject);
+    }
+
+    private void itemRoll(float dropRate)
+    {
+      //Random random = new Random();
+      // Roll whether an item drops using the given dropRate as %
+      double dropRoll = Random.Range(0.0f, 1.0f);
+      if (dropRoll < 1.0 - dropRate) 
+      {
+        Debug.Log("ITEMROLL: " + dropRoll);
+        return;
+      }
+      // calculate index of the item to drop of itemPool
+      int itemIndex = Random.Range(0, itemPool.Length);
+      // if random.NextDouble() == 1, itemIndex is too high -> set to 0
+      if (itemIndex >= itemPool.Length) itemIndex = 0;
+      string item = itemPool[itemIndex];
+      Debug.Log("ITEMSPAWN: " + item);
+      // load prefab
+      // spawn item
     }
     #endregion
   }
