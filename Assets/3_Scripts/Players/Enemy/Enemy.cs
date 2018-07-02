@@ -130,7 +130,6 @@ namespace Game
 
     private void itemRoll(float dropRate)
     {
-      //Random random = new Random();
       // Roll whether an item drops using the given dropRate as %
       double dropRoll = Random.Range(0.0f, 1.0f);
       if (dropRoll < 1.0 - dropRate) 
@@ -142,10 +141,12 @@ namespace Game
       int itemIndex = Random.Range(0, itemPool.Length);
       // if random.NextDouble() == 1, itemIndex is too high -> set to 0
       if (itemIndex >= itemPool.Length) itemIndex = 0;
-      string item = itemPool[itemIndex];
-      Debug.Log("ITEMSPAWN: " + item);
-      // load prefab
-      // spawn item
+      string itemName = itemPool[itemIndex];
+      // Load the prefab of the item to spawn
+      Item itemPrefab = Resources.Load<Item>(itemName);
+      // Spawn the item
+      Item item = Instantiate(itemPrefab, transform.position, Quaternion.identity);    
+      Debug.Log("ITEMSPAWN: " + itemName);
     }
     #endregion
   }
