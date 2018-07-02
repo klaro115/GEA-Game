@@ -192,7 +192,7 @@ namespace Game.Weapons
 			for(int i = 0; i < rockets.Length; ++i)
 			{
 				Rocket rocket = rockets[i];
-				if(rocket != null && rocket.gameObject.activeSelf)
+				if(rocket != null && !rocket.gameObject.activeSelf)
 				{
 					// Activate rocket and initialize behaviour:
 					rocket.gameObject.SetActive(true);
