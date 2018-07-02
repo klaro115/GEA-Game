@@ -32,9 +32,23 @@ namespace Game.Items
         case "POINTS": 
           StatemachineStateIngame.getStatemachine().addScore(this.pointsValue);
           break;
+        case "HITPOINTS_PLUS":           
+          StatemachineStateIngame.getStatemachine().Player.incHitpoints();
+          break;
+        case "MOD_CROSS_PLUS": 
+          StatemachineStateIngame.getStatemachine().Player.incModCrossLevel();
+          break;
+        case "MOD_SCATTER_PLUS":
+          StatemachineStateIngame.getStatemachine().Player.incModScatterLevel();
+          break;
+        case "TYPE_MG":
+          break;
+        case "TYPE_LASER":
+          break;
+        default: 
+          Debug.Log("Item.type" + type + " unknown.");
+          break;
       }
-
-
       Destroy(gameObject);
     }
     #endregion

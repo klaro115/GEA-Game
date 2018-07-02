@@ -13,7 +13,7 @@ namespace Game
 		// The points the player receives when this enemy is destroyed
 		public int points = 100;
 		// The rate of powerUp items to be dropped
-		public float dropRate = 0.10f;
+		public float dropRate = 0.5f;
 		// The current checkpoint index (of flightBehaviour)
 		protected int checkpointIndex = 0;
 		// The index for the last Checkpoint
@@ -21,7 +21,7 @@ namespace Game
 		// The min. distance to a checkpoint to mark it as reached
 		protected float checkpointReachedDistance = 0.5f;
     protected Vector2 flightDirection;
-    protected string[] itemPool = new string[] {"HITPOINTS_PLUS", "MOD_CROSS_PLUS", "MOD_SPLIT_PLUS", "TYPE_MG", "TYPE_LASER"};
+    protected string[] itemPool = new string[] {"HITPOINTS_PLUS", "MOD_CROSS_PLUS", "MOD_SCATTER_PLUS", "TYPE_MG", "TYPE_LASER"};
     // TODO: Remove if Rotating the whole GameObject isnt necessary anymore
     protected GameObject player;
     #endregion

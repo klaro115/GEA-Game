@@ -94,16 +94,50 @@ namespace Game
 			}
 		}
 	
-	  public override void applyDamage(int dmg)
-    {
-      // Only allow player to repeatedly take damage after a cooldown period has passed:
-      if(Time.time > damageCooldown + lastDamageReceivedTime)
-      {
-        lastDamageReceivedTime = Time.time;
-        // Debug.Log("Player Hit! " + this.hitpoints + " left.");
-        this.hitpoints -= dmg;
-      }
-    }
+	  	public override void applyDamage(int dmg)
+		{
+			// Only allow player to repeatedly take damage after a cooldown period has passed:
+			if(Time.time > damageCooldown + lastDamageReceivedTime)
+			{
+				lastDamageReceivedTime = Time.time;
+				// Debug.Log("Player Hit! " + this.hitpoints + " left.");
+				this.hitpoints -= dmg;
+			}
+		}
+		
+		public void incHitpoints()
+		{
+			hitpoints += 1;
+		}
+
+		public void incModCrossLevel()
+		{
+			if(mainWeapons[0].modifier.type == Weapons.WeaponModifierType.CrossShot)
+			{
+				mainWeapons[0].modifier.level += 1;
+			}else
+			{
+				mainWeapons[0].modifier.type = Weapons.WeaponModifierType.CrossShot;
+				mainWeapons[0].modifier.level = 1;
+			}
+		}
+
+		public void incModScatterLevel()
+		{
+			if(mainWeapons[0].modifier.type == Weapons.WeaponModifierType.ScatterShot)
+			{
+				mainWeapons[0].modifier.level += 1;
+			}else
+			{
+				mainWeapons[0].modifier.type = Weapons.WeaponModifierType.ScatterShot;
+				mainWeapons[0].modifier.level = 1;
+			}
+		}
+
+		public void setWeaponType(string type)
+		{
+
+		}
 
 		void OnCollisionEnter2D(Collision2D collision)
 		{
