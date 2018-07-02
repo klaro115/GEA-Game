@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - enemy: {fileID: 114820654057787156, guid: f5fe9ee8c9b2cb447a0d69642165f111, type: 2}
+    flightBehaviour: {fileID: 11400000, guid: aeae792264a3f4a06a053ad523095b4c, type: 2}
     spawnInterval: 0
