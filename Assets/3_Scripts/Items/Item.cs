@@ -27,26 +27,29 @@ namespace Game.Items
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-      switch(type) 
+      Player player = StatemachineStateIngame.getStatemachine().Player;
+      switch (type) 
       {
-        case "POINTS": 
+        case "POINTS":
           StatemachineStateIngame.getStatemachine().addScore(this.pointsValue);
           break;
-        case "HITPOINTS_PLUS":           
-          StatemachineStateIngame.getStatemachine().Player.incHitpoints();
+        case "HITPOINTS_PLUS":
+          player.incHitpoints();
           break;
-        case "MOD_CROSS_PLUS": 
-          StatemachineStateIngame.getStatemachine().Player.incModCrossLevel();
+        case "MOD_CROSS_PLUS":
+          player.incModCrossLevel();
           break;
         case "MOD_SCATTER_PLUS":
-          StatemachineStateIngame.getStatemachine().Player.incModScatterLevel();
+          player.incModScatterLevel();
           break;
         case "TYPE_MG":
+          player.setWeaponType(type);
           break;
         case "TYPE_LASER":
+          player.setWeaponType(type);
           break;
         default: 
-          Debug.Log("Item.type" + type + " unknown.");
+          Debug.Log("Item.type " + type + " unknown.");
           break;
       }
       Destroy(gameObject);

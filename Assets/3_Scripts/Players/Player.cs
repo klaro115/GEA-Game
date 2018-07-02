@@ -134,10 +134,33 @@ namespace Game
 			}
 		}
 
-		public void setWeaponType(string type)
-		{
-
-		}
+    // Set the players main weapon type to the given type
+    public void setWeaponType(string type)
+    {
+      Weapon currentWeapon = mainWeapons[0];
+      Weapon newWeapon = null;
+      // Switch over possible Weapon types
+      switch (type)
+      {
+        case "TYPE_MG":
+          // TODO: Switch weapon type to MG
+          Debug.Log("Switching to MG");
+          break;
+        case "TYPE_LASER":
+          // TODO: Switch weapon type to Laser
+          Debug.Log("Switching to Laser");
+          break;
+        default:
+          Debug.Log("Weapon.type " + type + " unknown.");
+          break;
+      }
+      if(newWeapon != null)
+      {
+        newWeapon.modifier = currentWeapon.modifier;
+        Destroy(currentWeapon);
+        mainWeapons[0] = newWeapon;
+      }
+    }
 
 		void OnCollisionEnter2D(Collision2D collision)
 		{

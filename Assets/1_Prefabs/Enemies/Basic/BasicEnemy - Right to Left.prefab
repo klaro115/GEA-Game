@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a374050bb61bb48e7b2cea5982e80317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainWeapon: {fileID: 0}
-  secWeapon: {fileID: 0}
+  mainWeapons: []
+  secWeapons: []
   hitpoints: 1
   baseSpeed: 5
   radius: 0.4
@@ -107,7 +107,7 @@ MonoBehaviour:
   - {x: 1, y: 0}
   - {x: -1, y: 0}
   points: 10
-  dropRate: 0.05
+  dropRate: 0.5
 --- !u!212 &212999907436167760
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -117,9 +117,11 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -132,6 +134,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
