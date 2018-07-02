@@ -13,7 +13,7 @@ namespace Game
 		// The points the player receives when this enemy is destroyed
 		public int points = 100;
 		// The rate of powerUp items to be dropped
-		public float dropRate = 0.05f;
+		public float dropRate = 0.10f;
 		// The current checkpoint index (of flightBehaviour)
 		protected int checkpointIndex = 0;
 		// The index for the last Checkpoint

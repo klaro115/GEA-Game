@@ -14,7 +14,7 @@ namespace Game.Items
     // Use this for initialization
     void Start()
     {
-      GetComponent<Rigidbody2D>().velocity = Vector3.up;
+      // GetComponent<Rigidbody2D>().velocity = Vector3.up;
     }
 
     // Update is called once per frame
