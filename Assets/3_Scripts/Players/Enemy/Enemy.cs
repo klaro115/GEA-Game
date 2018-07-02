@@ -124,7 +124,8 @@ namespace Game
     {
       Item itemPointsPrefab = Resources.Load<Item>("Points");
       Item itemPoints = Instantiate(itemPointsPrefab, transform.position, Quaternion.identity);
-      itemPoints.value = this.points;
+      itemPoints.pointsValue = this.points;
+      itemPoints.type = "POINTS";
       Destroy(this.gameObject);
     }
 
@@ -134,7 +135,7 @@ namespace Game
       double dropRoll = Random.Range(0.0f, 1.0f);
       if (dropRoll < 1.0 - dropRate) 
       {
-        Debug.Log("ITEMROLL: " + dropRoll);
+        //Debug.Log("ITEMROLL: " + dropRoll);
         return;
       }
       // calculate index of the item to drop of itemPool
@@ -145,8 +146,10 @@ namespace Game
       // Load the prefab of the item to spawn
       Item itemPrefab = Resources.Load<Item>(itemName);
       // Spawn the item
-      Item item = Instantiate(itemPrefab, transform.position, Quaternion.identity);    
-      Debug.Log("ITEMSPAWN: " + itemName);
+      Item item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
+      item.type = itemName;
+      item.pointsValue = 0;
+      //Debug.Log("ITEMSPAWN: " + itemName);
     }
     #endregion
   }

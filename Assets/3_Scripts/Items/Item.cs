@@ -6,7 +6,8 @@ namespace Game.Items
   public class Item : MonoBehaviour
   {
     #region Fields
-    public int value = 10;
+    public int pointsValue = 10;
+    public string type = "POINTS";
     #endregion
 
     #region Methods
@@ -26,7 +27,14 @@ namespace Game.Items
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-      StatemachineStateIngame.getStatemachine().addScore(this.value);
+      switch(type) 
+      {
+        case "POINTS": 
+          StatemachineStateIngame.getStatemachine().addScore(this.pointsValue);
+          break;
+      }
+
+
       Destroy(gameObject);
     }
     #endregion
