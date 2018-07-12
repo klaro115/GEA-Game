@@ -26,7 +26,7 @@ namespace Game.Weapons
 		{
 			float gameTime = StatemachineStateIngame.getStatemachine().GameTime;
 
-			if(gameTime > lastBlastTime + fireInterval+0.01f && beamEffect != null)
+			if(gameTime > lastBlastTime + fireInterval && beamEffect != null)
 			{
 				beamEffect.enabled = false;
 			}
