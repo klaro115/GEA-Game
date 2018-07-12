@@ -14,6 +14,9 @@ namespace Game
 		public float damageCooldown = 0.1f;	// Minimum time span where damage is ignored after taking a hit.
 		private float lastDamageReceivedTime = 0.0f;	// Time when the player last took damage.
 
+		private static readonly string weaponPrefabMachinegun = "Machinegun";
+		private static readonly string weaponPrefabLaser = "Lasergun";
+
 		#endregion
 		#region Methods
 
@@ -138,29 +141,48 @@ namespace Game
     public void setWeaponType(string type)
     {
       Weapon currentWeapon = mainWeapons[0];
-      Weapon newWeapon = null;
+			Weapon newWeaponPrefab = null;
       // Switch over possible Weapon types
       switch (type)
       {
         case "TYPE_MG":
-          // TODO: Switch weapon type to MG
-          Debug.Log("Switching to MG");
+          		// Switch weapon type to MG:
+				{
+					Debug.Log("Switching to MG");
+					if(currentWeapon.GetType() == typeof(Machinegun)) break;
+					newWeaponPrefab = Resources.Load<Weapon>(weaponPrefabMachinegun);
+				}
           break;
         case "TYPE_LASER":
-          // TODO: Switch weapon type to Laser
-          Debug.Log("Switching to Laser");
+				// Switch weapon type to Laser:
+				{
+					Debug.Log("Switching to Laser");
+					if(currentWeapon.GetType() == typeof(Lasergun)) break;
+					newWeaponPrefab = Resources.Load<Weapon>(weaponPrefabLaser);
+				}
           break;
         default:
           Debug.Log("Weapon.type " + type + " unknown.");
           break;
       }
-      if(newWeapon != null)
-      {
-        newWeapon.modifier = currentWeapon.modifier;
-        Destroy(currentWeapon);
-        mainWeapons[0] = newWeapon;
-      }
-    }
+				
+			if(newWeaponPrefab != null)
+			{
+				// Spawn new weapon in the same location and rotation as current weapon:
+				Transform curWepTrans = currentWeapon.transform;
+				GameObject newWeaponGO = Instantiate(newWeaponPrefab.gameObject,
+					curWepTrans.position, curWepTrans.rotation, curWepTrans.parent) as GameObject;
+				Weapon newWeapon = newWeaponGO.GetComponent<Weapon>();
+
+				// Assign new weapon and discard previous one:
+				if(newWeapon != null)
+				{
+					newWeapon.modifier = currentWeapon.modifier;
+					Destroy(currentWeapon.gameObject);
+					mainWeapons[0] = newWeapon;
+				}
+			}
+		}
 
 		void OnCollisionEnter2D(Collision2D collision)
 		{
