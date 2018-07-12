@@ -7,9 +7,10 @@ namespace Game
 {
 	public class Enemy : Character
 	{
-		#region Fields
-		// The moving path for this enemy
-		public Vector2[] flightBehaviour = new Vector2[2] { new Vector2(-1,1), new Vector2(1,-1) };
+    #region Fields
+    // The moving path for this enemy
+    //public Vector2[] flightBehaviour = new Vector2[2] { new Vector2(-1,1), new Vector2(1,-1) };
+    public FlightBehaviour flightBehaviour = null;
 		// The points the player receives when this enemy is destroyed
 		public int points = 100;
 		// The rate of powerUp items to be dropped
@@ -40,8 +41,9 @@ namespace Game
 
       // Calculate routes
       translateFlightCoords();
-      lastCheckpointIndex = flightBehaviour.Length - 1;
-      transform.position = flightBehaviour[0];
+      lastCheckpointIndex = flightBehaviour.waypoints.Length - 1;
+      transform.position = flightBehaviour.waypoints[0];
+      Debug.Log(transform.position.ToString());
     }
 
 		protected override void Update ()
@@ -82,22 +84,22 @@ namespace Game
         protected void translateFlightCoords()
 		{
 			// Translate Flightbehaviour params to screenspace
-			for(int i = 0; i < flightBehaviour.Length; ++i) {
-			  flightBehaviour[i].x = flightBehaviour[i].x * screenSpace.x;
-			  flightBehaviour[i].y = flightBehaviour[i].y * screenSpace.y;
+			for(int i = 0; i < flightBehaviour.waypoints.Length; ++i) {
+			  flightBehaviour.waypoints[i].x = flightBehaviour.waypoints[i].x * screenSpace.x;
+			  flightBehaviour.waypoints[i].y = flightBehaviour.waypoints[i].y * screenSpace.y;
 			}
 		}
 
     // Checks whether a checkpoint is reached
 		protected bool checkpointReached()
 		{
-			return (((Vector2)transform.position - flightBehaviour[checkpointIndex + 1]).magnitude < checkpointReachedDistance);
+			return (((Vector2)transform.position - flightBehaviour.waypoints[checkpointIndex + 1]).magnitude < checkpointReachedDistance);
 		}
 
 		protected void move()
 		{
 
-			flightDirection = (flightBehaviour[checkpointIndex + 1] - flightBehaviour[checkpointIndex]).normalized;
+			flightDirection = (flightBehaviour.waypoints[checkpointIndex + 1] - flightBehaviour.waypoints[checkpointIndex]).normalized;
 
       transform.position += baseSpeed * (Vector3)flightDirection * Time.deltaTime;
 

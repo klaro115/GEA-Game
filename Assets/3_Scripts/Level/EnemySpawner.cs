@@ -202,7 +202,7 @@ namespace Game
 				flightBehav = ScriptableObject.CreateInstance<FlightBehaviour>();
 				flightBehav.waypoints = new Vector2[2] { new Vector2(-1,1), new Vector2(1,-1) };
 			}
-//			enemy.flightBehaviour = flightBehav;	//TODO: uncomment once behaviours adapted in enemy.
+      enemy.flightBehaviour = Object.Instantiate(flightBehav);
 
 			// Register newly spawned enemy with the ingame submachine:
 			StatemachineStateIngame ingameState = Statemachine.CurrentState as StatemachineStateIngame;
