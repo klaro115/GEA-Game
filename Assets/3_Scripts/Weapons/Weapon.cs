@@ -10,6 +10,8 @@ namespace Game.Weapons
 		public float fireInterval;
 		public WeaponModifier modifier = WeaponModifier.Default;
 
+		public bool playerControlled = false;
+
 		#endregion
 		#region Methods
 

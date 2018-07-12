@@ -9,9 +9,6 @@ namespace Game.Weapons
 
 		private float lastShotTime = -1.0f;
 
-		public bool playerControlled = false;
-
-
 		#endregion
 		#region Methods
 

@@ -12,8 +12,6 @@ namespace Game.Weapons
 		public int damage = 1;
 		public float range = 20.0f;
 
-		public bool playerControlled = false;
-
 		public SpriteRenderer beamEffect = null;
 		public float beamEffectExtraLength = 2.5f;
 
