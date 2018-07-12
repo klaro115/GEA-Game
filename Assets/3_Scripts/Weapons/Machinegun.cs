@@ -12,15 +12,25 @@ namespace Game.Weapons
 		public int damage = 1;
 		public float projectileSpeed = 10.0f;
 
-		#endregion
-		#region Methods
+    AudioClip soundMGShot = null;
 
-		public override void fire ()
+    #endregion
+    #region Methods
+
+    private void Start()
+    {
+      string soundFileName = playerControlled ? "mg-shot" : "enemy-mg-shot";
+      soundMGShot = Resources.Load<AudioClip>(soundFileName); 
+    }
+
+    public override void fire ()
 		{
 			float gameTime = StatemachineStateIngame.getStatemachine().GameTime;
 
 			// Allow firing again after a minimum time interval between shots has passed:
 			if(gameTime < lastShotTime + fireInterval) return;
+
+      audioSource.PlayOneShot(soundMGShot);
 
 			lastShotTime = gameTime;
 
