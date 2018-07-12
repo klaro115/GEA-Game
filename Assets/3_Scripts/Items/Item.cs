@@ -30,7 +30,6 @@ namespace Game.Items
     private void OnTriggerEnter2D(Collider2D collision)
     {
       Player player = StatemachineStateIngame.getStatemachine().Player;
-      type = "TYPE_LASER";
       switch (type) 
       {
         case "POINTS":
