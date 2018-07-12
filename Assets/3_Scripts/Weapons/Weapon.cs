@@ -12,20 +12,9 @@ namespace Game.Weapons
 
     public bool playerControlled = false;
 
-    protected AudioSource audioSource = null;
-
     #endregion
     #region Methods
 
-    private void Awake()
-    {
-      this.initAudioSource();
-    }
-
-    virtual protected void initAudioSource()
-    {
-      audioSource = transform.GetComponentInParent<AudioSource>();
-    }
     public abstract void fire();
 
 		#endregion

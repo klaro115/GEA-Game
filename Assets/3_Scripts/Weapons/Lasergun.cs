@@ -18,12 +18,13 @@ namespace Game.Weapons
 
 		private RaycastHit2D[] rayHits = new RaycastHit2D[1] { new RaycastHit2D() };
 
+    AudioSource audioSource = null;
     AudioClip soundLaserShot = null;
 
     #endregion
     #region Methods
 
-    override protected void initAudioSource()
+    protected void initAudioSource()
     {
       // Set an extra audiosource
       audioSource = transform.GetComponent<AudioSource>();

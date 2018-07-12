@@ -30,7 +30,7 @@ namespace Game.Weapons
 			// Allow firing again after a minimum time interval between shots has passed:
 			if(gameTime < lastShotTime + fireInterval) return;
 
-      audioSource.PlayOneShot(soundMGShot);
+      SoundHandler.playOneShot(soundMGShot);
 
 			lastShotTime = gameTime;
 
