@@ -153,7 +153,7 @@ namespace Game
       // Determine wheter this enemy drops an item.
       if (!this.itemRoll(this.dropRate)) return;
       // calculate index of the item to drop of itemPool
-      int itemIndex = Random.Range(0, itemPool.Length - 1);
+      int itemIndex = Random.Range(0, itemPool.Length);
       // Get the item name from itemPool
       string itemName = itemPool[itemIndex];
       // Load the prefab of the item to spawn

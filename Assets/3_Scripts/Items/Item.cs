@@ -17,23 +17,7 @@ namespace Game.Items
     {
       // Some very basic random strat velocity to prevent stacking of items
       int velocityRoll = Random.Range(0, 3);
-      switch (velocityRoll)
-      {
-        case (0):
-          GetComponent<Rigidbody2D>().velocity = Vector3.up;
-          break;
-        case (1):
-          GetComponent<Rigidbody2D>().velocity = Vector3.left;
-          break;
-        case (2):
-          GetComponent<Rigidbody2D>().velocity = Vector3.right;
-          break;
-        case (3):
-          // No extra velocity
-          break;
-        default:
-          break;
-      }
+      GetComponent<Rigidbody2D>().velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
     }
 
     // Update is called once per frame
