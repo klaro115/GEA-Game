@@ -182,9 +182,9 @@ MonoBehaviour:
   modifier:
     type: 0
     level: 0
+  playerControlled: 0
   damage: 1
   range: 10
-  playerControlled: 1
   beamEffect: {fileID: 212614834898578964}
   beamEffectExtraLength: 2.5
 --- !u!212 &212218872782650844

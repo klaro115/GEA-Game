@@ -12,8 +12,6 @@ namespace Game.Weapons
 		public int damage = 1;
 		public float projectileSpeed = 10.0f;
 
-		public bool playerControlled = false;
-
 		#endregion
 		#region Methods
 

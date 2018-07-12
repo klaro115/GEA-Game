@@ -192,6 +192,7 @@ namespace Game
 				GameObject newWeaponGO = Instantiate(newWeaponPrefab.gameObject,
 					curWepTrans.position, curWepTrans.rotation, curWepTrans.parent) as GameObject;
 				Weapon newWeapon = newWeaponGO.GetComponent<Weapon>();
+				newWeapon.playerControlled = true;
 
 				// Assign new weapon and discard previous one:
 				if(newWeapon != null)
