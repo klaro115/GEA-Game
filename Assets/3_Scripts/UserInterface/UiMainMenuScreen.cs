@@ -43,6 +43,9 @@ namespace Game.UI
 		public UiLoadingScreen loadingScreen = new UiLoadingScreen() { parent=null, uiProgressBar=null };
 		//...
 
+		private AudioClip audioButtonPress = null;
+		private AudioClip audioNewGame = null;
+
 		#endregion
 		#region Methods
 
@@ -50,11 +53,20 @@ namespace Game.UI
 		{
 			//...
 
+			// Load sound effects:
+			audioButtonPress = Resources.Load<AudioClip>("menu-button");
+			audioNewGame = Resources.Load<AudioClip>("menu-new-game");
+
+			// Set initial menu state:
 			setMenuState(MenuState.MainMenu);
 		}
 
 		public void shutdown()
 		{
+			// Unload resources:
+			if(audioButtonPress != null) Resources.UnloadAsset(audioButtonPress);
+			if(audioNewGame != null) Resources.UnloadAsset(audioNewGame);
+
 			//...
 		}
 
@@ -95,14 +107,17 @@ namespace Game.UI
 
 		public void uiButtonNewGame()
 		{
+			SoundHandler.playOneShot(audioNewGame);
 			setMenuState(MenuState.LoadingScreen);
 		}
 		public void uiButtonCredits()
 		{
+			SoundHandler.playOneShot(audioButtonPress);
 			setMenuState(MenuState.Credits);
 		}
 		public void uiButtonQuit()
 		{
+			SoundHandler.playOneShot(audioButtonPress);
 			setMenuState(MenuState.Quit);
 		}
 
@@ -116,6 +131,7 @@ namespace Game.UI
 
 		public void uiButtonBackToMain()
 		{
+			SoundHandler.playOneShot(audioButtonPress);
 			setMenuState(MenuState.MainMenu);
 		}
 

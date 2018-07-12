@@ -56,7 +56,10 @@ namespace Game
 
 		public static void playOneShot(AudioClip clip, float volume = 1.0f)
 		{
-			audioPlayer.PlayOneShot(clip, volume);
+			if(clip != null)
+			{
+				audioPlayer.PlayOneShot(clip, volume);
+			}
 		}
 
 		public static void playBackgroundMusic(AudioClip track)
