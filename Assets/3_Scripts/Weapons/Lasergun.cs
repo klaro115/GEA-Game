@@ -3,6 +3,7 @@ using System.Collections;
 
 namespace Game.Weapons
 {
+  [RequireComponent(typeof(AudioSource))]
 	public class Lasergun : Weapon
 	{
 		#region Fields
@@ -19,27 +20,40 @@ namespace Game.Weapons
 
 		private RaycastHit2D[] rayHits = new RaycastHit2D[1] { new RaycastHit2D() };
 
-		#endregion
-		#region Methods
+    AudioClip soundLaserShot = null;
 
-		void LateUpdate()
+    #endregion
+    #region Methods
+
+    override protected void initAudioSource()
+    {
+      // Set an extra audiosource
+      audioSource = transform.GetComponent<AudioSource>();
+      audioSource.clip = Resources.Load<AudioClip>("laser-shot");
+      audioSource.loop = true;
+    }
+
+    void LateUpdate()
 		{
 			float gameTime = StatemachineStateIngame.getStatemachine().GameTime;
 
 			if(gameTime > lastBlastTime + fireInterval && beamEffect != null)
 			{
+        audioSource.Stop();
 				beamEffect.enabled = false;
 			}
 		}
 
 		public override void fire ()
 		{
-			float gameTime = StatemachineStateIngame.getStatemachine().GameTime;
+      float gameTime = StatemachineStateIngame.getStatemachine().GameTime;
 
 			// Allow firing again after a minimum time interval between shots has passed:
 			if(gameTime < lastBlastTime + fireInterval) return;
 
-			lastBlastTime = gameTime;
+      audioSource.Play();
+
+      lastBlastTime = gameTime;
 
 			Vector2 muzzlePos = transform.position;
 			Vector2 muzzleDir = transform.up;

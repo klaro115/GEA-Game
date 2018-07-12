@@ -5,3 +5,11 @@ README:
 
 # Purpose:
 Sound files, sound effects, background music and whatnot.
+
+
+Credits:
+UI & Ingame Sounds: 
+
+Red Sky Sounds - Arcade SFX Free
+Bright Shining Star - SciFi UI Sound FX
+SoundBits - Free Sound FX

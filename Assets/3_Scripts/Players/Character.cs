@@ -16,8 +16,17 @@ namespace Game
     public float radius;
     public Vector2 screenSpace;
 
+    // init AudioSource
+    protected AudioSource audioSource = null;
+
     #endregion
     #region Methods
+
+    private void Awake()
+    {
+      // Set AudioSource
+      audioSource = GetComponent<AudioSource>();
+    }
 
     protected abstract void Update();
 

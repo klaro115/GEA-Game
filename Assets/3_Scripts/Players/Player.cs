@@ -14,17 +14,28 @@ namespace Game
 		public float damageCooldown = 0.1f;	// Minimum time span where damage is ignored after taking a hit.
 		private float lastDamageReceivedTime = 0.0f;	// Time when the player last took damage.
 
-		private static readonly string weaponPrefabMachinegun = "Machinegun";
+    // init AudioClips
+    private AudioClip soundCoinPickup = null;
+    private AudioClip soundWeaponModPickup = null;
+    private AudioClip soundWeaponTypePickup = null;
+    private AudioClip soundHpPickup = null;
+    private AudioClip soundPlayerHit = null;
+
+    private static readonly string weaponPrefabMachinegun = "Machinegun";
 		private static readonly string weaponPrefabLaser = "Lasergun";
-
-		#endregion
-		#region Methods
-
-		protected override void Start ()
-		{
+    #endregion
+    #region Methods
+    
+    protected override void Start ()
+    {
       rig = GetComponent<Rigidbody2D>();
+      // Set AudioClips
+      soundCoinPickup = Resources.Load<AudioClip>("coin-pickup");
+      soundWeaponModPickup = Resources.Load<AudioClip>("coin-pickup");
+      soundWeaponTypePickup = Resources.Load<AudioClip>("weapon-type-pickup");
+      soundHpPickup = Resources.Load<AudioClip>("coin-pickup");
+      soundPlayerHit = Resources.Load<AudioClip>("player-hit");
 
-      
       // Apply scale based on radius
       Vector3 size = new Vector3(radius * 2, radius * 2, radius * 2);
       this.transform.localScale = size;
@@ -102,11 +113,18 @@ namespace Game
 			// Only allow player to repeatedly take damage after a cooldown period has passed:
 			if(Time.time > damageCooldown + lastDamageReceivedTime)
 			{
-				lastDamageReceivedTime = Time.time;
+        audioSource.PlayOneShot(this.soundPlayerHit);
+        lastDamageReceivedTime = Time.time;
 				// Debug.Log("Player Hit! " + this.hitpoints + " left.");
 				this.hitpoints -= dmg;
 			}
 		}
+
+    public void addScore(int value)
+    {
+      audioSource.PlayOneShot(this.soundCoinPickup);
+      StatemachineStateIngame.getStatemachine().addScore(value);
+    }
 		
 		public void incHitpoints()
 		{
@@ -159,17 +177,18 @@ namespace Game
 					Debug.Log("Switching to Laser");
 					if(currentWeapon.GetType() == typeof(Lasergun)) break;
 					newWeaponPrefab = Resources.Load<Weapon>(weaponPrefabLaser);
-				}
+          }
           break;
         default:
           Debug.Log("Weapon.type " + type + " unknown.");
           break;
       }
-				
-			if(newWeaponPrefab != null)
+
+      audioSource.PlayOneShot(soundWeaponTypePickup);
+      if (newWeaponPrefab != null)
 			{
-				// Spawn new weapon in the same location and rotation as current weapon:
-				Transform curWepTrans = currentWeapon.transform;
+        // Spawn new weapon in the same location and rotation as current weapon:
+        Transform curWepTrans = currentWeapon.transform;
 				GameObject newWeaponGO = Instantiate(newWeaponPrefab.gameObject,
 					curWepTrans.position, curWepTrans.rotation, curWepTrans.parent) as GameObject;
 				Weapon newWeapon = newWeaponGO.GetComponent<Weapon>();

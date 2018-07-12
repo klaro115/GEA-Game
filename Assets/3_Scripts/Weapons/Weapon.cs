@@ -10,10 +10,21 @@ namespace Game.Weapons
 		public float fireInterval;
 		public WeaponModifier modifier = WeaponModifier.Default;
 
-		#endregion
-		#region Methods
+    protected AudioSource audioSource = null;
 
-		public abstract void fire();
+    #endregion
+    #region Methods
+
+    private void Awake()
+    {
+      this.initAudioSource();
+    }
+
+    virtual protected void initAudioSource()
+    {
+      audioSource = transform.GetComponentInParent<AudioSource>();
+    }
+    public abstract void fire();
 
 		#endregion
 	}
