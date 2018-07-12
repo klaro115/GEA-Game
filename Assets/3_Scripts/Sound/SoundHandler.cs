@@ -15,7 +15,10 @@ namespace Game
 		#endregion
 		#region Properties
 
-
+		public static AudioSource Source
+		{
+			get { return audioPlayer; } 
+		}
 
 		#endregion
 		#region Methods

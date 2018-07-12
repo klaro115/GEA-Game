@@ -42,6 +42,9 @@ namespace Game
 
 			//...
 
+			// Initialize global static members:
+			SoundHandler.initialize();
+
 			// Load the first game state:
 			return setState(startGameState);
 			// NOTE: Set starting game state to 'ingame' or other values during in-engine testing...
@@ -57,6 +60,9 @@ namespace Game
 				currentState.shutdown();
 				currentState = null;
 			}
+
+			// Terminate global static members:
+			SoundHandler.shutdown();
 
 			//...
 		}
