@@ -58,6 +58,7 @@ namespace Game
         // Spawn points item (coins)
         this.spawnPoints(this.points);
         // Check if an item will drop, an spawn a random item if true
+        this.spawnRandomItem();
         this.itemRoll(this.dropRate);
       }
       else
@@ -129,19 +130,29 @@ namespace Game
       Destroy(this.gameObject);
     }
 
-    private void itemRoll(float dropRate)
+    /**
+     * Determines wheter the enemys drops an item or not. Returns true if it drops an item. Returns false if it does not drop any items.
+     */
+    private bool itemRoll(float dropRate)
     {
       // Roll whether an item drops using the given dropRate as %
       double dropRoll = Random.Range(0.0f, 1.0f);
       if (dropRoll < 1.0 - dropRate) 
       {
         //Debug.Log("ITEMROLL: " + dropRoll);
-        return;
+        return false;
       }
+      return true;
+      
+    }
+
+    private void spawnRandomItem()
+    {
+      // Determine wheter this enemy drops an item.
+      if (!this.itemRoll(this.dropRate)) return;
       // calculate index of the item to drop of itemPool
-      int itemIndex = Random.Range(0, itemPool.Length);
-      // if random.NextDouble() == 1, itemIndex is too high -> set to 0
-      if (itemIndex >= itemPool.Length) itemIndex = 0;
+      int itemIndex = Random.Range(0, itemPool.Length - 1);
+      // Get the item name from itemPool
       string itemName = itemPool[itemIndex];
       // Load the prefab of the item to spawn
       Item itemPrefab = Resources.Load<Item>(itemName);
