@@ -205,6 +205,11 @@ namespace Game.Weapons
 			return false;
 		}
 
+		public static ContactFilter2D getContactFilter(bool forPlayer)
+		{
+			return forPlayer ? contactFilterPlayer : contactFilterEnemy;
+		}
+
 		/// <summary>
 		/// Update the projectile simulation, must be called every frame unless the game is paused.
 		/// </summary>
