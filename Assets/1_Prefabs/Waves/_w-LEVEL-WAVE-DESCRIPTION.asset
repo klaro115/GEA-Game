@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7ad56ffece04a76abe68edfdd7c05a, type: 3}
+  m_Name: _w-LEVEL-WAVE-DESCRIPTION
+  m_EditorClassIdentifier: 
+  enemies:
+  - enemy: {fileID: 114582010875667614, guid: 50352229cffbc5f49ab86ad63c92260e, type: 2}
+    flightBehaviour: {fileID: 11400000, guid: 5221e673fd586437891a50fcfccc9193, type: 2}
+    spawnInterval: 0.5
+  - enemy: {fileID: 114582010875667614, guid: 50352229cffbc5f49ab86ad63c92260e, type: 2}
+    flightBehaviour: {fileID: 11400000, guid: 5221e673fd586437891a50fcfccc9193, type: 2}
+    spawnInterval: 0.5
+  - enemy: {fileID: 114582010875667614, guid: 50352229cffbc5f49ab86ad63c92260e, type: 2}
+    flightBehaviour: {fileID: 11400000, guid: 5221e673fd586437891a50fcfccc9193, type: 2}
+    spawnInterval: 0.5
