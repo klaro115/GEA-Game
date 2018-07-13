@@ -23,6 +23,9 @@ namespace Game
 		protected float checkpointReachedDistance = 0.5f;
     protected Vector2 flightDirection;
     protected string[] itemPool = new string[] {"HITPOINTS_PLUS", "MOD_CROSS_PLUS", "MOD_SCATTER_PLUS", "TYPE_MG", "TYPE_LASER"};
+
+    private AudioClip soundEnemyDead = null;
+    private AudioClip soundEnemyHit = null;
     // TODO: Remove if Rotating the whole GameObject isnt necessary anymore
     protected GameObject player;
     #endregion
@@ -33,6 +36,9 @@ namespace Game
     protected override void Start ()
 		{
       player = StatemachineStateIngame.getStatemachine().Player.gameObject;
+
+      soundEnemyDead = Resources.Load<AudioClip>("enemy-dead");
+      soundEnemyHit = Resources.Load<AudioClip>("enemy-hit");
 
       calcScreenspace(radius * 2);
       // Apply scale based on radius
@@ -57,6 +63,7 @@ namespace Game
       }
       else if (isDead())
       {
+        SoundHandler.playOneShot(soundEnemyDead);
         // Spawn points item (coins)
         this.spawnPoints(this.points);
         // Check if an item will drop, an spawn a random item if true
@@ -119,6 +126,7 @@ namespace Game
 
     public override void applyDamage(int dmg)
     {
+      SoundHandler.playOneShot(soundEnemyHit);
       this.hitpoints -= dmg;
       // Debug.Log(dmg + "Damage applied. " + this.hitpoints + "left");
     }

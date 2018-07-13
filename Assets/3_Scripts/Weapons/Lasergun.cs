@@ -24,6 +24,11 @@ namespace Game.Weapons
     #endregion
     #region Methods
 
+    private void Awake()
+    {
+      initAudioSource();
+    }
+
     protected void initAudioSource()
     {
       // Set an extra audiosource
