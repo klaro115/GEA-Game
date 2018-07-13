@@ -13,3 +13,5 @@ UI & Ingame Sounds:
 Red Sky Sounds - Arcade SFX Free
 Bright Shining Star - SciFi UI Sound FX
 SoundBits - Free Sound FX
+Raffaele - Futuristic weapons set
+Dustyroom - FREE Casual Game SFX Pack

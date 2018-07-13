@@ -31,9 +31,9 @@ namespace Game
       rig = GetComponent<Rigidbody2D>();
       // Set AudioClips
       soundCoinPickup = Resources.Load<AudioClip>("coin-pickup");
-      soundWeaponModPickup = Resources.Load<AudioClip>("coin-pickup");
+      soundWeaponModPickup = Resources.Load<AudioClip>("weapon-mod-pickup");
       soundWeaponTypePickup = Resources.Load<AudioClip>("weapon-type-pickup");
-      soundHpPickup = Resources.Load<AudioClip>("coin-pickup");
+      soundHpPickup = Resources.Load<AudioClip>("hp-pickup");
       soundPlayerHit = Resources.Load<AudioClip>("player-hit");
 
       // Apply scale based on radius
@@ -128,12 +128,14 @@ namespace Game
 		
 		public void incHitpoints()
 		{
-			hitpoints += 1;
+      audioSource.PlayOneShot(soundHpPickup);
+      hitpoints += 1;
 		}
 
 		public void incModCrossLevel()
 		{
-			if(mainWeapons[0].modifier.type == Weapons.WeaponModifierType.CrossShot)
+      audioSource.PlayOneShot(soundWeaponModPickup);
+      if (mainWeapons[0].modifier.type == Weapons.WeaponModifierType.CrossShot)
 			{
 				mainWeapons[0].modifier.level += 1;
 			}else
@@ -145,7 +147,8 @@ namespace Game
 
 		public void incModScatterLevel()
 		{
-			if(mainWeapons[0].modifier.type == Weapons.WeaponModifierType.ScatterShot)
+      audioSource.PlayOneShot(soundWeaponModPickup);
+      if (mainWeapons[0].modifier.type == Weapons.WeaponModifierType.ScatterShot)
 			{
 				mainWeapons[0].modifier.level += 1;
 			}else
@@ -169,6 +172,8 @@ namespace Game
 					Debug.Log("Switching to MG");
 					if(currentWeapon.GetType() == typeof(Machinegun)) break;
 					newWeaponPrefab = Resources.Load<Weapon>(weaponPrefabMachinegun);
+          // set fireInterval to players fire interval
+          newWeaponPrefab.fireInterval = 0.3f;
 				}
           break;
         case "TYPE_LASER":

@@ -9,16 +9,24 @@ namespace Game.Weapons
 
 		private float lastShotTime = -1.0f;
 
-		#endregion
-		#region Methods
+    AudioClip soundRocketShot = null;
 
-		public override void fire ()
+    #endregion
+    #region Methods
+
+    private void Start()
+    {
+      soundRocketShot = Resources.Load<AudioClip>("rocket-shot");
+    }
+
+    public override void fire ()
 		{
 			float gameTime = StatemachineStateIngame.getStatemachine().GameTime;
 
 			// Allow firing again after a minimum time interval between shots has passed:
 			if(gameTime < lastShotTime + fireInterval) return;
 
+      SoundHandler.playOneShot(soundRocketShot);
 			lastShotTime = gameTime;
 
 			// Request projectile handler to spawn and simulate a new rocket instance:
