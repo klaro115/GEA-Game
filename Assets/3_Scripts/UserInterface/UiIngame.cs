@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace Game.UI
 {
 	[RequireComponent(typeof(RectTransform))]
-	public class UiIngame : MonoBehaviour
+	public class UiIngame : MonoBehaviour, IUiMouseHoverListener
 	{
 		#region Types
 
@@ -29,7 +30,9 @@ namespace Game.UI
 		public RectTransform groupMenu = null;
 		public RectTransform groupGameOver = null;
 		public RectTransform groupNextLevel = null;
-		//...
+
+		private AudioClip audioButtonHover = null;
+		private AudioClip audioButtonPress = null;
 
 		#endregion
 		#region Methods
@@ -37,6 +40,20 @@ namespace Game.UI
 		public void initialize()
 		{
 			//...
+
+			// Initialize UI elements and controls in children:
+			UiButtonHoverDetector[] uiHovers = GetComponentsInChildren<UiButtonHoverDetector>(true);
+			if (uiHovers != null)
+			{
+				foreach (UiButtonHoverDetector uiHover in uiHovers)
+				{
+					uiHover.setListener(this);
+				}
+			}
+
+			// Load sound effects:
+			audioButtonHover = Resources.Load<AudioClip>("menu-hover");
+			audioButtonPress = Resources.Load<AudioClip>("menu-button");
 		}
 
 		public void shutdown()
@@ -80,23 +97,35 @@ namespace Game.UI
 			ingameState.restartGame();
 		}
 
+		public void notifyMouseEnter(PointerEventData eventData)
+		{
+			SoundHandler.playOneShot(audioButtonHover, 0.5f);
+		}
+		public void playMousePressEffects()
+		{
+			SoundHandler.playOneShot(audioButtonPress, 0.5f);
+		}
+
 		#endregion
 		#region Methods UI Menu
 
 		public void uiButtonMenuQuit()
 		{
+			playMousePressEffects();
 			Statemachine.setState(Gamestate.MainMenu);
 		}
 		public void uiButtonMenuResume()
 		{
-			if(state == IngameState.Paused)
+			if (state == IngameState.Paused)
 			{
+				playMousePressEffects();
 				StatemachineStateIngame ingameState = StatemachineStateIngame.getStatemachine();
 				ingameState.setState(IngameState.Ingame);
 			}
 		}
 		public void uiButtonMenuRestart()
 		{
+			playMousePressEffects();
 			restartGame();
 		}
 
@@ -105,10 +134,12 @@ namespace Game.UI
 
 		public void uiButtonGameOverQuit()
 		{
+			playMousePressEffects();
 			Statemachine.setState(Gamestate.MainMenu);
 		}
 		public void uiButtonGameOverRestart()
 		{
+			playMousePressEffects();
 			restartGame();
 		}
 

@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace Game.UI
 {
-	public class UiMainMenuScreen : MonoBehaviour
+	public class UiMainMenuScreen : MonoBehaviour, IUiMouseHoverListener
 	{
 		#region Types
 
@@ -45,6 +46,7 @@ namespace Game.UI
 		public UiLoadingScreen loadingScreen = new UiLoadingScreen() { parent=null, uiProgressBar=null };
 		//...
 
+		private AudioClip audioButtonHover = null;
 		private AudioClip audioButtonPress = null;
 		private AudioClip audioNewGame = null;
 
@@ -55,9 +57,20 @@ namespace Game.UI
 		{
 			//...
 
+			// Initialize UI elements and controls in children:
+			UiButtonHoverDetector[] uiHovers = GetComponentsInChildren<UiButtonHoverDetector>(true);
+			if(uiHovers != null)
+			{
+				foreach(UiButtonHoverDetector uiHover in uiHovers)
+				{
+					uiHover.setListener(this);
+				}
+			}
+
 			// Load sound effects:
+			audioButtonHover = Resources.Load<AudioClip>("menu-hover");
 			audioButtonPress = Resources.Load<AudioClip>("menu-button");
-			audioNewGame = Resources.Load<AudioClip>("menu-new-game");
+			audioNewGame = Resources.Load<AudioClip>("menu-button"); //"menu-new-game"
 
 			// Set initial menu state:
 			setMenuState(MenuState.MainMenu);
@@ -66,6 +79,7 @@ namespace Game.UI
 		public void shutdown()
 		{
 			// Unload resources:
+			if(audioButtonHover != null) Resources.UnloadAsset(audioButtonHover);
 			if(audioButtonPress != null) Resources.UnloadAsset(audioButtonPress);
 			if(audioNewGame != null) Resources.UnloadAsset(audioNewGame);
 
@@ -104,6 +118,15 @@ namespace Game.UI
 			}
 		}
 
+		public void notifyMouseEnter(PointerEventData eventData)
+		{
+			SoundHandler.playOneShot(audioButtonHover, 0.5f);
+		}
+		public void playMousePressEffects()
+		{
+			SoundHandler.playOneShot(audioButtonPress, 0.5f);
+		}
+
 		#endregion
 		#region Methods MainMenu
 
@@ -114,12 +137,12 @@ namespace Game.UI
 		}
 		public void uiButtonCredits()
 		{
-			SoundHandler.playOneShot(audioButtonPress);
+			playMousePressEffects();
 			setMenuState(MenuState.Credits);
 		}
 		public void uiButtonQuit()
 		{
-			SoundHandler.playOneShot(audioButtonPress);
+			playMousePressEffects();
 			setMenuState(MenuState.Quit);
 		}
 
@@ -133,7 +156,7 @@ namespace Game.UI
 
 		public void uiButtonBackToMain()
 		{
-			SoundHandler.playOneShot(audioButtonPress);
+			playMousePressEffects();
 			setMenuState(MenuState.MainMenu);
 		}
 

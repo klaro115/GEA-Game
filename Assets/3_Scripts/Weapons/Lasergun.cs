@@ -19,7 +19,6 @@ namespace Game.Weapons
 		private RaycastHit2D[] rayHits = new RaycastHit2D[1] { new RaycastHit2D() };
 
     AudioSource audioSource = null;
-    AudioClip soundLaserShot = null;
 
     #endregion
     #region Methods

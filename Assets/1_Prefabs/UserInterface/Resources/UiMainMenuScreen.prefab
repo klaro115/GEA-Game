@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 222592156891244646}
   - component: {fileID: 114719945139046070}
   - component: {fileID: 114296392006925610}
+  - component: {fileID: 114760529946068228}
   m_Layer: 5
   m_Name: Button Quit
   m_TagString: Untagged
@@ -141,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1383447284342280
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1432164387429792
 GameObject:
   m_ObjectHideFlags: 1
@@ -217,6 +218,7 @@ GameObject:
   - component: {fileID: 222687335242148688}
   - component: {fileID: 114093062345955414}
   - component: {fileID: 114887119075095196}
+  - component: {fileID: 114353297393693386}
   m_Layer: 5
   m_Name: Button Credits
   m_TagString: Untagged
@@ -287,6 +289,7 @@ GameObject:
   - component: {fileID: 222939660669429414}
   - component: {fileID: 114888310208484282}
   - component: {fileID: 114022296784925190}
+  - component: {fileID: 114341656660906852}
   m_Layer: 5
   m_Name: Button NewGame
   m_TagString: Untagged
@@ -391,6 +394,7 @@ GameObject:
   - component: {fileID: 222556706990000146}
   - component: {fileID: 114614991614541960}
   - component: {fileID: 114546351740684488}
+  - component: {fileID: 114894304859486660}
   m_Layer: 5
   m_Name: Button Settings
   m_TagString: Untagged
@@ -676,6 +680,28 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114341656660906852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745957909939992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313843b8ba285b147be684070779f6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114353297393693386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642365448663116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313843b8ba285b147be684070779f6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114362986606846066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1042,6 +1068,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Robert Klares
+--- !u!114 &114760529946068228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1245414513386964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313843b8ba285b147be684070779f6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114770021248377490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1197,6 +1234,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114894304859486660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1966591788421372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313843b8ba285b147be684070779f6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114959544087917080
 MonoBehaviour:
   m_ObjectHideFlags: 1
