@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: w-2-10 Boss
   m_EditorClassIdentifier: 
   enemies:
-  - enemy: {fileID: 114820654057787156, guid: f5fe9ee8c9b2cb447a0d69642165f111, type: 2}
+  - enemy: {fileID: 114820654057787156, guid: 9aa1e70d4a4c14d4e9ca75702ac9d7ee, type: 2}
     flightBehaviour: {fileID: 11400000, guid: c23d821f2f16d464daef249843c8434a, type: 2}
     spawnInterval: 0
