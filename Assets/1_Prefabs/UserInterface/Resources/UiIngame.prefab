@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 222500211605381460}
   - component: {fileID: 114028842859655148}
   - component: {fileID: 114146848510891736}
+  - component: {fileID: 114681097990733908}
   m_Layer: 5
   m_Name: Button Quit
   m_TagString: Untagged
@@ -91,6 +92,7 @@ GameObject:
   - component: {fileID: 222338587407178374}
   - component: {fileID: 114517593159753426}
   - component: {fileID: 114905641902279034}
+  - component: {fileID: 114714904375963898}
   m_Layer: 5
   m_Name: Button Restart
   m_TagString: Untagged
@@ -220,6 +222,7 @@ GameObject:
   - component: {fileID: 222593882949875266}
   - component: {fileID: 114938370300585454}
   - component: {fileID: 114743815522651382}
+  - component: {fileID: 114149777375821298}
   m_Layer: 5
   m_Name: Button Resume
   m_TagString: Untagged
@@ -238,6 +241,7 @@ GameObject:
   - component: {fileID: 222473244774583984}
   - component: {fileID: 114135306670147252}
   - component: {fileID: 114351772466333234}
+  - component: {fileID: 114271457284629234}
   m_Layer: 5
   m_Name: Button Restart
   m_TagString: Untagged
@@ -291,6 +295,7 @@ GameObject:
   - component: {fileID: 222365312755926308}
   - component: {fileID: 114899553210503318}
   - component: {fileID: 114662539055590974}
+  - component: {fileID: 114061559680764352}
   m_Layer: 5
   m_Name: Button Settings
   m_TagString: Untagged
@@ -325,6 +330,7 @@ GameObject:
   - component: {fileID: 222354200543071524}
   - component: {fileID: 114616379020672284}
   - component: {fileID: 114696189180887374}
+  - component: {fileID: 114800899262188128}
   m_Layer: 5
   m_Name: Button Quit
   m_TagString: Untagged
@@ -478,6 +484,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114061559680764352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745437573650472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313843b8ba285b147be684070779f6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114072779645903222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -590,6 +607,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114149777375821298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1516220491059530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313843b8ba285b147be684070779f6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114245431096260936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -623,6 +651,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Wave
+--- !u!114 &114271457284629234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531617770964312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313843b8ba285b147be684070779f6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114279137350079734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1033,6 +1072,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114681097990733908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1149624136082410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313843b8ba285b147be684070779f6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114696189180887374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1085,6 +1135,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114714904375963898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1218947261113102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313843b8ba285b147be684070779f6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114721360830273242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1205,6 +1266,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Resume
+--- !u!114 &114800899262188128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1758619119665448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313843b8ba285b147be684070779f6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114833382115002388
 MonoBehaviour:
   m_ObjectHideFlags: 1
