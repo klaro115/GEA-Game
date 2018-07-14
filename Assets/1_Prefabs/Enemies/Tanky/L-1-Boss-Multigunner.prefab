@@ -230,8 +230,7 @@ MonoBehaviour:
   - {fileID: 114850858984845944}
   - {fileID: 114589498095704242}
   - {fileID: 114548961163262542}
-  secWeapons:
-  - {fileID: 0}
+  secWeapons: []
   hitpoints: 50
   baseSpeed: 3
   radius: 1
