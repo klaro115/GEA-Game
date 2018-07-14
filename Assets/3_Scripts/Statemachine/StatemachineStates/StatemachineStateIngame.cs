@@ -24,7 +24,7 @@ namespace Game
 
 		private static readonly string playerPrefabName = "Player";
 		private static readonly string uiIngamePrefabName = "UiIngame";
-		private static readonly string firstLevelAssetName = "Level 1";
+		private static readonly string firstLevelAssetName = "Level 2";
 
 		#endregion
 		#region Properties

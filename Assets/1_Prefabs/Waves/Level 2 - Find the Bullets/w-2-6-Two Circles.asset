@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7ad56ffece04a76abe68edfdd7c05a, type: 3}
+  m_Name: w-2-6-Two Circles
+  m_EditorClassIdentifier: 
+  enemies:
+  - enemy: {fileID: 114362275280401640, guid: 9b92517a155904f4dbe93d4e3da31944, type: 2}
+    flightBehaviour: {fileID: 11400000, guid: a461f3cca02a7a845be07536e6b06e11, type: 2}
+    spawnInterval: 0
+  - enemy: {fileID: 114362275280401640, guid: 9b92517a155904f4dbe93d4e3da31944, type: 2}
+    flightBehaviour: {fileID: 11400000, guid: 868d5eb9070b1b649bea927da0d3ba5e, type: 2}
+    spawnInterval: 0

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb987a8431d04e869988c22d572b6d3, type: 3}
+  m_Name: Level 2
+  m_EditorClassIdentifier: 
+  waves:
+  - {fileID: 11400000, guid: 722bc96be47fa8846bd30090629b8e16, type: 2}
+  - {fileID: 11400000, guid: 72456ba0199fe024bac09372aba20d72, type: 2}
+  - {fileID: 11400000, guid: dbab3b8e0fa81cd41a2f5e5fb805bbe3, type: 2}
+  - {fileID: 11400000, guid: eb57694aa227a2340b10cca41baa9edd, type: 2}
+  - {fileID: 11400000, guid: bbb9b680ec03a474a9389404d2b94e17, type: 2}
+  - {fileID: 11400000, guid: 5bb0d04c9f48fbe4e8c8b45831ee7ef5, type: 2}
+  - {fileID: 11400000, guid: 3e459e75ddf18264384507ec6280d5c5, type: 2}
+  - {fileID: 11400000, guid: 0a645d219e1515549b4d713f6bbd3de8, type: 2}
+  - {fileID: 11400000, guid: 9e4ee8c1ec77ab54eb8ed331113fad7c, type: 2}
+  - {fileID: 11400000, guid: fd727387af9c4224993ccc960e068eea, type: 2}
+  waveInterval: 5
+  completionBonus: 1000
