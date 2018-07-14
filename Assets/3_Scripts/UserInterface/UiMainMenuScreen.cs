@@ -29,6 +29,8 @@ namespace Game.UI
 		{
 			public RectTransform parent;
 			public Text[] texts;
+			public float textFadeSpeed;
+			public float textPauseDuration;
 		}
 
 		#endregion
@@ -37,7 +39,7 @@ namespace Game.UI
 		private MenuState state = MenuState.None;
 
 		public RectTransform groupMenu = null;
-		public UiCreditScreen creditScreen = new UiCreditScreen() { parent=null, texts=null };
+		public UiCreditScreen creditScreen = new UiCreditScreen() { parent=null, texts=null, textFadeSpeed=0.5f, textPauseDuration=0.2f };
 		public RectTransform groupSettings = null;
 		public RectTransform groupQuit = null;
 		public UiLoadingScreen loadingScreen = new UiLoadingScreen() { parent=null, uiProgressBar=null };
@@ -159,7 +161,7 @@ namespace Game.UI
 					txt.gameObject.SetActive(true);
 					while(c.a < 1)
 					{
-						c.a += 0.4f * Time.deltaTime;
+						c.a += creditScreen.textFadeSpeed * Time.deltaTime;
 						txt.color = c;
 						yield return null;
 					}
@@ -168,13 +170,13 @@ namespace Game.UI
 				{
 					while(c.a > 0)
 					{
-						c.a -= 0.4f * Time.deltaTime;
+						c.a -= creditScreen.textFadeSpeed * Time.deltaTime;
 						txt.color = c;
 						yield return null;
 					}
 					txt.gameObject.SetActive(false);
 				}
-				yield return new WaitForSeconds(0.2f);
+				yield return new WaitForSeconds(creditScreen.textPauseDuration);
 			}
 
 			// Return to main menu screen:

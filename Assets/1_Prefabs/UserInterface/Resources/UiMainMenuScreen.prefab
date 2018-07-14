@@ -1274,6 +1274,8 @@ MonoBehaviour:
     texts:
     - {fileID: 114733011483990822}
     - {fileID: 114589784693942958}
+    textFadeSpeed: 0.75
+    textPauseDuration: 0.25
   groupSettings: {fileID: 224291781394029206}
   groupQuit: {fileID: 224522988697219762}
   loadingScreen:
