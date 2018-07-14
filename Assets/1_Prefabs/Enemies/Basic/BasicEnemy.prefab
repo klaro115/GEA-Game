@@ -103,14 +103,9 @@ MonoBehaviour:
   baseSpeed: 5
   radius: 0.4
   screenSpace: {x: 0, y: 0}
-  flightBehaviour:
-  - {x: -1, y: 1}
-  - {x: 1, y: -1}
-  - {x: 0, y: 0}
-  - {x: -0.5, y: 0.5}
-  - {x: 1, y: 0.235}
+  flightBehaviour: {fileID: 0}
   points: 10
-  dropRate: 0.5
+  dropRate: 0.1
 --- !u!212 &212999907436167760
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -147,12 +147,12 @@ MonoBehaviour:
   secWeapons:
   - {fileID: 114710652987152884}
   hitpoints: 5
-  baseSpeed: 3
+  baseSpeed: 5
   radius: 0.6
   screenSpace: {x: 0, y: 0}
   flightBehaviour: {fileID: 0}
   points: 100
-  dropRate: 0.1
+  dropRate: 0.25
 --- !u!212 &212340227805759650
 SpriteRenderer:
   m_ObjectHideFlags: 1

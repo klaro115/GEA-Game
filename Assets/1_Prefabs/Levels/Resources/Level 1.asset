@@ -15,5 +15,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 91f7508f57232a5459e8662ef3eecc36, type: 2}
   - {fileID: 11400000, guid: dd8951a0fae7b6c48a8ef9a220fceffa, type: 2}
   - {fileID: 11400000, guid: 82f4497e1f9640a4e8a2b4f89b97765d, type: 2}
+  - {fileID: 11400000, guid: e507e4b89a382af4cb5261d46106bbf7, type: 2}
+  - {fileID: 11400000, guid: 2346ee9bd89d59d43bb4fccf13d44078, type: 2}
+  - {fileID: 11400000, guid: e59c64003260355499d96ae3573f2a22, type: 2}
+  - {fileID: 11400000, guid: 4ea6709cfccd950449907ed6a3d18a9c, type: 2}
+  - {fileID: 11400000, guid: 608138aac1d2964489dea3e97df41385, type: 2}
+  - {fileID: 11400000, guid: d752779dc08798a42a759d74b06f24f8, type: 2}
+  - {fileID: 11400000, guid: f4555c8717b47d747b889dae10c4bb6c, type: 2}
   waveInterval: 5
   completionBonus: 1000

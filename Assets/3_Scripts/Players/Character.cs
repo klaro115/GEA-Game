@@ -64,7 +64,7 @@ namespace Game
 
     protected void fireSecondaryWeapons()
     {
-      if (this.secWeapons != null)
+      if (this.secWeapons.Length != 0)
       {
         foreach (Weapon weapon in this.secWeapons)
         {

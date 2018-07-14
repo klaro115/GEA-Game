@@ -132,9 +132,9 @@ MonoBehaviour:
   modifier:
     type: 0
     level: 1
+  playerControlled: 0
   damage: 1
   projectileSpeed: 6
-  playerControlled: 0
 --- !u!114 &114606963528246054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,7 +155,7 @@ MonoBehaviour:
   screenSpace: {x: 0, y: 0}
   flightBehaviour: {fileID: 0}
   points: 20
-  dropRate: 0.07
+  dropRate: 0.2
 --- !u!212 &212366777463181500
 SpriteRenderer:
   m_ObjectHideFlags: 1

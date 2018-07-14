@@ -14,7 +14,7 @@ namespace Game
 		// The points the player receives when this enemy is destroyed
 		public int points = 100;
 		// The rate of powerUp items to be dropped
-		public float dropRate = 0.5f;
+		public float dropRate = 0.1f;
 		// The current checkpoint index (of flightBehaviour)
 		protected int checkpointIndex = 0;
 		// The index for the last Checkpoint
@@ -48,8 +48,7 @@ namespace Game
       // Calculate routes
       translateFlightCoords();
       lastCheckpointIndex = flightBehaviour.waypoints.Length - 1;
-      transform.position = flightBehaviour.waypoints[0];
-      Debug.Log(transform.position.ToString());
+      transform.position = flightBehaviour.waypoints[0];      
     }
 
 		protected override void Update ()
