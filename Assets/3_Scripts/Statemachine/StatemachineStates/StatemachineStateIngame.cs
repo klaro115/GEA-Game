@@ -199,7 +199,13 @@ namespace Game
     {
       this.bossActive = boss;
 			uiIngame.notifyBossSpawned(boss);
-      // TODO: Setup Boss UI (Healthbar)
+
+			// If the boss was destroyed, return to normal ingame soundtrack:
+			if(boss == null)
+			{
+				// todo: Play "boss defeated" sound effect.
+				SoundHandler.playBackgroundMusic(soundMusicIngame);
+			}
     }
 
 		private void destroyAllEnemies()
