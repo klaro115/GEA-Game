@@ -13,11 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - enemy: {fileID: 114582010875667614, guid: 9dafab0da65bad041bcbaca7d954722c, type: 2}
-    flightBehaviour: {fileID: 11400000, guid: 66d298c6ae8b74124b6c021700eb0f27, type: 2}
+    flightBehaviour: {fileID: 11400000, guid: 3111cce945983f64fa4ee27721aa134a, type: 2}
     spawnInterval: 0.5
   - enemy: {fileID: 114582010875667614, guid: 9dafab0da65bad041bcbaca7d954722c, type: 2}
-    flightBehaviour: {fileID: 11400000, guid: 66d298c6ae8b74124b6c021700eb0f27, type: 2}
+    flightBehaviour: {fileID: 11400000, guid: 3111cce945983f64fa4ee27721aa134a, type: 2}
     spawnInterval: 0.5
   - enemy: {fileID: 114582010875667614, guid: 9dafab0da65bad041bcbaca7d954722c, type: 2}
-    flightBehaviour: {fileID: 11400000, guid: 66d298c6ae8b74124b6c021700eb0f27, type: 2}
+    flightBehaviour: {fileID: 11400000, guid: 3111cce945983f64fa4ee27721aa134a, type: 2}
     spawnInterval: 0.5
