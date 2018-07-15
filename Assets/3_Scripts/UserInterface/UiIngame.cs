@@ -25,6 +25,13 @@ namespace Game.UI
 
 			//...
 		}
+		[System.Serializable]
+		public struct NextLevel
+		{
+			public RectTransform parent;
+			public Text lives;
+			public Text score;
+		}
 
 		#endregion
 		#region Fields
@@ -34,8 +41,8 @@ namespace Game.UI
 		public HUD groupHUD = new HUD() { parent=null, lives=null, score=null, wave=null };
 		public RectTransform groupMenu = null;
 		public RectTransform groupGameOver = null;
-		public RectTransform groupNextLevel = null;
-    public RectTransform groupVictory = null;
+		public NextLevel groupNextLevel = new NextLevel() { parent=null, lives=null, score=null };
+		public RectTransform groupVictory = null;
 
     private AudioClip audioButtonHover = null;
 		private AudioClip audioButtonPress = null;
@@ -85,8 +92,17 @@ namespace Game.UI
 			groupHUD.parent.gameObject.SetActive(state == IngameState.Ingame);
 			groupMenu.gameObject.SetActive(state == IngameState.Paused);
 			groupGameOver.gameObject.SetActive(state == IngameState.GameOver);
-			groupNextLevel.gameObject.SetActive(state == IngameState.NextLevel);
-      groupVictory.gameObject.SetActive(state == IngameState.Victory);
+			groupNextLevel.parent.gameObject.SetActive(state == IngameState.NextLevel);
+			groupVictory.gameObject.SetActive(state == IngameState.Victory);
+
+			switch (newState)
+			{
+			case IngameState.NextLevel:
+				updateNextLevelScreen();
+				break;
+			default:
+				break;
+			}
     }
 		
 		private void updateIngameHUD()
@@ -113,6 +129,15 @@ namespace Game.UI
 		{
 			float healthAmount = (float)boss.hitpoints / groupHUD.bossMaxHealth;
 			groupHUD.bossHealthBar.fillAmount = healthAmount;
+		}
+
+		private void updateNextLevelScreen()
+		{
+			StatemachineStateIngame ingameState = StatemachineStateIngame.getStatemachine();
+			Player player = ingameState.Player;
+
+			groupNextLevel.lives.text = player.hitpoints.ToString();
+			groupNextLevel.score.text = ingameState.Score.ToString();
 		}
 
 		private void restartGame()
@@ -181,6 +206,19 @@ namespace Game.UI
 		{
 			playMousePressEffects();
 			restartGame();
+		}
+
+		#endregion
+		#region Methods UI NextLevel
+
+		public void uiButtonStartNextLevel()
+		{
+			if (state == IngameState.NextLevel)
+			{
+				playMousePressEffects();
+				StatemachineStateIngame ingameState = StatemachineStateIngame.getStatemachine();
+				ingameState.setState(IngameState.Ingame);
+			}
 		}
 
 		#endregion
