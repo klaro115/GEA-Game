@@ -116,7 +116,8 @@ namespace Game.Weapons
 			}
 
 			// Deal damage.
-			target.SendMessage("applyDamage", damage, SendMessageOptions.DontRequireReceiver);
+			int finalDamage = fromPlayer ? damage * 10 : damage;
+			target.SendMessage("applyDamage", finalDamage, SendMessageOptions.DontRequireReceiver);
 
 			// Destroy self:
 			selfDestruct();
