@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -64,6 +65,9 @@ namespace Game
 		{
 			state = IngameState.None;
 
+			// Reset event system UI selections:
+			EventSystem.current.SetSelectedGameObject(null);
+
 			// Find existing enemy instances in scene:
 			if(enemies == null) enemies = new List<Enemy>();
 			Enemy[] newEnemies = GameObject.FindObjectsOfType<Enemy>();
@@ -110,6 +114,9 @@ namespace Game
 		}
 		public override void shutdown ()
 		{
+			// Reset event system UI selections:
+			EventSystem.current.SetSelectedGameObject(null);
+
 			// Terminate enemy spawner:
 			EnemySpawner.shutdown();
 

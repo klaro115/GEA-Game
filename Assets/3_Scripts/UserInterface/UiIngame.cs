@@ -96,16 +96,30 @@ namespace Game.UI
 			groupNextLevel.parent.gameObject.SetActive(state == IngameState.NextLevel);
 			groupVictory.gameObject.SetActive(state == IngameState.Victory);
 
+			Selectable newSelectable = null;
 			switch (newState)
 			{
+			case IngameState.Paused:
+				newSelectable = groupMenu.parent.GetComponentInChildren<Selectable>();
+				break;
 			case IngameState.NextLevel:
+				newSelectable = groupNextLevel.parent.GetComponentInChildren<Selectable>();
 				updateNextLevelScreen();
 				break;
-      case IngameState.Victory:
-          victoryScoreText.text = StatemachineStateIngame.getStatemachine().Score.ToString();
-        break;
+			case IngameState.Victory:
+				newSelectable = groupNextLevel.parent.GetComponentInChildren<Selectable>();
+				victoryScoreText.text = StatemachineStateIngame.getStatemachine().Score.ToString();
+				break;
+			case IngameState.GameOver:
+				newSelectable = groupGameOver.GetComponentInChildren<Selectable>();
+				break;
 			default:
 				break;
+			}
+
+			if(newSelectable != null)
+			{
+				EventSystem.current.SetSelectedGameObject(newSelectable.gameObject);
 			}
     }
 		

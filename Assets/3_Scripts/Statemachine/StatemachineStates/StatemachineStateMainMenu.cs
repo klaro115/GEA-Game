@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 using Game.UI;
@@ -19,6 +20,9 @@ namespace Game
 
 		public override bool initialize()
 		{
+			// Reset event system UI selections:
+			EventSystem.current.SetSelectedGameObject(null);
+
 			// Find/Spawn and initialize main menu UI group:
 			RectTransform uiCanvas = GameObject.FindObjectOfType<Canvas>().transform as RectTransform;
 			uiMainMenu = GameObject.FindObjectOfType<UiMainMenuScreen>();
@@ -39,6 +43,9 @@ namespace Game
 		}
 		public override void shutdown ()
 		{
+			// Reset event system UI selections:
+			EventSystem.current.SetSelectedGameObject(null);
+
 			if(uiMainMenu != null)
 			{
 				MonoBehaviour.Destroy(uiMainMenu.gameObject);

@@ -110,9 +110,15 @@ namespace Game.UI
 			groupQuit.gameObject.SetActive(state == MenuState.Quit);
 			loadingScreen.parent.gameObject.SetActive(state == MenuState.LoadingScreen);
 
+			// New event system UI selection:
+			Selectable newSelectable = null;
+
 			// Trigger some behaviours:
 			switch (state)
 			{
+			case MenuState.MainMenu:
+				newSelectable = groupMenu.parent.GetComponentInChildren<Selectable>();
+				break;
 			case MenuState.LoadingScreen:
 				StartCoroutine(loadGameCoroutine());
 				break;
@@ -124,6 +130,11 @@ namespace Game.UI
 				break;
 			default:
 				break;
+			}
+
+			if(newSelectable != null)
+			{
+				EventSystem.current.SetSelectedGameObject(newSelectable.gameObject);
 			}
 		}
 
