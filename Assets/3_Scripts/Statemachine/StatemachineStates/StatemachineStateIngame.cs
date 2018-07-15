@@ -40,6 +40,10 @@ namespace Game
 		{
 			get { return player; }
 		}
+		public Boss BossActive
+		{
+			get { return bossActive; }
+		}
 		public List<Enemy> Enemies
 		{
 			get { return enemies; }
@@ -191,6 +195,7 @@ namespace Game
     public void setBossActive(Boss boss)
     {
       this.bossActive = boss;
+			uiIngame.notifyBossSpawned(boss);
       // TODO: Setup Boss UI (Healthbar)
     }
 

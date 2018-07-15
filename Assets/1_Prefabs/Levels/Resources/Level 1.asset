@@ -24,3 +24,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f4555c8717b47d747b889dae10c4bb6c, type: 2}
   waveInterval: 5
   completionBonus: 1000
+  nextLevel: {fileID: 11400000, guid: 9e519b1799dba5f448794f972e9eff40, type: 2}

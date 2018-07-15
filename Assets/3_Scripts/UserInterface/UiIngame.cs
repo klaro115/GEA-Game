@@ -18,6 +18,11 @@ namespace Game.UI
 			public Text lives;
 			public Text score;
 			public Text wave;
+
+			public RectTransform bossHealthParent;
+			public Image bossHealthBar;
+			public int bossMaxHealth;
+
 			//...
 		}
 
@@ -50,6 +55,8 @@ namespace Game.UI
 					uiHover.setListener(this);
 				}
 			}
+
+			groupHUD.bossHealthParent.gameObject.SetActive(false);
 
 			// Load sound effects:
 			audioButtonHover = Resources.Load<AudioClip>("menu-hover");
@@ -88,6 +95,22 @@ namespace Game.UI
 			groupHUD.wave.text = EnemySpawner.CurrentWave.ToString();
 			groupHUD.lives.text = player.hitpoints.ToString();
 			groupHUD.score.text = ingameState.Score.ToString();
+
+			// Update boss health indicators on UI:
+			if(groupHUD.bossHealthParent.gameObject.activeSelf)
+			{
+				updateBossHealthBar(ingameState.BossActive);
+
+				// Disable boss UI again after it has been destroyed:
+				if(ingameState.BossActive == null)
+					groupHUD.bossHealthParent.gameObject.SetActive(false);
+			}
+		}
+
+		private void updateBossHealthBar(Boss boss)
+		{
+			float healthAmount = (float)boss.hitpoints / groupHUD.bossMaxHealth;
+			groupHUD.bossHealthBar.fillAmount = healthAmount;
 		}
 
 		private void restartGame()
@@ -104,6 +127,21 @@ namespace Game.UI
 		public void playMousePressEffects()
 		{
 			SoundHandler.playOneShot(audioButtonPress, 0.5f);
+		}
+
+		public void notifyBossSpawned(Boss boss)
+		{
+			bool bossActive = boss != null;
+
+			// Enable or disable boss UI elements:
+			groupHUD.bossHealthParent.gameObject.SetActive(bossActive);
+
+			// Update all UI elements right away:
+			if(bossActive)
+			{
+				groupHUD.bossMaxHealth = boss.hitpoints;
+				updateBossHealthBar(boss);
+			}
 		}
 
 		#endregion

@@ -13,6 +13,8 @@ namespace Game
 		public float waveInterval = 1.0f;	// Time interval between the end of one wave and the start of another.
 		public int completionBonus = 20;	// Bonus points for completing this level.
 
+		public Level nextLevel = null;		// Which level to start after completing this one.
+
 		#endregion
 	}
 }

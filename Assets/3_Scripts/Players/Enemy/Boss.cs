@@ -15,6 +15,7 @@ namespace Game
     protected override void Start ()
     {
       base.Start();
+
       StatemachineStateIngame.getStatemachine().setBossActive(this);
       StartCoroutine(fadeMusic(1));
       // music = Resources.Load<AudioClip>("music-boss");
