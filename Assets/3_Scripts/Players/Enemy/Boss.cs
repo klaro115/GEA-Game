@@ -48,6 +48,7 @@ namespace Game
     {
       StatemachineStateIngame.getStatemachine().setBossActive(null);
       EnemySpawner.loadNextLevel();
+      Debug.Log("BOSS DEAD");
     }
     #endregion
   }

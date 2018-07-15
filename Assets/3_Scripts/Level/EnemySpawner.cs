@@ -130,8 +130,12 @@ namespace Game
     //
     public static void loadNextLevel()
     {
-      if (currentLevel.nextLevel != null) setLevel(currentLevel.nextLevel);
-      // else YOU WIN
+      if (currentLevel.nextLevel != null)
+      {
+        setLevel(currentLevel.nextLevel);
+        StatemachineStateIngame.getStatemachine().setState(IngameState.NextLevel);
+      }
+      else StatemachineStateIngame.getStatemachine().setState(IngameState.Victory);
     }
 
     /// <summary>
