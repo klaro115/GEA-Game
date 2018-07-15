@@ -86,6 +86,15 @@ namespace Game.UI
 			//...
 		}
 
+		void Update()
+		{
+			// In credits, allow user to return to main menu via the escape key:
+			if(state == MenuState.Credits && Input.GetKeyDown(KeyCode.Escape))
+			{
+				uiButtonBackToMain();
+			}
+		}
+
 		public void setMenuState(MenuState newState)
 		{
 			// Don't allow any more state changes after entering loading screen or while ending the game:
