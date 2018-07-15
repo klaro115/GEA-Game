@@ -47,10 +47,13 @@ namespace Game
 
     private void OnDestroy()
     {
-      StatemachineStateIngame.getStatemachine().setBossActive(null);
-      EnemySpawner.loadNextLevel();
-      ProjectileHandler.clearProjectiles();
-      SoundHandler.playOneShot(Resources.Load<AudioClip>("level-complete"));
+      if(this.isDead())
+      {
+        StatemachineStateIngame.getStatemachine().setBossActive(null);
+        EnemySpawner.loadNextLevel();
+        ProjectileHandler.clearProjectiles();
+        SoundHandler.playOneShot(Resources.Load<AudioClip>("level-complete"));
+      }
     }
     #endregion
   }

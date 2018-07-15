@@ -43,6 +43,7 @@ namespace Game.UI
 		public RectTransform groupGameOver = null;
 		public NextLevel groupNextLevel = new NextLevel() { parent=null, lives=null, score=null };
 		public RectTransform groupVictory = null;
+    public Text victoryScoreText = null;
 
     private AudioClip audioButtonHover = null;
 		private AudioClip audioButtonPress = null;
@@ -100,6 +101,9 @@ namespace Game.UI
 			case IngameState.NextLevel:
 				updateNextLevelScreen();
 				break;
+      case IngameState.Victory:
+          victoryScoreText.text = StatemachineStateIngame.getStatemachine().Score.ToString();
+        break;
 			default:
 				break;
 			}
