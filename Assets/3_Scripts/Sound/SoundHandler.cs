@@ -73,6 +73,11 @@ namespace Game
 			audioPlayer.Play();
 		}
 
-		#endregion
-	}
+    public static void stop()
+    {
+      // Stop any active tracks:
+      audioPlayer.Stop();
+    }
+      #endregion
+  }
 }

@@ -26,7 +26,7 @@ namespace Game.Weapons
 			// Allow firing again after a minimum time interval between shots has passed:
 			if(gameTime < lastShotTime + fireInterval) return;
 
-      SoundHandler.playOneShot(soundRocketShot);
+      SoundHandler.playOneShot(soundRocketShot, 0.5f);
 			lastShotTime = gameTime;
 
 			// Request projectile handler to spawn and simulate a new rocket instance:

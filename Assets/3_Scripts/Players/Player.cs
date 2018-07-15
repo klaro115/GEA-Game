@@ -84,12 +84,13 @@ namespace Game
 			pos.y = Mathf.Clamp(pos.y, -screenSpace.y, screenSpace.y);
 			transform.position = pos;
 
-			if(Input.GetKey(KeyCode.Space))
+			if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Joystick1Button0) || Input.GetKey(KeyCode.Joystick1Button16))
 			{
 				fireMainWeapons();
 			}
-			if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftApple) || Input.GetKeyDown(KeyCode.Return))
-			{
+			if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Return) || Input.GetKey(KeyCode.Joystick1Button1) || Input.GetKey(KeyCode.Joystick1Button17))
+
+      {
 				fireSecondaryWeapons();
 			}
 		}

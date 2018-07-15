@@ -13,8 +13,9 @@ namespace Game
 		
 		private IngameState state = IngameState.None;	// Ingame game state.
 
-		private Player player = null;					// Reference to the player character in scene.
-		private List<Enemy> enemies = new List<Enemy>();// List of all enemies currently in scene.
+		private Player player = null;         // Reference to the player character in scene.
+    private Boss bossActive = null;
+    private List<Enemy> enemies = new List<Enemy>();// List of all enemies currently in scene.
 
 		private int currentScore = 0;
 
@@ -22,7 +23,9 @@ namespace Game
 
 		private UiIngame uiIngame = null;
 
-		private static readonly string playerPrefabName = "Player";
+    private AudioClip soundMusicIngame = Resources.Load<AudioClip>("music-ingame");
+
+    private static readonly string playerPrefabName = "Player";
 		private static readonly string uiIngamePrefabName = "UiIngame";
 		private static readonly string firstLevelAssetName = "Level 2";
 
@@ -96,7 +99,8 @@ namespace Game
 			EnemySpawner.initialize();
 			EnemySpawner.loadLevel(firstLevelAssetName);
 
-			setState(IngameState.Ingame);
+      SoundHandler.playBackgroundMusic(soundMusicIngame);
+      setState(IngameState.Ingame);
 
 			return true;
 		}
@@ -114,7 +118,11 @@ namespace Game
 
 			destroyAllEnemies();
 
-			if(uiIngame != null)
+      // Stop Music
+      SoundHandler.stop();
+
+
+      if (uiIngame != null)
 			{
 				// Shut down ingame UI:
 				uiIngame.shutdown();
@@ -179,6 +187,12 @@ namespace Game
 		{
 			currentScore += points;
 		}
+
+    public void setBossActive(Boss boss)
+    {
+      this.bossActive = boss;
+      // TODO: Setup Boss UI (Healthbar)
+    }
 
 		private void destroyAllEnemies()
 		{

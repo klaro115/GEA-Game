@@ -31,6 +31,8 @@ namespace Game
 			}
 			uiMainMenu.initialize();
 
+      SoundHandler.playBackgroundMusic(Resources.Load<AudioClip>("music-menu"));
+
 			//...
 
 			return true;
@@ -40,7 +42,8 @@ namespace Game
 			if(uiMainMenu != null)
 			{
 				MonoBehaviour.Destroy(uiMainMenu.gameObject);
-				uiMainMenu = null;
+        SoundHandler.stop();
+        uiMainMenu = null;
 			}
 		}
 
