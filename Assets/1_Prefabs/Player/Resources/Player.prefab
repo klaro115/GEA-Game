@@ -316,7 +316,7 @@ MonoBehaviour:
     type: 1
     level: 0
   playerControlled: 1
-  damage: 1
+  damage: 10
   projectileSpeed: 13
 --- !u!212 &212080502118326818
 SpriteRenderer:

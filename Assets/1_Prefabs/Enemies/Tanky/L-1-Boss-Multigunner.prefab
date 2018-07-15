@@ -231,7 +231,7 @@ MonoBehaviour:
   - {fileID: 114589498095704242}
   - {fileID: 114548961163262542}
   secWeapons: []
-  hitpoints: 50
+  hitpoints: 500
   baseSpeed: 3
   radius: 1
   screenSpace: {x: 0, y: 0}

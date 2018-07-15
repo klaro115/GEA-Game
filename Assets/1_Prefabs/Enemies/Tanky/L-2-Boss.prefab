@@ -272,7 +272,7 @@ MonoBehaviour:
   - {fileID: 114476774018941156}
   - {fileID: 114159894042872238}
   - {fileID: 114386388707745328}
-  hitpoints: 50
+  hitpoints: 500
   baseSpeed: 3
   radius: 1
   screenSpace: {x: 0, y: 0}
