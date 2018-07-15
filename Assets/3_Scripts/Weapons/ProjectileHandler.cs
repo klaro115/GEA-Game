@@ -36,6 +36,10 @@ namespace Game.Weapons
 		private static readonly string projectilePhysBodyPrefabName = "ProjectilePhysicalBody";
 		private static readonly string rocketPrefabName = "Rocket";
 
+		// Visual styles for projectiles based on owner:
+		private static readonly Color projectileColorPlayer = new Color(1,0.882f,0.796f,1.0f);
+		private static readonly Color projectileColorEnemy = new Color(1,0.2f,0.2f,1);
+
 		#endregion
 		#region Methods
 
@@ -178,6 +182,9 @@ namespace Game.Weapons
 					{
 						p.physicalBody.position = startPosition;
 						p.physicalBody.gameObject.SetActive(true);
+
+						Color pColor = fromPlayer ? projectileColorPlayer : projectileColorEnemy;
+						p.physicalBody.GetComponent<SpriteRenderer>().color = pColor;
 					}
 
 					projectiles[i] = p;
