@@ -127,12 +127,19 @@ namespace Game
 			return setLevel(newLevel);
 		}
 
-		/// <summary>
-		/// Sets a new level active.
-		/// </summary>
-		/// <returns><c>true</c>, if the level was set active, <c>false</c> otherwise.</returns>
-		/// <param name="levelPrefab">New level asset.</param>
-		public static bool setLevel(Level levelPrefab)
+    //
+    public static void loadNextLevel()
+    {
+      if (currentLevel.nextLevel != null) setLevel(currentLevel.nextLevel);
+      // else YOU WIN
+    }
+
+    /// <summary>
+    /// Sets a new level active.
+    /// </summary>
+    /// <returns><c>true</c>, if the level was set active, <c>false</c> otherwise.</returns>
+    /// <param name="levelPrefab">New level asset.</param>
+    public static bool setLevel(Level levelPrefab)
 		{
 			if(levelPrefab == null || levelPrefab.waves == null)
 			{

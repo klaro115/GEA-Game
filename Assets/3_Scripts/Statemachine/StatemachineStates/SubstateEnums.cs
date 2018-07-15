@@ -14,5 +14,6 @@ namespace Game
 		Paused,			// Ingame menu.
 		NextLevel,		// Passage between levels, upgrades, score, etc.
 		GameOver,		// Player has lost the game.
+    Victory,
 	}
 }

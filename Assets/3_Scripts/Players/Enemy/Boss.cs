@@ -47,6 +47,7 @@ namespace Game
     private void OnDestroy()
     {
       StatemachineStateIngame.getStatemachine().setBossActive(null);
+
     }
     #endregion
   }

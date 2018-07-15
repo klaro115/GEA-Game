@@ -35,8 +35,9 @@ namespace Game.UI
 		public RectTransform groupMenu = null;
 		public RectTransform groupGameOver = null;
 		public RectTransform groupNextLevel = null;
+    public RectTransform groupVictory = null;
 
-		private AudioClip audioButtonHover = null;
+    private AudioClip audioButtonHover = null;
 		private AudioClip audioButtonPress = null;
 
 		#endregion
@@ -85,7 +86,8 @@ namespace Game.UI
 			groupMenu.gameObject.SetActive(state == IngameState.Paused);
 			groupGameOver.gameObject.SetActive(state == IngameState.GameOver);
 			groupNextLevel.gameObject.SetActive(state == IngameState.NextLevel);
-		}
+      groupVictory.gameObject.SetActive(state == IngameState.Victory);
+    }
 		
 		private void updateIngameHUD()
 		{

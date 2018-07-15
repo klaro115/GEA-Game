@@ -175,9 +175,12 @@ namespace Game
 			case IngameState.GameOver:
 				// Destroy any remaining enemies:
 				destroyAllEnemies();
-				//...
+        //...
 				break;
-			default:
+      case IngameState.Victory:
+          destroyAllEnemies();
+          break;
+      default:
 				break;
 			}
 
