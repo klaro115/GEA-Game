@@ -47,7 +47,7 @@ namespace Game
     private void OnDestroy()
     {
       StatemachineStateIngame.getStatemachine().setBossActive(null);
-
+      EnemySpawner.loadNextLevel();
     }
     #endregion
   }
