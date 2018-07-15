@@ -107,7 +107,7 @@ namespace Game.UI
 				updateNextLevelScreen();
 				break;
 			case IngameState.Victory:
-				newSelectable = groupNextLevel.parent.GetComponentInChildren<Selectable>();
+				newSelectable = groupVictory.parent.GetComponentInChildren<Selectable>();
 				victoryScoreText.text = StatemachineStateIngame.getStatemachine().Score.ToString();
 				break;
 			case IngameState.GameOver:
