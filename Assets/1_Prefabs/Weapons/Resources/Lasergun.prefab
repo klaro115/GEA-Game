@@ -178,12 +178,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f25179215d484ad3abccebab3df738a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireInterval: 0.1
+  fireInterval: 0.02
   modifier:
     type: 0
     level: 0
   playerControlled: 0
-  damage: 5
+  damage: 1
   range: 20
   beamEffectPrefab: {fileID: 212614834898578964}
   beamEffectExtraLength: 2.5

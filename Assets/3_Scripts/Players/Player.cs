@@ -169,13 +169,14 @@ namespace Game
       {
         case "TYPE_MG":
           		// Switch weapon type to MG:
-				{
-					Debug.Log("Switching to MG");
-					if(currentWeapon.GetType() == typeof(Machinegun)) break;
-					newWeaponPrefab = Resources.Load<Weapon>(weaponPrefabMachinegun);
-          // set fireInterval to players fire interval
-          newWeaponPrefab.fireInterval = 0.3f;
-				}
+				  {
+					  Debug.Log("Switching to MG");
+					  if(currentWeapon.GetType() == typeof(Machinegun)) break;
+					  newWeaponPrefab = Resources.Load<Weapon>(weaponPrefabMachinegun);
+            // set fireInterval to players fire interval
+            newWeaponPrefab.fireInterval = 0.3f;
+            ((Machinegun)newWeaponPrefab).damage = 10;
+          }
           break;
         case "TYPE_LASER":
 				// Switch weapon type to Laser:

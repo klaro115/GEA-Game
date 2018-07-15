@@ -114,6 +114,18 @@ namespace Game.Weapons
 			contactFilterEnemy.useTriggers = true;
 		}
 
+    public static void clearProjectiles()
+    {
+      for (int i = 0; i < projectiles.Length; ++i)
+      {
+        disableProjectile(ref projectiles[i]);
+      }
+      foreach (Rocket r in rockets)
+      {
+        r.gameObject.SetActive(false);
+      }
+    }
+
 		public static void shutdown()
 		{
 			// Remove all projectiles' physical representations from scene:

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Game.Weapons;
 
 namespace Game
 {
@@ -48,7 +49,8 @@ namespace Game
     {
       StatemachineStateIngame.getStatemachine().setBossActive(null);
       EnemySpawner.loadNextLevel();
-      Debug.Log("BOSS DEAD");
+      ProjectileHandler.clearProjectiles();
+      SoundHandler.playOneShot(Resources.Load<AudioClip>("level-complete"));
     }
     #endregion
   }
