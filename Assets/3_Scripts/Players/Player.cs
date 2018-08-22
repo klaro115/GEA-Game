@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Game.Weapons;
+using System;
 
 namespace Game
 {
@@ -20,6 +21,8 @@ namespace Game
     private AudioClip soundWeaponTypePickup = null;
     private AudioClip soundHpPickup = null;
     private AudioClip soundPlayerHit = null;
+
+		public static bool xOneActive = true;
 
     private static readonly string weaponPrefabMachinegun = "Machinegun";
 		private static readonly string weaponPrefabLaser = "Lasergun";
@@ -84,14 +87,25 @@ namespace Game
 			pos.y = Mathf.Clamp(pos.y, -screenSpace.y, screenSpace.y);
 			transform.position = pos;
 
-			if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Joystick1Button0) || Input.GetKey(KeyCode.Joystick1Button16))
+			bool x360Input = !xOneActive && (Input.GetKey(KeyCode.JoystickButton0) || Input.GetKey(KeyCode.JoystickButton16));
+			bool xOneInput = xOneActive && Input.GetKey(KeyCode.JoystickButton1);
+			bool x360Input2 = !xOneActive && (Input.GetKey(KeyCode.Joystick1Button1) || Input.GetKey(KeyCode.Joystick1Button17));
+			bool xOneInput2 = xOneActive && Input.GetKey(KeyCode.JoystickButton2);
+
+			if(Input.GetKey(KeyCode.Space) || x360Input || xOneInput)
 			{
 				fireMainWeapons();
 			}
-			if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Return) || Input.GetKey(KeyCode.Joystick1Button1) || Input.GetKey(KeyCode.Joystick1Button17))
+			if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Return) || x360Input2 || xOneInput2)
 
       {
 				fireSecondaryWeapons();
+			}
+
+			//CHEAT:
+			if(Input.GetKeyDown(KeyCode.O))
+			{
+				hitpoints++;
 			}
 		}
 
@@ -100,7 +114,9 @@ namespace Game
 			StatemachineStateIngame ingameState = StatemachineStateIngame.getStatemachine();
 
 			// Press 'escape' to pause or unpause the game:
-			if(Input.GetKeyDown(KeyCode.Escape))
+			if(Input.GetKeyDown(KeyCode.Escape) ||
+				(xOneActive && Input.GetKeyDown(KeyCode.JoystickButton12)) ||
+				(!xOneActive && Input.GetKeyDown(KeyCode.JoystickButton9) || Input.GetKeyDown(KeyCode.JoystickButton7)))
 			{
 				if(ingameState.IngameState == IngameState.Ingame)
 					ingameState.setState(IngameState.Paused);
